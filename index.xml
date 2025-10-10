@@ -24,6 +24,8 @@
 <p>This is a post with executable code.</p>
 
 
+<!-- -->
+
 
  ]]></description>
   <category>news</category>
@@ -47,6 +49,8 @@
 <p><img src="https://your-website-url.example.com/posts/welcome/thumbnail.jpg" class="img-fluid"></p>
 <p>Since this post doesn’t specify an explicit <code>image</code>, the first image in the post will be used in the listing page of posts.</p>
 
+
+<!-- -->
 
 
  ]]></description>
@@ -177,6 +181,8 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
 </ol>
 <p>That’s all for today!</p>
 
+
+<!-- -->
 
 </section>
 </section>

@@ -1,1 +1,67 @@
-/* css styles */
+/* Custom styles for August's MBI Blog */
+
+/* Improve typography */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+}
+
+/* Code blocks styling */
+pre {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+/* Callout boxes for important content */
+.callout {
+  padding: 1rem;
+  margin: 1rem 0;
+  border-left: 4px solid #007bff;
+  background-color: #f8f9fa;
+  border-radius: 0 4px 4px 0;
+}
+
+.callout-note {
+  border-left-color: #17a2b8;
+}
+
+.callout-warning {
+  border-left-color: #ffc107;
+  background-color: #fff3cd;
+}
+
+.callout-tip {
+  border-left-color: #28a745;
+  background-color: #d4edda;
+}
+
+/* Blog post styling */
+.post-title {
+  color: #2c3e50;
+  font-weight: 700;
+}
+
+.post-meta {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+/* Navigation improvements */
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+
+/* Better spacing for lists */
+ul li, ol li {
+  margin-bottom: 0.5rem;
+}
+
+/* Highlight important text */
+.highlight {
+  background-color: #fff3cd;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+}
