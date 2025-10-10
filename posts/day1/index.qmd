@@ -2,21 +2,32 @@
 title: "Day 1"
 date: 2024-06-10
 categories: [blog]
-author: "Your Name"
+author: "August Lundholm"
 description: "Reflections and notes from day 1."
 image: "featured.jpg"
 draft: false
 ---
 
-# Welcome to Day 1
+# Day 1 of medbioinfo
 
 This is my first blog post! Here are my reflections and notes from day 1.
 
 ## What I Learned Today
-
+- We talked about good practice in storing and processing data
 - How to set up a Quarto blog
 - The importance of YAML frontmatter
 - How to write content in Markdown
+
+## Data management and reproducible research
+- We discussed the data lifecycle and what different stages the data goes through. from planning for what data to be collected to eventually being reused. The data lifecycle can be long and involve multiple people and thats  why its important to work according to FAIR-principles.
+- FAIR - Findable Accesible Interoperable and Reusable. Working according to this concept ensure that data collected for one question can be used for many more. 
+    - This relies on good data management practices where you work by research documentation, data organisation, information security, ethics and legislation.
+- Data is often not complete after first collection, first processing or first analysis. things are being added or moved between project altered as the work goes along. which makes it important to store data in a good system in a separate folder of raw-data which you dont touch. 
+    - some tips for good practice with documenting your data: 
+        - Document your methods and workflows.
+        - Document where and when you downloaded data.
+        - Document the versions of the software that you ran.
+
 
 ## Sample Code
 
@@ -33,6 +44,10 @@ total = sum(numbers)
 print(f"The sum is: {total}")
 ```
 
+```{R}
+data(mtcars)
+head(mtcars)
+```
 ## Next Steps
 
 Tomorrow I plan to:
