@@ -1,0 +1,65 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this blog"
+  },
+  {
+    "objectID": "posts/day1/index.html",
+    "href": "posts/day1/index.html",
+    "title": "Day 1",
+    "section": "",
+    "text": "This is my first blog post! Here are my reflections and notes from day 1.\n\n\n\nWe talked about good practice in storing and processing data\nHow to set up a Quarto blog\nThe importance of YAML frontmatter\nHow to write content in Markdown\n\n\n\n\n\nWe discussed the data lifecycle and what different stages the data goes through. from planning for what data to be collected to eventually being reused. The data lifecycle can be long and involve multiple people and thats why its important to work according to FAIR-principles.\nFAIR - Findable Accesible Interoperable and Reusable. Working according to this concept ensure that data collected for one question can be used for many more.\n\nThis relies on good data management practices where you work by research documentation, data organisation, information security, ethics and legislation.\n\nData is often not complete after first collection, first processing or first analysis. things are being added or moved between project altered as the work goes along. which makes it important to store data in a good system in a separate folder of raw-data which you dont touch.\n\nsome tips for good practice with documenting your data:\n\nDocument your methods and workflows.\nDocument where and when you downloaded data.\nDocument the versions of the software that you ran.\n\n\n\n\n\n\nHere’s a simple example:\n\n# A simple Python example\ngreeting = \"Hello, world!\"\nprint(greeting)\n\nHello, world!\n\n# Some basic math\nnumbers = [1, 2, 3, 4, 5]\ntotal = sum(numbers)\nprint(f\"The sum is: {total}\")\n\nThe sum is: 15\n\n\n\ndata(mtcars)\nhead(mtcars)\n\n                   mpg cyl disp  hp drat    wt  qsec vs am gear carb\nMazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\nValiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1\n\n\n\n\n\nTomorrow I plan to:\n\nExplore more Quarto features\nAdd some visualizations\nLearn about themes and styling\n\nThat’s all for today!"
+  },
+  {
+    "objectID": "posts/day1/index.html#what-i-learned-today",
+    "href": "posts/day1/index.html#what-i-learned-today",
+    "title": "Day 1",
+    "section": "",
+    "text": "We talked about good practice in storing and processing data\nHow to set up a Quarto blog\nThe importance of YAML frontmatter\nHow to write content in Markdown"
+  },
+  {
+    "objectID": "posts/day1/index.html#data-management-and-reproducible-research",
+    "href": "posts/day1/index.html#data-management-and-reproducible-research",
+    "title": "Day 1",
+    "section": "",
+    "text": "We discussed the data lifecycle and what different stages the data goes through. from planning for what data to be collected to eventually being reused. The data lifecycle can be long and involve multiple people and thats why its important to work according to FAIR-principles.\nFAIR - Findable Accesible Interoperable and Reusable. Working according to this concept ensure that data collected for one question can be used for many more.\n\nThis relies on good data management practices where you work by research documentation, data organisation, information security, ethics and legislation.\n\nData is often not complete after first collection, first processing or first analysis. things are being added or moved between project altered as the work goes along. which makes it important to store data in a good system in a separate folder of raw-data which you dont touch.\n\nsome tips for good practice with documenting your data:\n\nDocument your methods and workflows.\nDocument where and when you downloaded data.\nDocument the versions of the software that you ran."
+  },
+  {
+    "objectID": "posts/day1/index.html#sample-code",
+    "href": "posts/day1/index.html#sample-code",
+    "title": "Day 1",
+    "section": "",
+    "text": "Here’s a simple example:\n\n# A simple Python example\ngreeting = \"Hello, world!\"\nprint(greeting)\n\nHello, world!\n\n# Some basic math\nnumbers = [1, 2, 3, 4, 5]\ntotal = sum(numbers)\nprint(f\"The sum is: {total}\")\n\nThe sum is: 15\n\n\n\ndata(mtcars)\nhead(mtcars)\n\n                   mpg cyl disp  hp drat    wt  qsec vs am gear carb\nMazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\nValiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1"
+  },
+  {
+    "objectID": "posts/day1/index.html#next-steps",
+    "href": "posts/day1/index.html#next-steps",
+    "title": "Day 1",
+    "section": "",
+    "text": "Tomorrow I plan to:\n\nExplore more Quarto features\nAdd some visualizations\nLearn about themes and styling\n\nThat’s all for today!"
+  },
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "This is a post with executable code."
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "August´s mbi-blog",
+    "section": "",
+    "text": "Post With Code\n\n\n\nnews\n\ncode\n\nanalysis\n\n\n\n\n\n\n\n\n\nOct 10, 2025\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nOct 7, 2025\n\n\nTristan O’Malley\n\n\n\n\n\n\n\n\n\n\n\n\nDay 1\n\n\n\nblog\n\n\n\nReflections and notes from day 1.\n\n\n\n\n\nJun 10, 2024\n\n\nAugust Lundholm\n\n\n\n\n\nNo matching items"
+  }
+]

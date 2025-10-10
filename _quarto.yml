@@ -14,10 +14,12 @@ website:
         href: https://twitter.com
 format:
   html:
-    theme:
-      - cosmo
-      - brand
+    theme: flatly
     css: styles.css
+    toc: true
+    toc-depth: 3
+    code-fold: false
+    code-tools: true
 
 
 

@@ -28,10 +28,22 @@ This is my first blog post! Here are my reflections and notes from day 1.
         - Document where and when you downloaded data.
         - Document the versions of the software that you ran.
 
+- Other things that we will practice later in the course is: 
+    - Employing version control via GIT
+    - Shareable environments to make your scripts reproducible.
+    - containers to run scripts on other operating systems
+    - workflow managers, that keep track of all of the above and also parse your data through the different scripts. 
 
-## Sample Code
+## Quarto blog
+- We also learned to set up this blog! 
 
-Here's a simple example:
+- Quarto allows you to write text and code into the same document and render into a few different formats such as webpages, blogs (!), docx and pdf. 
+
+
+
+## Here are some samples of code
+
+- here is a python example:
 
 ```{python}
 # A simple Python example
@@ -44,17 +56,13 @@ total = sum(numbers)
 print(f"The sum is: {total}")
 ```
 
+- and this is a R example! 
+
 ```{R}
 data(mtcars)
 head(mtcars)
 ```
 ## Next Steps
-
-Tomorrow I plan to:
-
-1. Explore more Quarto features
-2. Add some visualizations
-3. Learn about themes and styling
 
 That's all for today!
 
