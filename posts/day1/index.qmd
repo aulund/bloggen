@@ -1,0 +1,45 @@
+---
+title: "Day 1"
+date: 2024-06-10
+categories: [blog]
+author: "Your Name"
+description: "Reflections and notes from day 1."
+image: "featured.jpg"
+draft: false
+---
+
+# Welcome to Day 1
+
+This is my first blog post! Here are my reflections and notes from day 1.
+
+## What I Learned Today
+
+- How to set up a Quarto blog
+- The importance of YAML frontmatter
+- How to write content in Markdown
+
+## Sample Code
+
+Here's a simple example:
+
+```{python}
+# A simple Python example
+greeting = "Hello, world!"
+print(greeting)
+
+# Some basic math
+numbers = [1, 2, 3, 4, 5]
+total = sum(numbers)
+print(f"The sum is: {total}")
+```
+
+## Next Steps
+
+Tomorrow I plan to:
+
+1. Explore more Quarto features
+2. Add some visualizations
+3. Learn about themes and styling
+
+That's all for today!
+
