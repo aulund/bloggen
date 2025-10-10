@@ -11,14 +11,14 @@
     "href": "posts/day1/index.html",
     "title": "Day 1",
     "section": "",
-    "text": "This is my first blog post! Here are my reflections and notes from day 1.\n\n\n\nHow to set up a Quarto blog\nThe importance of YAML frontmatter\nHow to write content in Markdown\n\n\n\n\nHere’s a simple example:\n\n# A simple Python example\ngreeting = \"Hello, world!\"\nprint(greeting)\n\n# Some basic math\nnumbers = [1, 2, 3, 4, 5]\ntotal = sum(numbers)\nprint(f\"The sum is: {total}\")\n\nHello, world!\nThe sum is: 15\n\n\n\n\n\nTomorrow I plan to:\n\nExplore more Quarto features\nAdd some visualizations\nLearn about themes and styling\n\nThat’s all for today!"
+    "text": "This is my first blog post! Here are my reflections and notes from day 1.\n\n\n\nWe talked about good practice in storing and processing data\nHow to set up a Quarto blog\nThe importance of YAML frontmatter\nHow to write content in Markdown\n\n\n\n\nHere’s a simple example:\n\n# A simple Python example\ngreeting = \"Hello, world!\"\nprint(greeting)\n\n# Some basic math\nnumbers = [1, 2, 3, 4, 5]\ntotal = sum(numbers)\nprint(f\"The sum is: {total}\")\n\nHello, world!\nThe sum is: 15\n\n\n\n\n\nTomorrow I plan to:\n\nExplore more Quarto features\nAdd some visualizations\nLearn about themes and styling\n\nThat’s all for today!"
   },
   {
     "objectID": "posts/day1/index.html#what-i-learned-today",
     "href": "posts/day1/index.html#what-i-learned-today",
     "title": "Day 1",
     "section": "",
-    "text": "How to set up a Quarto blog\nThe importance of YAML frontmatter\nHow to write content in Markdown"
+    "text": "We talked about good practice in storing and processing data\nHow to set up a Quarto blog\nThe importance of YAML frontmatter\nHow to write content in Markdown"
   },
   {
     "objectID": "posts/day1/index.html#sample-code",
@@ -53,6 +53,6 @@
     "href": "index.html",
     "title": "August´s mbi-blog",
     "section": "",
-    "text": "Post With Code\n\n\n\nnews\n\ncode\n\nanalysis\n\n\n\n\n\n\n\n\n\nOct 10, 2025\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nOct 7, 2025\n\n\nTristan O’Malley\n\n\n\n\n\n\n\n\n\n\n\n\nDay 1\n\n\n\nblog\n\n\n\nReflections and notes from day 1.\n\n\n\n\n\nJun 10, 2024\n\n\nYour Name\n\n\n\n\n\nNo matching items"
+    "text": "Post With Code\n\n\n\nnews\n\ncode\n\nanalysis\n\n\n\n\n\n\n\n\n\nOct 10, 2025\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nOct 7, 2025\n\n\nTristan O’Malley\n\n\n\n\n\n\n\n\n\n\n\n\nDay 1\n\n\n\nblog\n\n\n\nReflections and notes from day 1.\n\n\n\n\n\nJun 10, 2024\n\n\nAugust Lundholm\n\n\n\n\n\nNo matching items"
   }
 ]
