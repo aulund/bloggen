@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>August´s mbi-blog</title>
+<link>https://your-website-url.example.com/</link>
+<atom:link href="https://your-website-url.example.com/index.xml" rel="self" type="application/rss+xml"/>
+<description>A blog built with Quarto</description>
+<generator>quarto-1.8.25</generator>
+<lastBuildDate>Thu, 09 Oct 2025 22:00:00 GMT</lastBuildDate>
+<item>
+  <title>Post With Code</title>
+  <dc:creator>Harlow Malloc</dc:creator>
+  <link>https://your-website-url.example.com/posts/post-with-code/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>This is a post with executable code.</p>
+
+
+
+ ]]></description>
+  <category>news</category>
+  <category>code</category>
+  <category>analysis</category>
+  <guid>https://your-website-url.example.com/posts/post-with-code/</guid>
+  <pubDate>Thu, 09 Oct 2025 22:00:00 GMT</pubDate>
+  <media:content url="https://your-website-url.example.com/posts/post-with-code/image.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>Welcome To My Blog</title>
+  <dc:creator>Tristan O&#39;Malley</dc:creator>
+  <link>https://your-website-url.example.com/posts/welcome/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>This is the first post in a Quarto blog. Welcome!</p>
+<p><img src="https://your-website-url.example.com/posts/welcome/thumbnail.jpg" class="img-fluid"></p>
+<p>Since this post doesn’t specify an explicit <code>image</code>, the first image in the post will be used in the listing page of posts.</p>
+
+
+
+ ]]></description>
+  <category>news</category>
+  <guid>https://your-website-url.example.com/posts/welcome/</guid>
+  <pubDate>Mon, 06 Oct 2025 22:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Day 1</title>
+  <dc:creator>Your Name</dc:creator>
+  <link>https://your-website-url.example.com/posts/day1/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="welcome-to-day-1" class="level1">
+<h1>Welcome to Day 1</h1>
+<p>This is my first blog post! Here are my reflections and notes from day 1.</p>
+<section id="what-i-learned-today" class="level2">
+<h2 class="anchored" data-anchor-id="what-i-learned-today">What I Learned Today</h2>
+<ul>
+<li>How to set up a Quarto blog</li>
+<li>The importance of YAML frontmatter</li>
+<li>How to write content in Markdown</li>
+</ul>
+</section>
+<section id="sample-code" class="level2">
+<h2 class="anchored" data-anchor-id="sample-code">Sample Code</h2>
+<p>Here’s a simple example:</p>
+<div id="5b27c34b" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># A simple Python example</span></span>
+<span id="cb1-2">greeting <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Hello, world!"</span></span>
+<span id="cb1-3"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(greeting)</span>
+<span id="cb1-4"></span>
+<span id="cb1-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Some basic math</span></span>
+<span id="cb1-6">numbers <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>]</span>
+<span id="cb1-7">total <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sum</span>(numbers)</span>
+<span id="cb1-8"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"The sum is: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>total<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello, world!
+The sum is: 15</code></pre>
+</div>
+</div>
+</section>
+<section id="next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="next-steps">Next Steps</h2>
+<p>Tomorrow I plan to:</p>
+<ol type="1">
+<li>Explore more Quarto features</li>
+<li>Add some visualizations</li>
+<li>Learn about themes and styling</li>
+</ol>
+<p>That’s all for today!</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>blog</category>
+  <guid>https://your-website-url.example.com/posts/day1/</guid>
+  <pubDate>Sun, 09 Jun 2024 22:00:00 GMT</pubDate>
+  <media:content url="https://your-website-url.example.com/posts/day1/featured.jpg" medium="image" type="image/jpeg"/>
+</item>
+</channel>
+</rss>
