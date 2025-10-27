@@ -76,114 +76,19 @@
 <p>Today we covered four main topics: - Introduction to environments - Quality control with Pixi and Slurm - Introduction to containers<br>
 - Quality control with containers</p>
 </section>
-<section id="am---introduction-to-environments" class="level2">
-<h2 class="anchored" data-anchor-id="am---introduction-to-environments">AM - Introduction to Environments</h2>
+<section id="introduction-to-environments" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-environments">Introduction to Environments</h2>
+<p>Since I work with variant visualisations, large datasets, and a mix of custom scripts and publication-ready figures it’s crucial that my toolchain is consistent and reproducible across systems and collaborators. Using Pixi (or another environment manager) keeps everything isolated and version-controlled, so I don’t end up with “it works on my computer” issues. Having a dedicated environment for each project makes it easier to share my setup — others can just clone the repository and get the exact same tools and versions. It also prevents older pipelines or scripts from breaking when dependencies update. When I prepare figures or analyses for papers, Pixi can help me keep track of software versions, channels, and dependencies — which makes the “Methods” section reproducible. Pixi supports multiple platforms and I can test everything locally and then run it on the cluster with minimal risk of environment mismatch.</p>
 </section>
-<section id="am---quality-control-with-pixi-and-slurm" class="level2">
-<h2 class="anchored" data-anchor-id="am---quality-control-with-pixi-and-slurm">AM - Quality Control with Pixi and Slurm</h2>
-<p><em>[Add your thoughts on Pixi and Slurm for quality control]</em></p>
+<section id="quality-control-with-pixi-and-slurm" class="level2">
+<h2 class="anchored" data-anchor-id="quality-control-with-pixi-and-slurm">Quality Control with Pixi and Slurm</h2>
+<p>Quality control isn’t the most exciting part of bioinformatics, but it’s one of the most important. If the sequencing data is bad, everything that comes after will be unreliable. Running FastQC and MultiQC early on saves time later, even if the results themselves are pretty basic. It also makes me think more about how I organize things. Having a clear directory structure and running everything inside a controlled environment like Pixi helps keep track of what was actually done. It’s easy to lose that overview once the project grows. Working with SLURM and screen is a bit clunky at first, but it’s useful to understand how jobs run on the cluster. Being able to rerun things reproducibly — same data, same tools, same parameters — is really the main point.</p>
 </section>
-<section id="pm---introduction-to-containers" class="level2">
-<h2 class="anchored" data-anchor-id="pm---introduction-to-containers">PM - Introduction to Containers</h2>
-<p><em>[Add your learnings about containers here]</em></p>
-</section>
-<section id="pm---qc-with-containers" class="level2">
-<h2 class="anchored" data-anchor-id="pm---qc-with-containers">PM - QC with Containers</h2>
-<p><em>[Add your reflections on using containers for quality control]</em></p>
-</section>
-<section id="practical-work" class="level2">
-<h2 class="anchored" data-anchor-id="practical-work">Practical Work</h2>
-<section id="exerciselab-work" class="level3">
-<h3 class="anchored" data-anchor-id="exerciselab-work">Exercise/Lab Work</h3>
-<p><em>[Describe any hands-on work you did today]</em></p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Example code from today's work</span></span>
-<span id="cb1-2"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Replace this with actual code you wrote or learned</span></span>
-<span id="cb1-3"></span>
-<span id="cb1-4"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Day 2 of MedBioInfo!"</span>)</span></code></pre></div></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Day 2 of MedBioInfo!</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"></span>
-<span id="cb3-2"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Add any specific examples from your coursework</span></span></code></pre></div></div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># R examples if you worked with R today</span></span>
-<span id="cb4-2"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># data(your_dataset)</span></span>
-<span id="cb4-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># summary(your_dataset)</span></span></code></pre></div></div>
-</div>
-</section>
-</section>
-<section id="challenges-and-solutions" class="level2">
-<h2 class="anchored" data-anchor-id="challenges-and-solutions">Challenges and Solutions</h2>
-<section id="challenge-1" class="level3">
-<h3 class="anchored" data-anchor-id="challenge-1">Challenge 1</h3>
-<p><strong>Problem</strong>: <em>[Describe a challenge you faced]</em><br>
-<strong>Solution</strong>: <em>[How you solved it or what you learned]</em></p>
-</section>
-<section id="challenge-2" class="level3">
-<h3 class="anchored" data-anchor-id="challenge-2">Challenge 2</h3>
-<p><strong>Problem</strong>: <em>[Another challenge]</em><br>
-<strong>Solution</strong>: <em>[Your approach to solving it]</em></p>
-</section>
-</section>
-<section id="key-insights" class="level2">
-<h2 class="anchored" data-anchor-id="key-insights">Key Insights</h2>
-<blockquote class="blockquote">
-<p><em>[Add an important quote or insight from today]</em></p>
-</blockquote>
-<ul>
-<li><strong>Insight 1</strong>: <em>[What clicked for you today?]</em></li>
-<li><strong>Insight 2</strong>: <em>[Another realization]</em></li>
-<li><strong>Insight 3</strong>: <em>[Something that surprised you]</em></li>
-</ul>
-</section>
-<section id="connections-to-previous-learning" class="level2">
-<h2 class="anchored" data-anchor-id="connections-to-previous-learning">Connections to Previous Learning</h2>
-<p><em>[How does today’s content connect to what you learned on Day 1 or in previous courses?]</em></p>
-</section>
-<section id="questions-for-further-exploration" class="level2">
-<h2 class="anchored" data-anchor-id="questions-for-further-exploration">Questions for Further Exploration</h2>
-<ol type="1">
-<li><em>[What questions do you still have?]</em></li>
-<li><em>[What would you like to explore more deeply?]</em></li>
-<li><em>[Areas you want to practice more]</em></li>
-</ol>
-</section>
-<section id="tomorrows-goals" class="level2">
-<h2 class="anchored" data-anchor-id="tomorrows-goals">Tomorrow’s Goals</h2>
-<p>Looking ahead to Day 3:</p>
-<ul class="task-list">
-<li><label><input type="checkbox"><em>[Goal 1]</em></label></li>
-<li><label><input type="checkbox"><em>[Goal 2]</em></label></li>
-<li><label><input type="checkbox"><em>[Goal 3]</em></label></li>
-</ul>
-</section>
-<section id="resources-and-references" class="level2">
-<h2 class="anchored" data-anchor-id="resources-and-references">Resources and References</h2>
-<ul>
-<li><em>[Link to course materials]</em></li>
-<li><em>[Useful documentation you found]</em></li>
-<li><em>[Papers or articles mentioned]</em></li>
-</ul>
+<section id="introduction-to-containers" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-containers">Introduction to Containers</h2>
+<p>Reproducibility is a constant problem in bioinformatics, and containers make it more manageable. They keep analyses stable even when systems or dependencies change. It’s also a practical way to share workflows without needing to explain every installation step. Building containers from scratch feels a bit advanced, but understanding how they work makes the overall workflow more reliable.</p>
 <hr>
-<p><em>That’s a wrap for Day 2! Looking forward to what Day 3 brings.</em> 🚀</p>
+<p>*That’s a wrap for Day 2! Looking forward to what Day 3 brings.</p>
 
 
 <!-- -->
