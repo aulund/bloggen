@@ -201,24 +201,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#day-2-of-medbioinfo" id="toc-day-2-of-medbioinfo" class="nav-link active" data-scroll-target="#day-2-of-medbioinfo">Day 2 of MedBioInfo</a>
   <ul class="collapse">
   <li><a href="#todays-focus" id="toc-todays-focus" class="nav-link" data-scroll-target="#todays-focus">Today’s Focus</a></li>
-  <li><a href="#am---introduction-to-environments" id="toc-am---introduction-to-environments" class="nav-link" data-scroll-target="#am---introduction-to-environments">AM - Introduction to Environments</a></li>
-  <li><a href="#am---quality-control-with-pixi-and-slurm" id="toc-am---quality-control-with-pixi-and-slurm" class="nav-link" data-scroll-target="#am---quality-control-with-pixi-and-slurm">AM - Quality Control with Pixi and Slurm</a></li>
-  <li><a href="#pm---introduction-to-containers" id="toc-pm---introduction-to-containers" class="nav-link" data-scroll-target="#pm---introduction-to-containers">PM - Introduction to Containers</a></li>
-  <li><a href="#pm---qc-with-containers" id="toc-pm---qc-with-containers" class="nav-link" data-scroll-target="#pm---qc-with-containers">PM - QC with Containers</a></li>
-  <li><a href="#practical-work" id="toc-practical-work" class="nav-link" data-scroll-target="#practical-work">Practical Work</a>
-  <ul class="collapse">
-  <li><a href="#exerciselab-work" id="toc-exerciselab-work" class="nav-link" data-scroll-target="#exerciselab-work">Exercise/Lab Work</a></li>
-  </ul></li>
-  <li><a href="#challenges-and-solutions" id="toc-challenges-and-solutions" class="nav-link" data-scroll-target="#challenges-and-solutions">Challenges and Solutions</a>
-  <ul class="collapse">
-  <li><a href="#challenge-1" id="toc-challenge-1" class="nav-link" data-scroll-target="#challenge-1">Challenge 1</a></li>
-  <li><a href="#challenge-2" id="toc-challenge-2" class="nav-link" data-scroll-target="#challenge-2">Challenge 2</a></li>
-  </ul></li>
-  <li><a href="#key-insights" id="toc-key-insights" class="nav-link" data-scroll-target="#key-insights">Key Insights</a></li>
-  <li><a href="#connections-to-previous-learning" id="toc-connections-to-previous-learning" class="nav-link" data-scroll-target="#connections-to-previous-learning">Connections to Previous Learning</a></li>
-  <li><a href="#questions-for-further-exploration" id="toc-questions-for-further-exploration" class="nav-link" data-scroll-target="#questions-for-further-exploration">Questions for Further Exploration</a></li>
-  <li><a href="#tomorrows-goals" id="toc-tomorrows-goals" class="nav-link" data-scroll-target="#tomorrows-goals">Tomorrow’s Goals</a></li>
-  <li><a href="#resources-and-references" id="toc-resources-and-references" class="nav-link" data-scroll-target="#resources-and-references">Resources and References</a></li>
+  <li><a href="#introduction-to-environments" id="toc-introduction-to-environments" class="nav-link" data-scroll-target="#introduction-to-environments">Introduction to Environments</a></li>
+  <li><a href="#quality-control-with-pixi-and-slurm" id="toc-quality-control-with-pixi-and-slurm" class="nav-link" data-scroll-target="#quality-control-with-pixi-and-slurm">Quality Control with Pixi and Slurm</a></li>
+  <li><a href="#introduction-to-containers" id="toc-introduction-to-containers" class="nav-link" data-scroll-target="#introduction-to-containers">Introduction to Containers</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -238,98 +223,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Today we covered four main topics: - Introduction to environments - Quality control with Pixi and Slurm - Introduction to containers<br>
 - Quality control with containers</p>
 </section>
-<section id="am---introduction-to-environments" class="level2">
-<h2 class="anchored" data-anchor-id="am---introduction-to-environments">AM - Introduction to Environments</h2>
+<section id="introduction-to-environments" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-environments">Introduction to Environments</h2>
+<p>Since I work with variant visualisations, large datasets, and a mix of custom scripts and publication-ready figures it’s crucial that my toolchain is consistent and reproducible across systems and collaborators. Using Pixi (or another environment manager) keeps everything isolated and version-controlled, so I don’t end up with “it works on my computer” issues. Having a dedicated environment for each project makes it easier to share my setup — others can just clone the repository and get the exact same tools and versions. It also prevents older pipelines or scripts from breaking when dependencies update. When I prepare figures or analyses for papers, Pixi can help me keep track of software versions, channels, and dependencies — which makes the “Methods” section reproducible. Pixi supports multiple platforms and I can test everything locally and then run it on the cluster with minimal risk of environment mismatch.</p>
 </section>
-<section id="am---quality-control-with-pixi-and-slurm" class="level2">
-<h2 class="anchored" data-anchor-id="am---quality-control-with-pixi-and-slurm">AM - Quality Control with Pixi and Slurm</h2>
-<p><em>[Add your thoughts on Pixi and Slurm for quality control]</em></p>
+<section id="quality-control-with-pixi-and-slurm" class="level2">
+<h2 class="anchored" data-anchor-id="quality-control-with-pixi-and-slurm">Quality Control with Pixi and Slurm</h2>
+<p>Quality control isn’t the most exciting part of bioinformatics, but it’s one of the most important. If the sequencing data is bad, everything that comes after will be unreliable. Running FastQC and MultiQC early on saves time later, even if the results themselves are pretty basic. It also makes me think more about how I organize things. Having a clear directory structure and running everything inside a controlled environment like Pixi helps keep track of what was actually done. It’s easy to lose that overview once the project grows. Working with SLURM and screen is a bit clunky at first, but it’s useful to understand how jobs run on the cluster. Being able to rerun things reproducibly — same data, same tools, same parameters — is really the main point.</p>
 </section>
-<section id="pm---introduction-to-containers" class="level2">
-<h2 class="anchored" data-anchor-id="pm---introduction-to-containers">PM - Introduction to Containers</h2>
-<p><em>[Add your learnings about containers here]</em></p>
-</section>
-<section id="pm---qc-with-containers" class="level2">
-<h2 class="anchored" data-anchor-id="pm---qc-with-containers">PM - QC with Containers</h2>
-<p><em>[Add your reflections on using containers for quality control]</em></p>
-</section>
-<section id="practical-work" class="level2">
-<h2 class="anchored" data-anchor-id="practical-work">Practical Work</h2>
-<section id="exerciselab-work" class="level3">
-<h3 class="anchored" data-anchor-id="exerciselab-work">Exercise/Lab Work</h3>
-<p><em>[Describe any hands-on work you did today]</em></p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example code from today's work</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace this with actual code you wrote or learned</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Day 2 of MedBioInfo!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Day 2 of MedBioInfo!</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Add any specific examples from your coursework</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R examples if you worked with R today</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># data(your_dataset)</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(your_dataset)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-</section>
-<section id="challenges-and-solutions" class="level2">
-<h2 class="anchored" data-anchor-id="challenges-and-solutions">Challenges and Solutions</h2>
-<section id="challenge-1" class="level3">
-<h3 class="anchored" data-anchor-id="challenge-1">Challenge 1</h3>
-<p><strong>Problem</strong>: <em>[Describe a challenge you faced]</em><br>
-<strong>Solution</strong>: <em>[How you solved it or what you learned]</em></p>
-</section>
-<section id="challenge-2" class="level3">
-<h3 class="anchored" data-anchor-id="challenge-2">Challenge 2</h3>
-<p><strong>Problem</strong>: <em>[Another challenge]</em><br>
-<strong>Solution</strong>: <em>[Your approach to solving it]</em></p>
-</section>
-</section>
-<section id="key-insights" class="level2">
-<h2 class="anchored" data-anchor-id="key-insights">Key Insights</h2>
-<blockquote class="blockquote">
-<p><em>[Add an important quote or insight from today]</em></p>
-</blockquote>
-<ul>
-<li><strong>Insight 1</strong>: <em>[What clicked for you today?]</em></li>
-<li><strong>Insight 2</strong>: <em>[Another realization]</em></li>
-<li><strong>Insight 3</strong>: <em>[Something that surprised you]</em></li>
-</ul>
-</section>
-<section id="connections-to-previous-learning" class="level2">
-<h2 class="anchored" data-anchor-id="connections-to-previous-learning">Connections to Previous Learning</h2>
-<p><em>[How does today’s content connect to what you learned on Day 1 or in previous courses?]</em></p>
-</section>
-<section id="questions-for-further-exploration" class="level2">
-<h2 class="anchored" data-anchor-id="questions-for-further-exploration">Questions for Further Exploration</h2>
-<ol type="1">
-<li><em>[What questions do you still have?]</em></li>
-<li><em>[What would you like to explore more deeply?]</em></li>
-<li><em>[Areas you want to practice more]</em></li>
-</ol>
-</section>
-<section id="tomorrows-goals" class="level2">
-<h2 class="anchored" data-anchor-id="tomorrows-goals">Tomorrow’s Goals</h2>
-<p>Looking ahead to Day 3:</p>
-<ul class="task-list">
-<li><label><input type="checkbox"><em>[Goal 1]</em></label></li>
-<li><label><input type="checkbox"><em>[Goal 2]</em></label></li>
-<li><label><input type="checkbox"><em>[Goal 3]</em></label></li>
-</ul>
-</section>
-<section id="resources-and-references" class="level2">
-<h2 class="anchored" data-anchor-id="resources-and-references">Resources and References</h2>
-<ul>
-<li><em>[Link to course materials]</em></li>
-<li><em>[Useful documentation you found]</em></li>
-<li><em>[Papers or articles mentioned]</em></li>
-</ul>
+<section id="introduction-to-containers" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-containers">Introduction to Containers</h2>
+<p>Reproducibility is a constant problem in bioinformatics, and containers make it more manageable. They keep analyses stable even when systems or dependencies change. It’s also a practical way to share workflows without needing to explain every installation step. Building containers from scratch feels a bit advanced, but understanding how they work makes the overall workflow more reliable.</p>
 <hr>
-<p><em>That’s a wrap for Day 2! Looking forward to what Day 3 brings.</em> 🚀</p>
+<p>*That’s a wrap for Day 2! Looking forward to what Day 3 brings.</p>
 
 
 <!-- -->
@@ -789,109 +695,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Day 2 of applied bioinformatics"</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2024-10-27</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [medbioinfo, learning, data-science]</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "August Lundholm"</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Continuing my journey through applied bioinformatics - Day 2"</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="an">draft:</span><span class="co"> false</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu"># Day 2 of MedBioInfo</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>Welcome back to my learning journey! Here are my reflections and key takeaways from day 2.</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="fu">## Today's Focus</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>Today we covered four main topics:</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Introduction to environments</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Quality control with Pixi and Slurm</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Introduction to containers  </span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Quality control with containers</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="fu">## AM - Introduction to Environments</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="fu">## AM - Quality Control with Pixi and Slurm</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>*[Add your thoughts on Pixi and Slurm for quality control]*</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="fu">## PM - Introduction to Containers</span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>*[Add your learnings about containers here]*</span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="fu">## PM - QC with Containers</span></span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>*[Add your reflections on using containers for quality control]*</span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="fu">## Practical Work</span></span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="fu">### Exercise/Lab Work</span></span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>*[Describe any hands-on work you did today]*</span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Example code from today's work</span></span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace this with actual code you wrote or learned</span></span>
-<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Day 2 of MedBioInfo!"</span>)</span>
-<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Add any specific examples from your coursework</span></span>
-<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a><span class="co"># R examples if you worked with R today</span></span>
-<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a><span class="co"># data(your_dataset)</span></span>
-<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(your_dataset)</span></span>
-<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a><span class="fu">## Challenges and Solutions</span></span>
-<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a><span class="fu">### Challenge 1</span></span>
-<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>**Problem**: *[Describe a challenge you faced]*  </span>
-<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a>**Solution**: *[How you solved it or what you learned]*</span>
-<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a><span class="fu">### Challenge 2</span></span>
-<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>**Problem**: *[Another challenge]*  </span>
-<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>**Solution**: *[Your approach to solving it]*</span>
-<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a><span class="fu">## Key Insights</span></span>
-<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *[Add an important quote or insight from today]*</span></span>
-<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Insight 1**: *[What clicked for you today?]*</span>
-<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Insight 2**: *[Another realization]*</span>
-<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Insight 3**: *[Something that surprised you]*</span>
-<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a><span class="fu">## Connections to Previous Learning</span></span>
-<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>*[How does today's content connect to what you learned on Day 1 or in previous courses?]*</span>
-<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a><span class="fu">## Questions for Further Exploration</span></span>
-<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>*[What questions do you still have?]*</span>
-<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>*[What would you like to explore more deeply?]*</span>
-<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>*[Areas you want to practice more]*</span>
-<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tomorrow's Goals</span></span>
-<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a>Looking ahead to Day 3:</span>
-<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> *[Goal 1]*</span>
-<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> *[Goal 2]*</span>
-<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> *[Goal 3]*</span>
-<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a><span class="fu">## Resources and References</span></span>
-<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>*[Link to course materials]*</span>
-<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>*[Useful documentation you found]*</span>
-<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>*[Papers or articles mentioned]*</span>
-<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a>*That's a wrap for Day 2! Looking forward to what Day 3 brings.* 🚀</span>
-</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Day 2 of applied bioinformatics"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2024-10-27</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [medbioinfo, learning, data-science]</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "August Lundholm"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Continuing my journey through applied bioinformatics - Day 2"</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="an">draft:</span><span class="co"> false</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu"># Day 2 of MedBioInfo</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>Welcome back to my learning journey! Here are my reflections and key takeaways from day 2.</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">## Today's Focus</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>Today we covered four main topics:</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Introduction to environments</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Quality control with Pixi and Slurm</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Introduction to containers  </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Quality control with containers</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction to Environments</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>Since I work with variant visualisations, large datasets, and a mix of custom scripts and publication-ready figures it’s crucial that my toolchain is consistent and reproducible across systems and collaborators. Using Pixi (or another environment manager) keeps everything isolated and version-controlled, so I don’t end up with “it works on my computer” issues.</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>Having a dedicated environment for each project makes it easier to share my setup — others can just clone the repository and get the exact same tools and versions. It also prevents older pipelines or scripts from breaking when dependencies update.</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>When I prepare figures or analyses for papers, Pixi can help me keep track of software versions, channels, and dependencies — which makes the “Methods” section reproducible.</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>Pixi supports multiple platforms and I can test everything locally and then run it on the cluster with minimal risk of environment mismatch.</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="fu">## Quality Control with Pixi and Slurm</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>Quality control isn’t the most exciting part of bioinformatics, but it’s one of the most important. If the sequencing data is bad, everything that comes after will be unreliable. Running FastQC and MultiQC early on saves time later, even if the results themselves are pretty basic.</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>It also makes me think more about how I organize things. Having a clear directory structure and running everything inside a controlled environment like Pixi helps keep track of what was actually done. It’s easy to lose that overview once the project grows.</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>Working with SLURM and screen is a bit clunky at first, but it’s useful to understand how jobs run on the cluster. Being able to rerun things reproducibly — same data, same tools, same parameters — is really the main point.</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="fu">##  Introduction to Containers</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>Reproducibility is a constant problem in bioinformatics, and containers make it more manageable. They keep analyses stable even when systems or dependencies change. It’s also a practical way to share workflows without needing to explain every installation step.</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>Building containers from scratch feels a bit advanced, but understanding how they work makes the overall workflow more reliable.</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>*That's a wrap for Day 2! Looking forward to what Day 3 brings.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
