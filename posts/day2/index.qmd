@@ -19,84 +19,25 @@ Today we covered four main topics:
 - Introduction to containers  
 - Quality control with containers
 
-## AM - Introduction to Environments
+## Introduction to Environments
+Since I work with variant visualisations, large datasets, and a mix of custom scripts and publication-ready figures it’s crucial that my toolchain is consistent and reproducible across systems and collaborators. Using Pixi (or another environment manager) keeps everything isolated and version-controlled, so I don’t end up with “it works on my computer” issues.
+Having a dedicated environment for each project makes it easier to share my setup — others can just clone the repository and get the exact same tools and versions. It also prevents older pipelines or scripts from breaking when dependencies update.
+When I prepare figures or analyses for papers, Pixi can help me keep track of software versions, channels, and dependencies — which makes the “Methods” section reproducible.
+Pixi supports multiple platforms and I can test everything locally and then run it on the cluster with minimal risk of environment mismatch.
 
 
 
-## AM - Quality Control with Pixi and Slurm
+## Quality Control with Pixi and Slurm
 
-*[Add your thoughts on Pixi and Slurm for quality control]*
+Quality control isn’t the most exciting part of bioinformatics, but it’s one of the most important. If the sequencing data is bad, everything that comes after will be unreliable. Running FastQC and MultiQC early on saves time later, even if the results themselves are pretty basic.
+It also makes me think more about how I organize things. Having a clear directory structure and running everything inside a controlled environment like Pixi helps keep track of what was actually done. It’s easy to lose that overview once the project grows.
+Working with SLURM and screen is a bit clunky at first, but it’s useful to understand how jobs run on the cluster. Being able to rerun things reproducibly — same data, same tools, same parameters — is really the main point.
 
-## PM - Introduction to Containers
+##  Introduction to Containers
 
-*[Add your learnings about containers here]*
-
-## PM - QC with Containers
-
-*[Add your reflections on using containers for quality control]*
-
-## Practical Work
-
-### Exercise/Lab Work
-*[Describe any hands-on work you did today]*
-
-```{python}
-# Example code from today's work
-# Replace this with actual code you wrote or learned
-
-print("Day 2 of MedBioInfo!")
-
-# Add any specific examples from your coursework
-```
-
-```{r}
-# R examples if you worked with R today
-# data(your_dataset)
-# summary(your_dataset)
-```
-
-## Challenges and Solutions
-
-### Challenge 1
-**Problem**: *[Describe a challenge you faced]*  
-**Solution**: *[How you solved it or what you learned]*
-
-### Challenge 2
-**Problem**: *[Another challenge]*  
-**Solution**: *[Your approach to solving it]*
-
-## Key Insights
-
-> *[Add an important quote or insight from today]*
-
-- **Insight 1**: *[What clicked for you today?]*
-- **Insight 2**: *[Another realization]*
-- **Insight 3**: *[Something that surprised you]*
-
-## Connections to Previous Learning
-
-*[How does today's content connect to what you learned on Day 1 or in previous courses?]*
-
-## Questions for Further Exploration
-
-1. *[What questions do you still have?]*
-2. *[What would you like to explore more deeply?]*
-3. *[Areas you want to practice more]*
-
-## Tomorrow's Goals
-
-Looking ahead to Day 3:
-
-- [ ] *[Goal 1]*
-- [ ] *[Goal 2]*
-- [ ] *[Goal 3]*
-
-## Resources and References
-
-- *[Link to course materials]*
-- *[Useful documentation you found]*
-- *[Papers or articles mentioned]*
+Reproducibility is a constant problem in bioinformatics, and containers make it more manageable. They keep analyses stable even when systems or dependencies change. It’s also a practical way to share workflows without needing to explain every installation step.
+Building containers from scratch feels a bit advanced, but understanding how they work makes the overall workflow more reliable.
 
 ---
 
-*That's a wrap for Day 2! Looking forward to what Day 3 brings.* 🚀
+*That's a wrap for Day 2! Looking forward to what Day 3 brings.
