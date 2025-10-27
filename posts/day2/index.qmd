@@ -1,0 +1,102 @@
+---
+title: "Day 2 of applied bioinformatics"
+date: 2024-10-27
+categories: [medbioinfo, learning, data-science]
+author: "August Lundholm"
+description: "Continuing my journey through applied bioinformatics - Day 2"
+draft: false
+---
+
+# Day 2 of MedBioInfo
+
+Welcome back to my learning journey! Here are my reflections and key takeaways from day 2.
+
+## Today's Focus
+
+Today we covered four main topics:
+- Introduction to environments
+- Quality control with Pixi and Slurm
+- Introduction to containers  
+- Quality control with containers
+
+## AM - Introduction to Environments
+
+
+
+## AM - Quality Control with Pixi and Slurm
+
+*[Add your thoughts on Pixi and Slurm for quality control]*
+
+## PM - Introduction to Containers
+
+*[Add your learnings about containers here]*
+
+## PM - QC with Containers
+
+*[Add your reflections on using containers for quality control]*
+
+## Practical Work
+
+### Exercise/Lab Work
+*[Describe any hands-on work you did today]*
+
+```{python}
+# Example code from today's work
+# Replace this with actual code you wrote or learned
+
+print("Day 2 of MedBioInfo!")
+
+# Add any specific examples from your coursework
+```
+
+```{r}
+# R examples if you worked with R today
+# data(your_dataset)
+# summary(your_dataset)
+```
+
+## Challenges and Solutions
+
+### Challenge 1
+**Problem**: *[Describe a challenge you faced]*  
+**Solution**: *[How you solved it or what you learned]*
+
+### Challenge 2
+**Problem**: *[Another challenge]*  
+**Solution**: *[Your approach to solving it]*
+
+## Key Insights
+
+> *[Add an important quote or insight from today]*
+
+- **Insight 1**: *[What clicked for you today?]*
+- **Insight 2**: *[Another realization]*
+- **Insight 3**: *[Something that surprised you]*
+
+## Connections to Previous Learning
+
+*[How does today's content connect to what you learned on Day 1 or in previous courses?]*
+
+## Questions for Further Exploration
+
+1. *[What questions do you still have?]*
+2. *[What would you like to explore more deeply?]*
+3. *[Areas you want to practice more]*
+
+## Tomorrow's Goals
+
+Looking ahead to Day 3:
+
+- [ ] *[Goal 1]*
+- [ ] *[Goal 2]*
+- [ ] *[Goal 3]*
+
+## Resources and References
+
+- *[Link to course materials]*
+- *[Useful documentation you found]*
+- *[Papers or articles mentioned]*
+
+---
+
+*That's a wrap for Day 2! Looking forward to what Day 3 brings.* 🚀

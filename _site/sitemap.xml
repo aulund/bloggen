@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://your-website-url.example.com/about.html</loc>
+    <loc>https://aulund.github.io/bloggen/about.html</loc>
     <lastmod>2025-10-10T13:37:20.301Z</lastmod>
   </url>
   <url>
-    <loc>https://your-website-url.example.com/posts/day1/index.html</loc>
+    <loc>https://aulund.github.io/bloggen/posts/day1/index.html</loc>
     <lastmod>2025-10-10T15:32:43.299Z</lastmod>
   </url>
   <url>
-    <loc>https://your-website-url.example.com/posts/post-with-code/index.html</loc>
+    <loc>https://aulund.github.io/bloggen/posts/post-with-code/index.html</loc>
     <lastmod>2025-10-10T13:37:20.306Z</lastmod>
   </url>
   <url>
-    <loc>https://your-website-url.example.com/posts/welcome/index.html</loc>
+    <loc>https://aulund.github.io/bloggen/posts/welcome/index.html</loc>
     <lastmod>2025-10-10T13:37:20.307Z</lastmod>
   </url>
   <url>
-    <loc>https://your-website-url.example.com/index.html</loc>
+    <loc>https://aulund.github.io/bloggen/index.html</loc>
     <lastmod>2025-10-10T13:37:20.302Z</lastmod>
   </url>
 </urlset>
