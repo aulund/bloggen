@@ -237,11 +237,27 @@ font-style: inherit;"># summary(your_dataset)</span></span></code></pre></div></
 <li>Document the versions of the software that you ran.</li>
 </ul></li>
 </ul></li>
+<li>Other things that we will practice later in the course is:
+<ul>
+<li>Employing version control via GIT</li>
+<li>Shareable environments to make your scripts reproducible.</li>
+<li>containers to run scripts on other operating systems</li>
+<li>workflow managers, that keep track of all of the above and also parse your data through the different scripts.</li>
+</ul></li>
 </ul>
 </section>
-<section id="sample-code" class="level2">
-<h2 class="anchored" data-anchor-id="sample-code">Sample Code</h2>
-<p>Here’s a simple example:</p>
+<section id="quarto-blog" class="level2">
+<h2 class="anchored" data-anchor-id="quarto-blog">Quarto blog</h2>
+<ul>
+<li><p>We also learned to set up this blog!</p></li>
+<li><p>Quarto allows you to write text and code into the same document and render into a few different formats such as webpages, blogs (!), docx and pdf.</p></li>
+</ul>
+</section>
+<section id="here-are-some-samples-of-code" class="level2">
+<h2 class="anchored" data-anchor-id="here-are-some-samples-of-code">Here are some samples of code</h2>
+<ul>
+<li>here is a python example:</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -293,6 +309,9 @@ font-style: inherit;">"</span>)</span></code></pre></div></div>
 <pre><code>The sum is: 15</code></pre>
 </div>
 </div>
+<ul>
+<li>and this is a R example!</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -310,15 +329,6 @@ Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
 Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
 </div>
 </div>
-</section>
-<section id="next-steps" class="level2">
-<h2 class="anchored" data-anchor-id="next-steps">Next Steps</h2>
-<p>Tomorrow I plan to:</p>
-<ol type="1">
-<li>Explore more Quarto features</li>
-<li>Add some visualizations</li>
-<li>Learn about themes and styling</li>
-</ol>
 <p>That’s all for today!</p>
 
 
