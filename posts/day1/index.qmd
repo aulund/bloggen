@@ -62,7 +62,6 @@ print(f"The sum is: {total}")
 data(mtcars)
 head(mtcars)
 ```
-## Next Steps
 
 That's all for today!
 
