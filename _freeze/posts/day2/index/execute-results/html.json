@@ -1,0 +1,15 @@
+{
+  "hash": "33a0cdd9f5d601536f3e58ee98513272",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Day 2 of applied bioinformatics\"\ndate: 2024-10-27\ncategories: [medbioinfo, learning, data-science]\nauthor: \"August Lundholm\"\ndescription: \"Continuing my journey through applied bioinformatics - Day 2\"\ndraft: false\n---\n\n# Day 2 of MedBioInfo\n\nWelcome back to my learning journey! Here are my reflections and key takeaways from day 2.\n\n## Today's Focus\n\nToday we covered four main topics:\n- Introduction to environments\n- Quality control with Pixi and Slurm\n- Introduction to containers  \n- Quality control with containers\n\n## AM - Introduction to Environments\n\n\n\n## AM - Quality Control with Pixi and Slurm\n\n*[Add your thoughts on Pixi and Slurm for quality control]*\n\n## PM - Introduction to Containers\n\n*[Add your learnings about containers here]*\n\n## PM - QC with Containers\n\n*[Add your reflections on using containers for quality control]*\n\n## Practical Work\n\n### Exercise/Lab Work\n*[Describe any hands-on work you did today]*\n\n\n::: {.cell}\n\n```{.python .cell-code}\n# Example code from today's work\n# Replace this with actual code you wrote or learned\n\nprint(\"Day 2 of MedBioInfo!\")\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\nDay 2 of MedBioInfo!\n```\n\n\n:::\n\n```{.python .cell-code}\n\n# Add any specific examples from your coursework\n```\n:::\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# R examples if you worked with R today\n# data(your_dataset)\n# summary(your_dataset)\n```\n:::\n\n\n## Challenges and Solutions\n\n### Challenge 1\n**Problem**: *[Describe a challenge you faced]*  \n**Solution**: *[How you solved it or what you learned]*\n\n### Challenge 2\n**Problem**: *[Another challenge]*  \n**Solution**: *[Your approach to solving it]*\n\n## Key Insights\n\n> *[Add an important quote or insight from today]*\n\n- **Insight 1**: *[What clicked for you today?]*\n- **Insight 2**: *[Another realization]*\n- **Insight 3**: *[Something that surprised you]*\n\n## Connections to Previous Learning\n\n*[How does today's content connect to what you learned on Day 1 or in previous courses?]*\n\n## Questions for Further Exploration\n\n1. *[What questions do you still have?]*\n2. *[What would you like to explore more deeply?]*\n3. *[Areas you want to practice more]*\n\n## Tomorrow's Goals\n\nLooking ahead to Day 3:\n\n- [ ] *[Goal 1]*\n- [ ] *[Goal 2]*\n- [ ] *[Goal 3]*\n\n## Resources and References\n\n- *[Link to course materials]*\n- *[Useful documentation you found]*\n- *[Papers or articles mentioned]*\n\n---\n\n*That's a wrap for Day 2! Looking forward to what Day 3 brings.* 🚀",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
