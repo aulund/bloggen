@@ -1,6 +1,6 @@
 ---
 title: "Day 4 of MedBioInfo"
-date: 2024-10-28
+date: 2025-10-09
 categories: [medbioinfo, learning, data-science, nf-core]
 author: "August Lundholm"
 description: "Day 4 - Advanced nf-core pipelines and RNAseq analysis"

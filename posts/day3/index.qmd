@@ -1,6 +1,6 @@
 ---
 title: "Day 3 of MedBioInfo"
-date: 2024-10-28
+date: 2025-10-08
 categories: [medbioinfo, learning, data-science]
 author: "August Lundholm"
 description: "Day 3 reflections and learnings from medical bioinformatics course"

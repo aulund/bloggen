@@ -1,6 +1,6 @@
 ---
 title: "Day 5 of MedBioInfo"
-date: 2024-10-28
+date: 2025-10-10
 categories: [medbioinfo, learning, data-science, AI, visualization]
 author: "August Lundholm"
 description: "Day 5 - AI in Bioinformatics and Data Visualization with ggplot"

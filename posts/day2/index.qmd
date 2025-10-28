@@ -7,7 +7,10 @@ description: "Continuing my journey through applied bioinformatics - Day 2"
 draft: false
 ---
 
-# Day 2 of MedBioInfo
+---
+title: "Day 2 of MedBioInfo"
+date: 2025-10-07
+categories: [medbioinfo, learning, data-science]
 
 Welcome back to my learning journey! Here are my reflections and key takeaways from day 2.
 

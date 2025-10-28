@@ -1,6 +1,6 @@
 ---
 title: "Day 1"
-date: 2024-06-10
+date: 2025-10-06
 categories: [blog]
 author: "August Lundholm"
 description: "Reflections and notes from day 1."
