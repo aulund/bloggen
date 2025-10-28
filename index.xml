@@ -81,14 +81,6 @@
 </figure>
 </div>
 </section>
-<section id="morning-session" class="level2">
-<h2 class="anchored" data-anchor-id="morning-session">Morning Session</h2>
-<p><em>[Add your morning session notes here]</em></p>
-</section>
-<section id="afternoon-session" class="level2">
-<h2 class="anchored" data-anchor-id="afternoon-session">Afternoon Session</h2>
-<p><em>[Add your afternoon session notes here]</em></p>
-</section>
 <section id="nextflow-channel-and-process" class="level2">
 <h2 class="anchored" data-anchor-id="nextflow-channel-and-process">Nextflow Channel and Process</h2>
 <div class="quarto-figure quarto-figure-center">
@@ -97,27 +89,6 @@
 <figcaption>Channel Process FastQC</figcaption>
 </figure>
 </div>
-</section>
-<section id="key-learnings" class="level2">
-<h2 class="anchored" data-anchor-id="key-learnings">Key Learnings</h2>
-<section id="new-concepts" class="level3">
-<h3 class="anchored" data-anchor-id="new-concepts">New Concepts</h3>
-<ul>
-<li><em>[Concept 1]</em></li>
-<li><em>[Concept 2]</em></li>
-<li><em>[Concept 3]</em></li>
-</ul>
-</section>
-<section id="tools-and-technologies" class="level3">
-<h3 class="anchored" data-anchor-id="tools-and-technologies">Tools and Technologies</h3>
-<ul>
-<li><strong>Tool 1</strong>: <em>[Description and use case]</em></li>
-<li><strong>Tool 2</strong>: <em>[Description and use case]</em></li>
-</ul>
-</section>
-</section>
-<section id="practical-work" class="level2">
-<h2 class="anchored" data-anchor-id="practical-work">Practical Work</h2>
 <section id="running-nextflow-hello-world" class="level3">
 <h3 class="anchored" data-anchor-id="running-nextflow-hello-world">Running Nextflow Hello World</h3>
 <p>Today we ran our first Nextflow script! Here’s the complete <code>hello.nf</code> script:</p>
@@ -231,57 +202,13 @@ font-style: inherit;"># library(package_name)</span></span>
 background-color: null;
 font-style: inherit;"># data analysis code</span></span></code></pre></div></div>
 </div>
-</section>
-</section>
-<section id="challenges-and-solutions" class="level2">
-<h2 class="anchored" data-anchor-id="challenges-and-solutions">Challenges and Solutions</h2>
-<section id="challenge-1" class="level3">
-<h3 class="anchored" data-anchor-id="challenge-1">Challenge 1</h3>
-<p><strong>Problem</strong>: <em>[Describe the challenge]</em><br>
-<strong>Solution</strong>: <em>[How you solved it]</em></p>
-</section>
-<section id="challenge-2" class="level3">
-<h3 class="anchored" data-anchor-id="challenge-2">Challenge 2</h3>
-<p><strong>Problem</strong>: <em>[Another challenge]</em><br>
-<strong>Solution</strong>: <em>[Your approach]</em></p>
-</section>
-</section>
-<section id="insights-and-connections" class="level2">
-<h2 class="anchored" data-anchor-id="insights-and-connections">Insights and Connections</h2>
-<blockquote class="blockquote">
-<p><em>[Key quote or insight from today]</em></p>
-</blockquote>
-<ul>
-<li><strong>Insight 1</strong>: <em>[What clicked for you?]</em></li>
-<li><strong>Insight 2</strong>: <em>[Connection to previous days]</em></li>
-<li><strong>Insight 3</strong>: <em>[Something that surprised you]</em></li>
-</ul>
-</section>
-<section id="questions-for-further-exploration" class="level2">
-<h2 class="anchored" data-anchor-id="questions-for-further-exploration">Questions for Further Exploration</h2>
-<ol type="1">
-<li><em>[Question 1]</em></li>
-<li><em>[Question 2]</em></li>
-<li><em>[Question 3]</em></li>
-</ol>
-</section>
-<section id="looking-ahead" class="level2">
-<h2 class="anchored" data-anchor-id="looking-ahead">Looking Ahead</h2>
-<p>Goals for tomorrow: - [ ] <em>[Goal 1]</em> - [ ] <em>[Goal 2]</em> - [ ] <em>[Goal 3]</em></p>
-</section>
-<section id="resources" class="level2">
-<h2 class="anchored" data-anchor-id="resources">Resources</h2>
-<ul>
-<li><em>[Useful links from today]</em></li>
-<li><em>[Documentation or papers mentioned]</em></li>
-<li><em>[Course materials]</em></li>
-</ul>
 <hr>
 <p><em>End of Day 3! Ready for what Day 4 brings.</em> 🎯</p>
 
 
 <!-- -->
 
+</section>
 </section>
 </section>
 
