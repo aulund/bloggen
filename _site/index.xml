@@ -59,6 +59,226 @@
   <pubDate>Mon, 06 Oct 2025 22:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>Day 3 of MedBioInfo</title>
+  <dc:creator>August Lundholm</dc:creator>
+  <link>https://aulund.github.io/bloggen/posts/day3/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="day-3-of-medbioinfo" class="level1">
+<h1>Day 3 of MedBioInfo</h1>
+<p>Welcome to Day 3! Here are my reflections and key takeaways from today’s sessions.</p>
+<section id="todays-focus" class="level2">
+<h2 class="anchored" data-anchor-id="todays-focus">Today’s Focus</h2>
+<p>Today we worked with Nextflow and workflow management.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://aulund.github.io/bloggen/posts/day3/nextflow_overview.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Nextflow Overview</figcaption>
+</figure>
+</div>
+</section>
+<section id="morning-session" class="level2">
+<h2 class="anchored" data-anchor-id="morning-session">Morning Session</h2>
+<p><em>[Add your morning session notes here]</em></p>
+</section>
+<section id="afternoon-session" class="level2">
+<h2 class="anchored" data-anchor-id="afternoon-session">Afternoon Session</h2>
+<p><em>[Add your afternoon session notes here]</em></p>
+</section>
+<section id="nextflow-channel-and-process" class="level2">
+<h2 class="anchored" data-anchor-id="nextflow-channel-and-process">Nextflow Channel and Process</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://aulund.github.io/bloggen/posts/day3/channel-process_fqc.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Channel Process FastQC</figcaption>
+</figure>
+</div>
+</section>
+<section id="key-learnings" class="level2">
+<h2 class="anchored" data-anchor-id="key-learnings">Key Learnings</h2>
+<section id="new-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="new-concepts">New Concepts</h3>
+<ul>
+<li><em>[Concept 1]</em></li>
+<li><em>[Concept 2]</em></li>
+<li><em>[Concept 3]</em></li>
+</ul>
+</section>
+<section id="tools-and-technologies" class="level3">
+<h3 class="anchored" data-anchor-id="tools-and-technologies">Tools and Technologies</h3>
+<ul>
+<li><strong>Tool 1</strong>: <em>[Description and use case]</em></li>
+<li><strong>Tool 2</strong>: <em>[Description and use case]</em></li>
+</ul>
+</section>
+</section>
+<section id="practical-work" class="level2">
+<h2 class="anchored" data-anchor-id="practical-work">Practical Work</h2>
+<section id="running-nextflow-hello-world" class="level3">
+<h3 class="anchored" data-anchor-id="running-nextflow-hello-world">Running Nextflow Hello World</h3>
+<p>Today we ran our first Nextflow script! Here’s the complete <code>hello.nf</code> script:</p>
+<pre class="nextflow"><code>#!/usr/bin/env nextflow
+
+params.greeting = 'Hello world!'
+greeting_ch = Channel.of(params.greeting)
+
+process SPLITLETTERS {
+    input:
+    val x
+
+    output:
+    path 'chunk_*'
+
+    script:
+    """
+    printf '$x' | split -b 6 - chunk_
+    """
+}
+
+process CONVERTTOUPPER {
+    input:
+    path y
+
+    output:
+    stdout
+
+    script:
+    """
+    cat $y | tr '[a-z]' '[A-Z]' 
+    """
+}
+
+workflow {
+    letters_ch = SPLITLETTERS(greeting_ch)
+    results_ch = CONVERTTOUPPER(letters_ch.flatten())
+    results_ch.view{ it }
+}</code></pre>
+<p>When we run this script:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">nextflow</span> run hello.nf</span></code></pre></div></div>
+<p>We get this output:</p>
+<pre><code>N E X T F L O W   ~  version 25.04.7
+
+Launching `hello.nf` [jolly_faraday] DSL2 - revision: f5e335f983
+
+executor &gt;  local (3)
+[96/fd5f07] SPLITLETTERS (1)   [100%] 1 of 1 ✔
+[7e/dad424] CONVERTTOUPPER (2) [100%] 2 of 2 ✔
+HELLO 
+WORLD!</code></pre>
+<p>This workflow demonstrates several key Nextflow concepts: - <strong>Channels</strong>: <code>greeting_ch</code> carries data between processes - <strong>SPLITLETTERS process</strong>: Uses <code>split</code> command to break text into 6-byte chunks - <strong>CONVERTTOUPPER process</strong>: Converts text to uppercase using <code>tr</code> command - <strong>Workflow</strong>: Connects processes with <code>.flatten()</code> to handle multiple outputs - <strong>Output</strong>: Uses <code>.view{ it }</code> to display results</p>
+</section>
+<section id="customizing-parameters" class="level3">
+<h3 class="anchored" data-anchor-id="customizing-parameters">Customizing Parameters</h3>
+<p>One of the powerful features of Nextflow is the ability to override parameters from the command line. We can change the greeting message without modifying the script:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">pixi</span> run nextflow run hello.nf <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-resume</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--greeting</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Bonjour le monde!'</span></span></code></pre></div></div>
+<p>This demonstrates: - <strong>Parameter override</strong>: <code>--greeting</code> changes the default message - <strong>Resume functionality</strong>: <code>-resume</code> allows Nextflow to skip already completed tasks - <strong>Pixi integration</strong>: Using <code>pixi run</code> to manage the environment - <strong>Flexibility</strong>: Same workflow, different input data</p>
+</section>
+<section id="code-examples" class="level3">
+<h3 class="anchored" data-anchor-id="code-examples">Code Examples</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Add your Python code examples from today</span></span>
+<span id="cb5-2"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Day 3 of MedBioInfo!"</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Day 3 of MedBioInfo!</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"></span>
+<span id="cb7-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Your actual code here</span></span></code></pre></div></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Add your R code examples from today</span></span>
+<span id="cb8-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># library(package_name)</span></span>
+<span id="cb8-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># data analysis code</span></span></code></pre></div></div>
+</div>
+</section>
+</section>
+<section id="challenges-and-solutions" class="level2">
+<h2 class="anchored" data-anchor-id="challenges-and-solutions">Challenges and Solutions</h2>
+<section id="challenge-1" class="level3">
+<h3 class="anchored" data-anchor-id="challenge-1">Challenge 1</h3>
+<p><strong>Problem</strong>: <em>[Describe the challenge]</em><br>
+<strong>Solution</strong>: <em>[How you solved it]</em></p>
+</section>
+<section id="challenge-2" class="level3">
+<h3 class="anchored" data-anchor-id="challenge-2">Challenge 2</h3>
+<p><strong>Problem</strong>: <em>[Another challenge]</em><br>
+<strong>Solution</strong>: <em>[Your approach]</em></p>
+</section>
+</section>
+<section id="insights-and-connections" class="level2">
+<h2 class="anchored" data-anchor-id="insights-and-connections">Insights and Connections</h2>
+<blockquote class="blockquote">
+<p><em>[Key quote or insight from today]</em></p>
+</blockquote>
+<ul>
+<li><strong>Insight 1</strong>: <em>[What clicked for you?]</em></li>
+<li><strong>Insight 2</strong>: <em>[Connection to previous days]</em></li>
+<li><strong>Insight 3</strong>: <em>[Something that surprised you]</em></li>
+</ul>
+</section>
+<section id="questions-for-further-exploration" class="level2">
+<h2 class="anchored" data-anchor-id="questions-for-further-exploration">Questions for Further Exploration</h2>
+<ol type="1">
+<li><em>[Question 1]</em></li>
+<li><em>[Question 2]</em></li>
+<li><em>[Question 3]</em></li>
+</ol>
+</section>
+<section id="looking-ahead" class="level2">
+<h2 class="anchored" data-anchor-id="looking-ahead">Looking Ahead</h2>
+<p>Goals for tomorrow: - [ ] <em>[Goal 1]</em> - [ ] <em>[Goal 2]</em> - [ ] <em>[Goal 3]</em></p>
+</section>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
+<ul>
+<li><em>[Useful links from today]</em></li>
+<li><em>[Documentation or papers mentioned]</em></li>
+<li><em>[Course materials]</em></li>
+</ul>
+<hr>
+<p><em>End of Day 3! Ready for what Day 4 brings.</em> 🎯</p>
+
+
+<!-- -->
+
+</section>
+</section>
+
+ ]]></description>
+  <category>medbioinfo</category>
+  <category>learning</category>
+  <category>data-science</category>
+  <guid>https://aulund.github.io/bloggen/posts/day3/</guid>
+  <pubDate>Sun, 27 Oct 2024 23:00:00 GMT</pubDate>
+</item>
+<item>
   <title>Day 2 of applied bioinformatics</title>
   <dc:creator>August Lundholm</dc:creator>
   <link>https://aulund.github.io/bloggen/posts/day2/</link>
@@ -88,7 +308,7 @@
 <h2 class="anchored" data-anchor-id="introduction-to-containers">Introduction to Containers</h2>
 <p>Reproducibility is a constant problem in bioinformatics, and containers make it more manageable. They keep analyses stable even when systems or dependencies change. It’s also a practical way to share workflows without needing to explain every installation step. Building containers from scratch feels a bit advanced, but understanding how they work makes the overall workflow more reliable.</p>
 <hr>
-<p>*That’s a wrap for Day 2! Looking forward to what Day 3 brings.</p>
+<p>*That’s all for today</p>
 
 
 <!-- -->

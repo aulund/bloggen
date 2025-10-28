@@ -126,6 +126,21 @@ This demonstrates:
 - **Pixi integration**: Using `pixi run` to manage the environment
 - **Flexibility**: Same workflow, different input data
 
+### nf-core Training
+
+We also worked with nf-core pipelines and quality control analysis. The training included running FastQC and MultiQC on sample data:
+
+#### Quality Control Reports
+
+- [FastQC Report - Sample 1](gut_1_fastqc.html) - Individual quality control report for gut sample 1
+- [FastQC Report - Sample 2](gut_2_fastqc.html) - Individual quality control report for gut sample 2  
+- [MultiQC Report](multiqc_report.html) - Comprehensive report combining all QC metrics
+
+These reports demonstrate:
+- **FastQC analysis**: Per-base quality scores, sequence composition, adapter contamination
+- **MultiQC aggregation**: Combined visualization of multiple samples
+- **nf-core standards**: Industry best practices for bioinformatics workflows
+
 ### Code Examples
 
 ```{python}

@@ -46,7 +46,7 @@
     "href": "posts/day2/index.html",
     "title": "Day 2 of applied bioinformatics",
     "section": "",
-    "text": "Welcome back to my learning journey! Here are my reflections and key takeaways from day 2.\n\n\nToday we covered four main topics: - Introduction to environments - Quality control with Pixi and Slurm - Introduction to containers\n- Quality control with containers\n\n\n\nSince I work with variant visualisations, large datasets, and a mix of custom scripts and publication-ready figures it’s crucial that my toolchain is consistent and reproducible across systems and collaborators. Using Pixi (or another environment manager) keeps everything isolated and version-controlled, so I don’t end up with “it works on my computer” issues. Having a dedicated environment for each project makes it easier to share my setup — others can just clone the repository and get the exact same tools and versions. It also prevents older pipelines or scripts from breaking when dependencies update. When I prepare figures or analyses for papers, Pixi can help me keep track of software versions, channels, and dependencies — which makes the “Methods” section reproducible. Pixi supports multiple platforms and I can test everything locally and then run it on the cluster with minimal risk of environment mismatch.\n\n\n\nQuality control isn’t the most exciting part of bioinformatics, but it’s one of the most important. If the sequencing data is bad, everything that comes after will be unreliable. Running FastQC and MultiQC early on saves time later, even if the results themselves are pretty basic. It also makes me think more about how I organize things. Having a clear directory structure and running everything inside a controlled environment like Pixi helps keep track of what was actually done. It’s easy to lose that overview once the project grows. Working with SLURM and screen is a bit clunky at first, but it’s useful to understand how jobs run on the cluster. Being able to rerun things reproducibly — same data, same tools, same parameters — is really the main point.\n\n\n\nReproducibility is a constant problem in bioinformatics, and containers make it more manageable. They keep analyses stable even when systems or dependencies change. It’s also a practical way to share workflows without needing to explain every installation step. Building containers from scratch feels a bit advanced, but understanding how they work makes the overall workflow more reliable.\n\n*That’s a wrap for Day 2! Looking forward to what Day 3 brings."
+    "text": "Welcome back to my learning journey! Here are my reflections and key takeaways from day 2.\n\n\nToday we covered four main topics: - Introduction to environments - Quality control with Pixi and Slurm - Introduction to containers\n- Quality control with containers\n\n\n\nSince I work with variant visualisations, large datasets, and a mix of custom scripts and publication-ready figures it’s crucial that my toolchain is consistent and reproducible across systems and collaborators. Using Pixi (or another environment manager) keeps everything isolated and version-controlled, so I don’t end up with “it works on my computer” issues. Having a dedicated environment for each project makes it easier to share my setup — others can just clone the repository and get the exact same tools and versions. It also prevents older pipelines or scripts from breaking when dependencies update. When I prepare figures or analyses for papers, Pixi can help me keep track of software versions, channels, and dependencies — which makes the “Methods” section reproducible. Pixi supports multiple platforms and I can test everything locally and then run it on the cluster with minimal risk of environment mismatch.\n\n\n\nQuality control isn’t the most exciting part of bioinformatics, but it’s one of the most important. If the sequencing data is bad, everything that comes after will be unreliable. Running FastQC and MultiQC early on saves time later, even if the results themselves are pretty basic. It also makes me think more about how I organize things. Having a clear directory structure and running everything inside a controlled environment like Pixi helps keep track of what was actually done. It’s easy to lose that overview once the project grows. Working with SLURM and screen is a bit clunky at first, but it’s useful to understand how jobs run on the cluster. Being able to rerun things reproducibly — same data, same tools, same parameters — is really the main point.\n\n\n\nReproducibility is a constant problem in bioinformatics, and containers make it more manageable. They keep analyses stable even when systems or dependencies change. It’s also a practical way to share workflows without needing to explain every installation step. Building containers from scratch feels a bit advanced, but understanding how they work makes the overall workflow more reliable.\n\n*That’s all for today"
   },
   {
     "objectID": "posts/day2/index.html#todays-focus",
@@ -74,7 +74,7 @@
     "href": "posts/day2/index.html#introduction-to-containers",
     "title": "Day 2 of applied bioinformatics",
     "section": "",
-    "text": "Reproducibility is a constant problem in bioinformatics, and containers make it more manageable. They keep analyses stable even when systems or dependencies change. It’s also a practical way to share workflows without needing to explain every installation step. Building containers from scratch feels a bit advanced, but understanding how they work makes the overall workflow more reliable.\n\n*That’s a wrap for Day 2! Looking forward to what Day 3 brings."
+    "text": "Reproducibility is a constant problem in bioinformatics, and containers make it more manageable. They keep analyses stable even when systems or dependencies change. It’s also a practical way to share workflows without needing to explain every installation step. Building containers from scratch feels a bit advanced, but understanding how they work makes the overall workflow more reliable.\n\n*That’s all for today"
   },
   {
     "objectID": "posts/post-with-code/index.html",
@@ -82,6 +82,90 @@
     "title": "Post With Code",
     "section": "",
     "text": "This is a post with executable code."
+  },
+  {
+    "objectID": "posts/day3/index.html",
+    "href": "posts/day3/index.html",
+    "title": "Day 3 of MedBioInfo",
+    "section": "",
+    "text": "Welcome to Day 3! Here are my reflections and key takeaways from today’s sessions.\n\n\nToday we worked with Nextflow and workflow management.\n\n\n\nNextflow Overview\n\n\n\n\n\n[Add your morning session notes here]\n\n\n\n[Add your afternoon session notes here]\n\n\n\n\n\n\nChannel Process FastQC\n\n\n\n\n\n\n\n\n[Concept 1]\n[Concept 2]\n[Concept 3]\n\n\n\n\n\nTool 1: [Description and use case]\nTool 2: [Description and use case]\n\n\n\n\n\n\n\nToday we ran our first Nextflow script! Here’s the complete hello.nf script:\n#!/usr/bin/env nextflow\n\nparams.greeting = 'Hello world!'\ngreeting_ch = Channel.of(params.greeting)\n\nprocess SPLITLETTERS {\n    input:\n    val x\n\n    output:\n    path 'chunk_*'\n\n    script:\n    \"\"\"\n    printf '$x' | split -b 6 - chunk_\n    \"\"\"\n}\n\nprocess CONVERTTOUPPER {\n    input:\n    path y\n\n    output:\n    stdout\n\n    script:\n    \"\"\"\n    cat $y | tr '[a-z]' '[A-Z]' \n    \"\"\"\n}\n\nworkflow {\n    letters_ch = SPLITLETTERS(greeting_ch)\n    results_ch = CONVERTTOUPPER(letters_ch.flatten())\n    results_ch.view{ it }\n}\nWhen we run this script:\nnextflow run hello.nf\nWe get this output:\nN E X T F L O W   ~  version 25.04.7\n\nLaunching `hello.nf` [jolly_faraday] DSL2 - revision: f5e335f983\n\nexecutor &gt;  local (3)\n[96/fd5f07] SPLITLETTERS (1)   [100%] 1 of 1 ✔\n[7e/dad424] CONVERTTOUPPER (2) [100%] 2 of 2 ✔\nHELLO \nWORLD!\nThis workflow demonstrates several key Nextflow concepts: - Channels: greeting_ch carries data between processes - SPLITLETTERS process: Uses split command to break text into 6-byte chunks - CONVERTTOUPPER process: Converts text to uppercase using tr command - Workflow: Connects processes with .flatten() to handle multiple outputs - Output: Uses .view{ it } to display results\n\n\n\nOne of the powerful features of Nextflow is the ability to override parameters from the command line. We can change the greeting message without modifying the script:\npixi run nextflow run hello.nf -resume --greeting 'Bonjour le monde!'\nThis demonstrates: - Parameter override: --greeting changes the default message - Resume functionality: -resume allows Nextflow to skip already completed tasks - Pixi integration: Using pixi run to manage the environment - Flexibility: Same workflow, different input data\n\n\n\n\n# Add your Python code examples from today\nprint(\"Day 3 of MedBioInfo!\")\n\nDay 3 of MedBioInfo!\n\n\n# Your actual code here\n\n\n# Add your R code examples from today\n# library(package_name)\n# data analysis code\n\n\n\n\n\n\n\nProblem: [Describe the challenge]\nSolution: [How you solved it]\n\n\n\nProblem: [Another challenge]\nSolution: [Your approach]\n\n\n\n\n\n[Key quote or insight from today]\n\n\nInsight 1: [What clicked for you?]\nInsight 2: [Connection to previous days]\nInsight 3: [Something that surprised you]\n\n\n\n\n\n[Question 1]\n[Question 2]\n[Question 3]\n\n\n\n\nGoals for tomorrow: - [ ] [Goal 1] - [ ] [Goal 2] - [ ] [Goal 3]\n\n\n\n\n[Useful links from today]\n[Documentation or papers mentioned]\n[Course materials]\n\n\nEnd of Day 3! Ready for what Day 4 brings. 🎯"
+  },
+  {
+    "objectID": "posts/day3/index.html#todays-focus",
+    "href": "posts/day3/index.html#todays-focus",
+    "title": "Day 3 of MedBioInfo",
+    "section": "",
+    "text": "Today we worked with Nextflow and workflow management.\n\n\n\nNextflow Overview"
+  },
+  {
+    "objectID": "posts/day3/index.html#morning-session",
+    "href": "posts/day3/index.html#morning-session",
+    "title": "Day 3 of MedBioInfo",
+    "section": "",
+    "text": "[Add your morning session notes here]"
+  },
+  {
+    "objectID": "posts/day3/index.html#afternoon-session",
+    "href": "posts/day3/index.html#afternoon-session",
+    "title": "Day 3 of MedBioInfo",
+    "section": "",
+    "text": "[Add your afternoon session notes here]"
+  },
+  {
+    "objectID": "posts/day3/index.html#nextflow-channel-and-process",
+    "href": "posts/day3/index.html#nextflow-channel-and-process",
+    "title": "Day 3 of MedBioInfo",
+    "section": "",
+    "text": "Channel Process FastQC"
+  },
+  {
+    "objectID": "posts/day3/index.html#key-learnings",
+    "href": "posts/day3/index.html#key-learnings",
+    "title": "Day 3 of MedBioInfo",
+    "section": "",
+    "text": "[Concept 1]\n[Concept 2]\n[Concept 3]\n\n\n\n\n\nTool 1: [Description and use case]\nTool 2: [Description and use case]"
+  },
+  {
+    "objectID": "posts/day3/index.html#practical-work",
+    "href": "posts/day3/index.html#practical-work",
+    "title": "Day 3 of MedBioInfo",
+    "section": "",
+    "text": "Today we ran our first Nextflow script! Here’s the complete hello.nf script:\n#!/usr/bin/env nextflow\n\nparams.greeting = 'Hello world!'\ngreeting_ch = Channel.of(params.greeting)\n\nprocess SPLITLETTERS {\n    input:\n    val x\n\n    output:\n    path 'chunk_*'\n\n    script:\n    \"\"\"\n    printf '$x' | split -b 6 - chunk_\n    \"\"\"\n}\n\nprocess CONVERTTOUPPER {\n    input:\n    path y\n\n    output:\n    stdout\n\n    script:\n    \"\"\"\n    cat $y | tr '[a-z]' '[A-Z]' \n    \"\"\"\n}\n\nworkflow {\n    letters_ch = SPLITLETTERS(greeting_ch)\n    results_ch = CONVERTTOUPPER(letters_ch.flatten())\n    results_ch.view{ it }\n}\nWhen we run this script:\nnextflow run hello.nf\nWe get this output:\nN E X T F L O W   ~  version 25.04.7\n\nLaunching `hello.nf` [jolly_faraday] DSL2 - revision: f5e335f983\n\nexecutor &gt;  local (3)\n[96/fd5f07] SPLITLETTERS (1)   [100%] 1 of 1 ✔\n[7e/dad424] CONVERTTOUPPER (2) [100%] 2 of 2 ✔\nHELLO \nWORLD!\nThis workflow demonstrates several key Nextflow concepts: - Channels: greeting_ch carries data between processes - SPLITLETTERS process: Uses split command to break text into 6-byte chunks - CONVERTTOUPPER process: Converts text to uppercase using tr command - Workflow: Connects processes with .flatten() to handle multiple outputs - Output: Uses .view{ it } to display results\n\n\n\nOne of the powerful features of Nextflow is the ability to override parameters from the command line. We can change the greeting message without modifying the script:\npixi run nextflow run hello.nf -resume --greeting 'Bonjour le monde!'\nThis demonstrates: - Parameter override: --greeting changes the default message - Resume functionality: -resume allows Nextflow to skip already completed tasks - Pixi integration: Using pixi run to manage the environment - Flexibility: Same workflow, different input data\n\n\n\n\n# Add your Python code examples from today\nprint(\"Day 3 of MedBioInfo!\")\n\nDay 3 of MedBioInfo!\n\n\n# Your actual code here\n\n\n# Add your R code examples from today\n# library(package_name)\n# data analysis code"
+  },
+  {
+    "objectID": "posts/day3/index.html#challenges-and-solutions",
+    "href": "posts/day3/index.html#challenges-and-solutions",
+    "title": "Day 3 of MedBioInfo",
+    "section": "",
+    "text": "Problem: [Describe the challenge]\nSolution: [How you solved it]\n\n\n\nProblem: [Another challenge]\nSolution: [Your approach]"
+  },
+  {
+    "objectID": "posts/day3/index.html#insights-and-connections",
+    "href": "posts/day3/index.html#insights-and-connections",
+    "title": "Day 3 of MedBioInfo",
+    "section": "",
+    "text": "[Key quote or insight from today]\n\n\nInsight 1: [What clicked for you?]\nInsight 2: [Connection to previous days]\nInsight 3: [Something that surprised you]"
+  },
+  {
+    "objectID": "posts/day3/index.html#questions-for-further-exploration",
+    "href": "posts/day3/index.html#questions-for-further-exploration",
+    "title": "Day 3 of MedBioInfo",
+    "section": "",
+    "text": "[Question 1]\n[Question 2]\n[Question 3]"
+  },
+  {
+    "objectID": "posts/day3/index.html#looking-ahead",
+    "href": "posts/day3/index.html#looking-ahead",
+    "title": "Day 3 of MedBioInfo",
+    "section": "",
+    "text": "Goals for tomorrow: - [ ] [Goal 1] - [ ] [Goal 2] - [ ] [Goal 3]"
+  },
+  {
+    "objectID": "posts/day3/index.html#resources",
+    "href": "posts/day3/index.html#resources",
+    "title": "Day 3 of MedBioInfo",
+    "section": "",
+    "text": "[Useful links from today]\n[Documentation or papers mentioned]\n[Course materials]\n\n\nEnd of Day 3! Ready for what Day 4 brings. 🎯"
   },
   {
     "objectID": "posts/welcome/index.html",
@@ -95,6 +179,6 @@
     "href": "index.html",
     "title": "August´s mbi-blog",
     "section": "",
-    "text": "Post With Code\n\n\n\nnews\n\ncode\n\nanalysis\n\n\n\n\n\n\n\n\n\nOct 10, 2025\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nOct 7, 2025\n\n\nTristan O’Malley\n\n\n\n\n\n\n\n\n\n\n\n\nDay 2 of applied bioinformatics\n\n\n\nmedbioinfo\n\nlearning\n\ndata-science\n\n\n\nContinuing my journey through applied bioinformatics - Day 2\n\n\n\n\n\nOct 27, 2024\n\n\nAugust Lundholm\n\n\n\n\n\n\n\n\n\n\n\n\nDay 1\n\n\n\nblog\n\n\n\nReflections and notes from day 1.\n\n\n\n\n\nJun 10, 2024\n\n\nAugust Lundholm\n\n\n\n\n\nNo matching items"
+    "text": "Post With Code\n\n\n\nnews\n\ncode\n\nanalysis\n\n\n\n\n\n\n\n\n\nOct 10, 2025\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nOct 7, 2025\n\n\nTristan O’Malley\n\n\n\n\n\n\n\n\n\n\n\n\nDay 3 of MedBioInfo\n\n\n\nmedbioinfo\n\nlearning\n\ndata-science\n\n\n\nDay 3 reflections and learnings from medical bioinformatics course\n\n\n\n\n\nOct 28, 2024\n\n\nAugust Lundholm\n\n\n\n\n\n\n\n\n\n\n\n\nDay 2 of applied bioinformatics\n\n\n\nmedbioinfo\n\nlearning\n\ndata-science\n\n\n\nContinuing my journey through applied bioinformatics - Day 2\n\n\n\n\n\nOct 27, 2024\n\n\nAugust Lundholm\n\n\n\n\n\n\n\n\n\n\n\n\nDay 1\n\n\n\nblog\n\n\n\nReflections and notes from day 1.\n\n\n\n\n\nJun 10, 2024\n\n\nAugust Lundholm\n\n\n\n\n\nNo matching items"
   }
 ]
