@@ -80,6 +80,7 @@
 <figcaption>Nextflow Overview</figcaption>
 </figure>
 </div>
+<p><em>Figure 1: Nextflow workflow management system overview. This diagram illustrates the core concepts of Nextflow including processes, channels, and how data flows through a computational pipeline. Nextflow enables scalable and portable bioinformatics workflows.</em></p>
 </section>
 <section id="nextflow-channel-and-process" class="level2">
 <h2 class="anchored" data-anchor-id="nextflow-channel-and-process">Nextflow Channel and Process</h2>
@@ -89,6 +90,7 @@
 <figcaption>Channel Process FastQC</figcaption>
 </figure>
 </div>
+<p><em>Figure 2: Nextflow channel and process architecture for FastQC quality control. This diagram shows how input data flows through channels into FastQC processes, demonstrating the modular and parallel nature of Nextflow workflows. Each process can run independently while channels manage data flow between steps.</em></p>
 <section id="running-nextflow-hello-world" class="level3">
 <h3 class="anchored" data-anchor-id="running-nextflow-hello-world">Running Nextflow Hello World</h3>
 <p>Today we ran our first Nextflow script! Here’s the complete <code>hello.nf</code> script:</p>
@@ -158,9 +160,9 @@ background-color: null;
 font-style: inherit;">'Bonjour le monde!'</span></span></code></pre></div></div>
 <p>This demonstrates: - <strong>Parameter override</strong>: <code>--greeting</code> changes the default message - <strong>Resume functionality</strong>: <code>-resume</code> allows Nextflow to skip already completed tasks - <strong>Pixi integration</strong>: Using <code>pixi run</code> to manage the environment - <strong>Flexibility</strong>: Same workflow, different input data</p>
 </section>
-<section id="nf-core-training" class="level3">
-<h3 class="anchored" data-anchor-id="nf-core-training">nf-core Training</h3>
-<p>We also worked with nf-core pipelines and quality control analysis. The training included running FastQC and MultiQC on sample data:</p>
+<section id="nextflow-rna-seq-pipeline" class="level3">
+<h3 class="anchored" data-anchor-id="nextflow-rna-seq-pipeline">Nextflow RNA-seq pipeline</h3>
+<p>We also worked with building our own nextflow pipelines for quality control of rna-seq data. The training included running FastQC and MultiQC on sample data:</p>
 <section id="quality-control-reports" class="level4">
 <h4 class="anchored" data-anchor-id="quality-control-reports">Quality Control Reports</h4>
 <ul>
@@ -170,44 +172,13 @@ font-style: inherit;">'Bonjour le monde!'</span></span></code></pre></div></div>
 <li><a href="multiqc_report.html">MultiQC Report</a> - Comprehensive report combining all QC metrics</li>
 </ul>
 <p>These reports demonstrate: - <strong>FastQC analysis</strong>: Per-base quality scores, sequence composition, adapter contamination - <strong>MultiQC aggregation</strong>: Combined visualization of multiple samples - <strong>nf-core standards</strong>: Industry best practices for bioinformatics workflows</p>
-</section>
-</section>
-<section id="code-examples" class="level3">
-<h3 class="anchored" data-anchor-id="code-examples">Code Examples</h3>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Add your Python code examples from today</span></span>
-<span id="cb5-2"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Day 3 of MedBioInfo!"</span>)</span></code></pre></div></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Day 3 of MedBioInfo!</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"></span>
-<span id="cb7-2"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Your actual code here</span></span></code></pre></div></div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Add your R code examples from today</span></span>
-<span id="cb8-2"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># library(package_name)</span></span>
-<span id="cb8-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># data analysis code</span></span></code></pre></div></div>
-</div>
 <hr>
-<p><em>End of Day 3! Ready for what Day 4 brings.</em> 🎯</p>
+<p>End of Day 3!</p>
 
 
 <!-- -->
 
+</section>
 </section>
 </section>
 </section>
