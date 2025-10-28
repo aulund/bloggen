@@ -77,108 +77,192 @@
     "text": "Reproducibility is a constant problem in bioinformatics, and containers make it more manageable. They keep analyses stable even when systems or dependencies change. It’s also a practical way to share workflows without needing to explain every installation step. Building containers from scratch feels a bit advanced, but understanding how they work makes the overall workflow more reliable.\n\n*That’s all for today"
   },
   {
-    "objectID": "posts/post-with-code/index.html",
-    "href": "posts/post-with-code/index.html",
-    "title": "Post With Code",
+    "objectID": "posts/day4/index.html",
+    "href": "posts/day4/index.html",
+    "title": "Day 4 of MedBioInfo",
     "section": "",
-    "text": "This is a post with executable code."
+    "text": "Day 4 brought us deeper into the nf-core ecosystem! Today we moved from basic Nextflow to advanced pipeline usage with real biological data.\n\n\nToday we worked with: - nf-core pipeline introduction and evaluation - Testing pipelines with built-in test data\n- Running the nf-core/rnaseq pipeline on real data - Understanding pipeline configuration and job submission\n\n\n\n\n\nThe nf-core community provides: - Standardized pipelines for many bioinformatics workflows - Extensive documentation following consistent guidelines - Automatic input validation through the nf-core launcher - Consistent structure across all pipelines - Open source development by volunteer community\n\n\n\nWe explored the nf-core homepage and learned to evaluate pipelines by checking: - Usage documentation - understanding input requirements - Parameters - available customization options\n- Output - expected results and file formats - Pipeline suitability for our specific data types\n\n\n\n\n\n\nFirst, we created a dedicated pixi environment for nf-core work:\npixi init nextflow_test -c conda-forge -c bioconda\ncd nextflow_test\npixi add nextflow nf-core\n\n\n\nWe verified our installation worked correctly:\npixi run nextflow -version\npixi run nf-core --help\npixi run nextflow run hello\nExpected output:\nN E X T F L O W\nversion 25.04.7 build 5955\ncreated 08-09-2025 13:29 UTC (15:29 CEST)\ncite doi:10.1038/nbt.3820\nhttp://nextflow.io\n\n\n\nWe downloaded the HPC2N configuration file for server-specific settings:\nwget https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/hpc2n.config\nKey configuration parameters: - max_memory = 128.GB - max_cpus = 28 - max_time = 168.h - executor = 'slurm'\n\n\n\nWe tested the Sarek variant calling pipeline with built-in test data:\npixi run nextflow run nf-core/sarek -profile test --outdir sarek_test -c hpc2n.config\nCommand breakdown: - pixi run - Use our pixi environment - nextflow run - Execute with Nextflow - nf-core/sarek - Pipeline name/location - -profile test - Use built-in test data - --outdir sarek_test - Output directory - -c hpc2n.config - Server configuration file\nThe test run completed in ~3.5 minutes, demonstrating successful setup.\n\n\n\n\n\n\nFor real analysis, we worked with RNAseq data located at:\nmedbioinfo2025/common_data/RNAseq\nWe created symbolic links to organize our data:\nmkdir data\ncd data\nln -s ../../common_data/RNAseq/*.fastq.gz .\ncd ..\nProject structure:\n.\n├── data\n│   ├── SRR5223504_1.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223504_1.fastq.gz\n│   ├── SRR5223504_2.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223504_2.fastq.gz\n│   ├── SRR5223517_1.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223517_1.fastq.gz\n│   └── ... (additional samples)\n├── pixi.lock\n└── pixi.toml\n\n\n\nWe used the nf-core launcher to configure the RNAseq pipeline:\n\nWorking and results directories - Set absolute paths\nInput CSV file - Created samplesheet according to pipeline requirements\n\nReference genome - Used updated human genome references\nResume option - Enabled for fault tolerance\n\n\n\n\nTwo execution methods were available:\n\n\npixi run nextflow run nf-core/rnaseq -r 3.19.0 -resume -params-file nf-params.json -c hpc2n.config\n\n\n\n#!/bin/bash -l\n#SBATCH -A our_proj_allocation\n#SBATCH -n 5\n#SBATCH -t 24:00:00\n\n/your_home_directory/.pixi/bin/pixi run nextflow run nf-core/rnaseq -r 3.19.0 -params-file /your_path/nf-params.json -c server.config\n\n\n\n\n\n\n\n\nPipeline evaluation - How to assess nf-core pipelines for your data\nEnvironment management - Using pixi for reproducible setups\nConfiguration management - Server-specific settings and parameter files\nJob submission - Both interactive and batch execution methods\nData organization - Proper file linking and project structure\n\n\n\n\n\nCommunity-driven development - Volunteer-maintained pipelines\nStandardization benefits - Consistent documentation and structure\nQuality control importance - Understanding pipeline suitability for data\nReproducibility features - Parameter files and configuration tracking\n\n\n\n\n\n\n\nProblem: Understanding which pipeline is suitable for my specific data type\nSolution: Systematic evaluation using nf-core documentation sections (Usage, Parameters, Output)\n\n\n\nProblem: Configuration file setup for server-specific requirements\nSolution: Download and customize HPC2N configuration template with appropriate resource limits\n\n\n\nProblem: Managing complex parameter files for pipeline runs\nSolution: Use nf-core launcher to generate JSON parameter files automatically\n\n\n\n\n\n“nf-core transforms bioinformatics from custom scripting to standardized, reproducible workflows”\n\n\nBuilding on Day 3: We moved from basic Nextflow concepts to production-ready pipelines\nReal-world application: Working with actual RNAseq data instead of toy examples\n\nCommunity aspect: Understanding the collaborative nature of modern bioinformatics\nQuality focus: Emphasis on validation and understanding rather than black-box usage\n\n\n\n\n\nDay 1: Data management and FAIR principles → Foundation for reproducible research\nDay 2: Environments and quality control → Tools for reliable analysis\nDay 3: Nextflow and workflow management → Core workflow technology\nDay 4: nf-core pipelines and RNAseq → Production bioinformatics applications\n\n\n\n\n\nHow do I evaluate if a pipeline is actively maintained and suitable for my research?\nWhat are best practices for customizing nf-core pipelines for specific research needs?\nHow can I contribute back to the nf-core community with improvements or new modules?\n\n\n\n\nGoals for Day 5: - [ ] Analyze RNAseq pipeline output in detail - [ ] Explore other nf-core pipelines relevant to my research - [ ] Practice parameter optimization for real datasets\n\n\n\n\nnf-core homepage\nnf-core/rnaseq pipeline\nnf-core/sarek pipeline\nHPC2N configuration files\nCourse materials\n\n\nDay 4 complete! From simple workflows to production pipelines - the power of standardized bioinformatics is incredible. 🧬🚀"
+  },
+  {
+    "objectID": "posts/day4/index.html#todays-focus",
+    "href": "posts/day4/index.html#todays-focus",
+    "title": "Day 4 of MedBioInfo",
+    "section": "",
+    "text": "Today we worked with: - nf-core pipeline introduction and evaluation - Testing pipelines with built-in test data\n- Running the nf-core/rnaseq pipeline on real data - Understanding pipeline configuration and job submission"
+  },
+  {
+    "objectID": "posts/day4/index.html#morning-session---nf-core-introduction",
+    "href": "posts/day4/index.html#morning-session---nf-core-introduction",
+    "title": "Day 4 of MedBioInfo",
+    "section": "",
+    "text": "The nf-core community provides: - Standardized pipelines for many bioinformatics workflows - Extensive documentation following consistent guidelines - Automatic input validation through the nf-core launcher - Consistent structure across all pipelines - Open source development by volunteer community\n\n\n\nWe explored the nf-core homepage and learned to evaluate pipelines by checking: - Usage documentation - understanding input requirements - Parameters - available customization options\n- Output - expected results and file formats - Pipeline suitability for our specific data types"
+  },
+  {
+    "objectID": "posts/day4/index.html#afternoon-session---hands-on-pipeline-testing",
+    "href": "posts/day4/index.html#afternoon-session---hands-on-pipeline-testing",
+    "title": "Day 4 of MedBioInfo",
+    "section": "",
+    "text": "First, we created a dedicated pixi environment for nf-core work:\npixi init nextflow_test -c conda-forge -c bioconda\ncd nextflow_test\npixi add nextflow nf-core\n\n\n\nWe verified our installation worked correctly:\npixi run nextflow -version\npixi run nf-core --help\npixi run nextflow run hello\nExpected output:\nN E X T F L O W\nversion 25.04.7 build 5955\ncreated 08-09-2025 13:29 UTC (15:29 CEST)\ncite doi:10.1038/nbt.3820\nhttp://nextflow.io\n\n\n\nWe downloaded the HPC2N configuration file for server-specific settings:\nwget https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/hpc2n.config\nKey configuration parameters: - max_memory = 128.GB - max_cpus = 28 - max_time = 168.h - executor = 'slurm'\n\n\n\nWe tested the Sarek variant calling pipeline with built-in test data:\npixi run nextflow run nf-core/sarek -profile test --outdir sarek_test -c hpc2n.config\nCommand breakdown: - pixi run - Use our pixi environment - nextflow run - Execute with Nextflow - nf-core/sarek - Pipeline name/location - -profile test - Use built-in test data - --outdir sarek_test - Output directory - -c hpc2n.config - Server configuration file\nThe test run completed in ~3.5 minutes, demonstrating successful setup."
+  },
+  {
+    "objectID": "posts/day4/index.html#advanced-topic---rnaseq-pipeline",
+    "href": "posts/day4/index.html#advanced-topic---rnaseq-pipeline",
+    "title": "Day 4 of MedBioInfo",
+    "section": "",
+    "text": "For real analysis, we worked with RNAseq data located at:\nmedbioinfo2025/common_data/RNAseq\nWe created symbolic links to organize our data:\nmkdir data\ncd data\nln -s ../../common_data/RNAseq/*.fastq.gz .\ncd ..\nProject structure:\n.\n├── data\n│   ├── SRR5223504_1.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223504_1.fastq.gz\n│   ├── SRR5223504_2.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223504_2.fastq.gz\n│   ├── SRR5223517_1.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223517_1.fastq.gz\n│   └── ... (additional samples)\n├── pixi.lock\n└── pixi.toml\n\n\n\nWe used the nf-core launcher to configure the RNAseq pipeline:\n\nWorking and results directories - Set absolute paths\nInput CSV file - Created samplesheet according to pipeline requirements\n\nReference genome - Used updated human genome references\nResume option - Enabled for fault tolerance\n\n\n\n\nTwo execution methods were available:\n\n\npixi run nextflow run nf-core/rnaseq -r 3.19.0 -resume -params-file nf-params.json -c hpc2n.config\n\n\n\n#!/bin/bash -l\n#SBATCH -A our_proj_allocation\n#SBATCH -n 5\n#SBATCH -t 24:00:00\n\n/your_home_directory/.pixi/bin/pixi run nextflow run nf-core/rnaseq -r 3.19.0 -params-file /your_path/nf-params.json -c server.config"
+  },
+  {
+    "objectID": "posts/day4/index.html#key-learnings",
+    "href": "posts/day4/index.html#key-learnings",
+    "title": "Day 4 of MedBioInfo",
+    "section": "",
+    "text": "Pipeline evaluation - How to assess nf-core pipelines for your data\nEnvironment management - Using pixi for reproducible setups\nConfiguration management - Server-specific settings and parameter files\nJob submission - Both interactive and batch execution methods\nData organization - Proper file linking and project structure\n\n\n\n\n\nCommunity-driven development - Volunteer-maintained pipelines\nStandardization benefits - Consistent documentation and structure\nQuality control importance - Understanding pipeline suitability for data\nReproducibility features - Parameter files and configuration tracking"
+  },
+  {
+    "objectID": "posts/day4/index.html#challenges-and-solutions",
+    "href": "posts/day4/index.html#challenges-and-solutions",
+    "title": "Day 4 of MedBioInfo",
+    "section": "",
+    "text": "Problem: Understanding which pipeline is suitable for my specific data type\nSolution: Systematic evaluation using nf-core documentation sections (Usage, Parameters, Output)\n\n\n\nProblem: Configuration file setup for server-specific requirements\nSolution: Download and customize HPC2N configuration template with appropriate resource limits\n\n\n\nProblem: Managing complex parameter files for pipeline runs\nSolution: Use nf-core launcher to generate JSON parameter files automatically"
+  },
+  {
+    "objectID": "posts/day4/index.html#insights-and-connections",
+    "href": "posts/day4/index.html#insights-and-connections",
+    "title": "Day 4 of MedBioInfo",
+    "section": "",
+    "text": "“nf-core transforms bioinformatics from custom scripting to standardized, reproducible workflows”\n\n\nBuilding on Day 3: We moved from basic Nextflow concepts to production-ready pipelines\nReal-world application: Working with actual RNAseq data instead of toy examples\n\nCommunity aspect: Understanding the collaborative nature of modern bioinformatics\nQuality focus: Emphasis on validation and understanding rather than black-box usage"
+  },
+  {
+    "objectID": "posts/day4/index.html#comparison-with-previous-days",
+    "href": "posts/day4/index.html#comparison-with-previous-days",
+    "title": "Day 4 of MedBioInfo",
+    "section": "",
+    "text": "Day 1: Data management and FAIR principles → Foundation for reproducible research\nDay 2: Environments and quality control → Tools for reliable analysis\nDay 3: Nextflow and workflow management → Core workflow technology\nDay 4: nf-core pipelines and RNAseq → Production bioinformatics applications"
+  },
+  {
+    "objectID": "posts/day4/index.html#questions-for-further-exploration",
+    "href": "posts/day4/index.html#questions-for-further-exploration",
+    "title": "Day 4 of MedBioInfo",
+    "section": "",
+    "text": "How do I evaluate if a pipeline is actively maintained and suitable for my research?\nWhat are best practices for customizing nf-core pipelines for specific research needs?\nHow can I contribute back to the nf-core community with improvements or new modules?"
+  },
+  {
+    "objectID": "posts/day4/index.html#looking-ahead",
+    "href": "posts/day4/index.html#looking-ahead",
+    "title": "Day 4 of MedBioInfo",
+    "section": "",
+    "text": "Goals for Day 5: - [ ] Analyze RNAseq pipeline output in detail - [ ] Explore other nf-core pipelines relevant to my research - [ ] Practice parameter optimization for real datasets"
+  },
+  {
+    "objectID": "posts/day4/index.html#resources-and-references",
+    "href": "posts/day4/index.html#resources-and-references",
+    "title": "Day 4 of MedBioInfo",
+    "section": "",
+    "text": "nf-core homepage\nnf-core/rnaseq pipeline\nnf-core/sarek pipeline\nHPC2N configuration files\nCourse materials\n\n\nDay 4 complete! From simple workflows to production pipelines - the power of standardized bioinformatics is incredible. 🧬🚀"
   },
   {
     "objectID": "posts/day3/index.html",
     "href": "posts/day3/index.html",
     "title": "Day 3 of MedBioInfo",
     "section": "",
-    "text": "Welcome to Day 3! Here are my reflections and key takeaways from today’s sessions.\n\n\nToday we worked with Nextflow and workflow management.\n\n\n\nNextflow Overview\n\n\n\n\n\n[Add your morning session notes here]\n\n\n\n[Add your afternoon session notes here]\n\n\n\n\n\n\nChannel Process FastQC\n\n\n\n\n\n\n\n\n[Concept 1]\n[Concept 2]\n[Concept 3]\n\n\n\n\n\nTool 1: [Description and use case]\nTool 2: [Description and use case]\n\n\n\n\n\n\n\nToday we ran our first Nextflow script! Here’s the complete hello.nf script:\n#!/usr/bin/env nextflow\n\nparams.greeting = 'Hello world!'\ngreeting_ch = Channel.of(params.greeting)\n\nprocess SPLITLETTERS {\n    input:\n    val x\n\n    output:\n    path 'chunk_*'\n\n    script:\n    \"\"\"\n    printf '$x' | split -b 6 - chunk_\n    \"\"\"\n}\n\nprocess CONVERTTOUPPER {\n    input:\n    path y\n\n    output:\n    stdout\n\n    script:\n    \"\"\"\n    cat $y | tr '[a-z]' '[A-Z]' \n    \"\"\"\n}\n\nworkflow {\n    letters_ch = SPLITLETTERS(greeting_ch)\n    results_ch = CONVERTTOUPPER(letters_ch.flatten())\n    results_ch.view{ it }\n}\nWhen we run this script:\nnextflow run hello.nf\nWe get this output:\nN E X T F L O W   ~  version 25.04.7\n\nLaunching `hello.nf` [jolly_faraday] DSL2 - revision: f5e335f983\n\nexecutor &gt;  local (3)\n[96/fd5f07] SPLITLETTERS (1)   [100%] 1 of 1 ✔\n[7e/dad424] CONVERTTOUPPER (2) [100%] 2 of 2 ✔\nHELLO \nWORLD!\nThis workflow demonstrates several key Nextflow concepts: - Channels: greeting_ch carries data between processes - SPLITLETTERS process: Uses split command to break text into 6-byte chunks - CONVERTTOUPPER process: Converts text to uppercase using tr command - Workflow: Connects processes with .flatten() to handle multiple outputs - Output: Uses .view{ it } to display results\n\n\n\nOne of the powerful features of Nextflow is the ability to override parameters from the command line. We can change the greeting message without modifying the script:\npixi run nextflow run hello.nf -resume --greeting 'Bonjour le monde!'\nThis demonstrates: - Parameter override: --greeting changes the default message - Resume functionality: -resume allows Nextflow to skip already completed tasks - Pixi integration: Using pixi run to manage the environment - Flexibility: Same workflow, different input data\n\n\n\n\n# Add your Python code examples from today\nprint(\"Day 3 of MedBioInfo!\")\n\nDay 3 of MedBioInfo!\n\n\n# Your actual code here\n\n\n# Add your R code examples from today\n# library(package_name)\n# data analysis code\n\n\n\n\n\n\n\nProblem: [Describe the challenge]\nSolution: [How you solved it]\n\n\n\nProblem: [Another challenge]\nSolution: [Your approach]\n\n\n\n\n\n[Key quote or insight from today]\n\n\nInsight 1: [What clicked for you?]\nInsight 2: [Connection to previous days]\nInsight 3: [Something that surprised you]\n\n\n\n\n\n[Question 1]\n[Question 2]\n[Question 3]\n\n\n\n\nGoals for tomorrow: - [ ] [Goal 1] - [ ] [Goal 2] - [ ] [Goal 3]\n\n\n\n\n[Useful links from today]\n[Documentation or papers mentioned]\n[Course materials]\n\n\nEnd of Day 3! Ready for what Day 4 brings. 🎯"
+    "text": "Welcome to Day 3! Here are my reflections and key takeaways from today’s sessions.\n\n\nToday we worked with Nextflow and workflow management.\n\n\n\nNextflow Overview\n\n\nFigure 1: Nextflow workflow management system overview. This diagram illustrates the core concepts of Nextflow including processes, channels, and how data flows through a computational pipeline. Nextflow enables scalable and portable bioinformatics workflows.\n\n\nToday we ran our first Nextflow script! Here’s the complete hello.nf script:\n#!/usr/bin/env nextflow\n\nparams.greeting = 'Hello world!'\ngreeting_ch = Channel.of(params.greeting)\n\nprocess SPLITLETTERS {\n    input:\n    val x\n\n    output:\n    path 'chunk_*'\n\n    script:\n    \"\"\"\n    printf '$x' | split -b 6 - chunk_\n    \"\"\"\n}\n\nprocess CONVERTTOUPPER {\n    input:\n    path y\n\n    output:\n    stdout\n\n    script:\n    \"\"\"\n    cat $y | tr '[a-z]' '[A-Z]' \n    \"\"\"\n}\n\nworkflow {\n    letters_ch = SPLITLETTERS(greeting_ch)\n    results_ch = CONVERTTOUPPER(letters_ch.flatten())\n    results_ch.view{ it }\n}\nWhen we run this script:\nnextflow run hello.nf\nWe get this output:\nN E X T F L O W   ~  version 25.04.7\n\nLaunching `hello.nf` [jolly_faraday] DSL2 - revision: f5e335f983\n\nexecutor &gt;  local (3)\n[96/fd5f07] SPLITLETTERS (1)   [100%] 1 of 1 ✔\n[7e/dad424] CONVERTTOUPPER (2) [100%] 2 of 2 ✔\nHELLO \nWORLD!\nThis workflow demonstrates several key Nextflow concepts: - Channels: greeting_ch carries data between processes - SPLITLETTERS process: Uses split command to break text into 6-byte chunks - CONVERTTOUPPER process: Converts text to uppercase using tr command - Workflow: Connects processes with .flatten() to handle multiple outputs - Output: Uses .view{ it } to display results\n\n\n\nOne of the features of Nextflow is the ability to override parameters from the command line. We can change the greeting message without modifying the script:\npixi run nextflow run hello.nf -resume --greeting 'Bonjour le monde!'\n\n\n\nWe also worked with building our own nextflow pipelines for quality control of rna-seq data. The training included running FastQC and MultiQC on sample data:\n\n\n\nChannel Process FastQC\n\n\nFigure 2: Nextflow channel and process architecture for FastQC quality control. This diagram shows how input data flows through channels into FastQC processes. Each process can run independently while channels manage data flow between steps.\n\n\n\nFastQC Report - Sample 1 - Individual quality control report for gut sample 1\nFastQC Report - Sample 2 - Individual quality control report for gut sample 2\n\nMultiQC Report - Comprehensive report combining all QC metrics\n\nThese reports demonstrate: - FastQC analysis: Per-base quality scores, sequence composition, adapter contamination - MultiQC aggregation: Combined visualization of multiple samples\n\nEnd of Day 3!"
   },
   {
     "objectID": "posts/day3/index.html#todays-focus",
     "href": "posts/day3/index.html#todays-focus",
     "title": "Day 3 of MedBioInfo",
     "section": "",
-    "text": "Today we worked with Nextflow and workflow management.\n\n\n\nNextflow Overview"
+    "text": "Today we worked with Nextflow and workflow management.\n\n\n\nNextflow Overview\n\n\nFigure 1: Nextflow workflow management system overview. This diagram illustrates the core concepts of Nextflow including processes, channels, and how data flows through a computational pipeline. Nextflow enables scalable and portable bioinformatics workflows.\n\n\nToday we ran our first Nextflow script! Here’s the complete hello.nf script:\n#!/usr/bin/env nextflow\n\nparams.greeting = 'Hello world!'\ngreeting_ch = Channel.of(params.greeting)\n\nprocess SPLITLETTERS {\n    input:\n    val x\n\n    output:\n    path 'chunk_*'\n\n    script:\n    \"\"\"\n    printf '$x' | split -b 6 - chunk_\n    \"\"\"\n}\n\nprocess CONVERTTOUPPER {\n    input:\n    path y\n\n    output:\n    stdout\n\n    script:\n    \"\"\"\n    cat $y | tr '[a-z]' '[A-Z]' \n    \"\"\"\n}\n\nworkflow {\n    letters_ch = SPLITLETTERS(greeting_ch)\n    results_ch = CONVERTTOUPPER(letters_ch.flatten())\n    results_ch.view{ it }\n}\nWhen we run this script:\nnextflow run hello.nf\nWe get this output:\nN E X T F L O W   ~  version 25.04.7\n\nLaunching `hello.nf` [jolly_faraday] DSL2 - revision: f5e335f983\n\nexecutor &gt;  local (3)\n[96/fd5f07] SPLITLETTERS (1)   [100%] 1 of 1 ✔\n[7e/dad424] CONVERTTOUPPER (2) [100%] 2 of 2 ✔\nHELLO \nWORLD!\nThis workflow demonstrates several key Nextflow concepts: - Channels: greeting_ch carries data between processes - SPLITLETTERS process: Uses split command to break text into 6-byte chunks - CONVERTTOUPPER process: Converts text to uppercase using tr command - Workflow: Connects processes with .flatten() to handle multiple outputs - Output: Uses .view{ it } to display results\n\n\n\nOne of the features of Nextflow is the ability to override parameters from the command line. We can change the greeting message without modifying the script:\npixi run nextflow run hello.nf -resume --greeting 'Bonjour le monde!'\n\n\n\nWe also worked with building our own nextflow pipelines for quality control of rna-seq data. The training included running FastQC and MultiQC on sample data:\n\n\n\nChannel Process FastQC\n\n\nFigure 2: Nextflow channel and process architecture for FastQC quality control. This diagram shows how input data flows through channels into FastQC processes. Each process can run independently while channels manage data flow between steps.\n\n\n\nFastQC Report - Sample 1 - Individual quality control report for gut sample 1\nFastQC Report - Sample 2 - Individual quality control report for gut sample 2\n\nMultiQC Report - Comprehensive report combining all QC metrics\n\nThese reports demonstrate: - FastQC analysis: Per-base quality scores, sequence composition, adapter contamination - MultiQC aggregation: Combined visualization of multiple samples\n\nEnd of Day 3!"
   },
   {
-    "objectID": "posts/day3/index.html#morning-session",
-    "href": "posts/day3/index.html#morning-session",
-    "title": "Day 3 of MedBioInfo",
+    "objectID": "posts/day5/index.html",
+    "href": "posts/day5/index.html",
+    "title": "Day 5 of MedBioInfo",
     "section": "",
-    "text": "[Add your morning session notes here]"
+    "text": "Day 5 brought us an important discussion about AI in bioinformatics and hands-on data visualization with ggplot! A perfect combination of critical thinking and practical skills.\n\n\nToday we covered two important topics: - Critical evaluation of AI in bioinformatics - Understanding benefits, risks, and responsible usage - Data visualization with ggplot - Learning R’s powerful plotting capabilities\n\n\n\n\n\nIn just 3 years, Large Language Models (LLMs) have become mainstream. ChatGPT gained 100 million users in 2 months after its 2022 release, making it the fastest-growing consumer application in history.\nKey AI developments: - Generative Pretrained Transformers (GPTs) - The chatbots we know - Training on massive datasets - Learning from internet-scale data - Task-specific training - Customized through prompt engineering\n\n\n\nML has been used in bioinformatics for decades: - Supervised learning - Classification and regression on annotated data - Unsupervised learning - Pattern discovery without human input - Applications - Clustering, association, dimensionality reduction\nGenAI represents the next evolutionary step in applying ML to our lives.\n\n\n\n\n\n\nAI models inherit biases from their training data: - Historical bias - “History written by the winners” - Internet bias - Unequal access and participation - Quality issues - Not everyone contributes equally online\n\nProblem: AI will “happily hallucinate an answer” rather than admit uncertainty\n\n\n\n\nLearning concerns: - 2025 study showed adults using ChatGPT for essays were consistently outperformed by those writing without AI - Significantly lower brain engagement when using AI assistance\nProductivity paradox: - Study of experienced developers (5+ years) found AI tools actually reduced productivity - Time spent on prompting, reviewing AI responses, and being idle - Less time actually coding and problem-solving\n\n\n\nCritical concerns for bioinformatics: - Biological data is highly sensitive - Often legally protected - Terms of Service violations - Many users unknowingly share protected data - Copyright issues - Legal battles over training data usage - GDPR compliance - Need for compliant tools\nBest practices: - Check Terms of Service explicitly and frequently - Use GDPR-compliant tools when possible - Share data descriptions, not actual datasets - Be wary of browser extensions that steal personal data\n\n\n\nResource consumption: - Data centers use more electricity than many countries - Massive water requirements for cooling - Built near poor communities, often draining local resources\nExample: Saying “please” and “thank you” to ChatGPT has cost OpenAI tens of millions in electricity costs.\n\n\n\nAI is already changing language patterns: - Words like “delve” and “meticulous” increasingly common in academic talks - Different AI models have distinct writing styles (idiolects) - 24% of internet content was AI-generated by end of 2023 (up from 2-3% in 2022)\n\n\n\n\n\n\n\nAm I phrasing my prompt effectively?\nCan I find this information another way?\nHow much time am I actually saving?\nDo I know enough to identify AI errors?\nWhat are the consequences of testing AI solutions?\n\n\n\n\n\nMaintain curiosity - Don’t let AI replace your desire to learn\nSeek explanations - Understand what AI tells you\nValidate independently - Find expert sources to confirm\nActive learning - Use AI as a tool, not a replacement for thinking\n\n\nRemember: You don’t need AI. Before AI, you were perfectly capable of scientific work. Don’t confuse convenience with need!\n\n\n\n\n\n\n\nAfter completing downstream analyses, visualization becomes crucial for: - Results presentation - Making findings accessible - Pattern recognition - Discovering insights in data - Communication - Sharing discoveries with others\nggplot2 is R’s powerful visualization package, part of the tidyverse ecosystem.\n\n\n\nThe package offers incredible versatility for creating: - Statistical plots - Scatter plots, histograms, box plots - Multi-dimensional visualizations - Faceting and grouping - Custom themes - Professional publication-ready graphics - Interactive elements - Enhanced user engagement\n\n\n\nWe worked through practical examples using the NBIS tutorial by Roy Francis, covering:\n# Basic ggplot structure\nlibrary(ggplot2)\n\n# Example scatter plot\nggplot(data = dataset, aes(x = variable1, y = variable2)) +\n  geom_point() +\n  theme_minimal() +\n  labs(title = \"My Analysis Results\",\n       x = \"X-axis Label\",\n       y = \"Y-axis Label\")\n\n# Advanced plotting with facets\nggplot(data = dataset, aes(x = variable1, y = variable2, color = group)) +\n  geom_point() +\n  facet_wrap(~category) +\n  theme_bw()\n\n\n\n\nGrammar of Graphics - Systematic approach to building plots\nLayered approach - Adding elements incrementally\nAesthetic mappings - Connecting data to visual properties\nGeometric objects - Points, lines, bars, etc.\nThemes and styling - Professional appearance\n\n\n\n\n\n\n\n\n“As scientists, we know we should use peer-reviewed resources. GPTs have been widely shown to fabricate citations.”\n\nThe discussion highlighted how AI challenges traditional scientific methodology: - Verification burden - Every AI-generated citation must be checked - Personal responsibility - Users liable for AI-generated content - Quality vs. speed - Balancing efficiency with accuracy\n\n\n\nData visualization serves as the bridge between complex analyses and understanding: - Makes patterns visible that might be hidden in raw data - Enables hypothesis generation through visual exploration - Facilitates scientific communication across disciplines\n\n\n\n\n\nDay 1: Data management and FAIR principles → Foundation for trustworthy research\nDay 2: Environments and quality control → Technical reliability\nDay 3: Nextflow and workflow management → Computational reproducibility\n\nDay 4: nf-core pipelines and RNAseq → Production bioinformatics\nDay 5: AI ethics and visualization → Responsible analysis and communication\n\n\n\n\n\n\n\nCritical evaluation is essential - don’t use AI as a black box\nUnderstand limitations - bias, hallucinations, environmental cost\nMaintain agency - preserve your ability to think and learn\nData protection - be extremely careful with sensitive biological data\n\n\n\n\n\nggplot mastery opens powerful communication possibilities\nGrammar of graphics provides systematic approach to visualization\nPractice essential - hands-on experience builds intuition\n\n\n\n\n\n\nHow can we develop institutional policies for responsible AI use in research?\nWhat visualization techniques best serve different types of biological data?\nHow do we balance AI efficiency with scientific rigor and learning?\n\n\n\n\nGoals for future work: - [ ] Develop personal AI usage guidelines for research - [ ] Master advanced ggplot techniques for publication-quality figures - [ ] Practice critical evaluation of AI-generated content - [ ] Create visualization portfolio for different data types\n\n\n\n\n\n\nIBM: Supervised vs Unsupervised Learning\nMETR Study on AI Productivity\nNature: AI in Education\nAI Citation Fabrication Research\n\n\n\n\n\nggplot2 Official Documentation\nNBIS ggplot Tutorial\nR for Data Science - ggplot Chapter\n\n\n\n\n\nAI in Bioinformatics\nggplot Visualization\n\n\nDay 5 complete! A day of critical thinking and practical skills - exactly what modern bioinformatics requires. 🤖📊🧬"
   },
   {
-    "objectID": "posts/day3/index.html#afternoon-session",
-    "href": "posts/day3/index.html#afternoon-session",
-    "title": "Day 3 of MedBioInfo",
+    "objectID": "posts/day5/index.html#todays-focus",
+    "href": "posts/day5/index.html#todays-focus",
+    "title": "Day 5 of MedBioInfo",
     "section": "",
-    "text": "[Add your afternoon session notes here]"
+    "text": "Today we covered two important topics: - Critical evaluation of AI in bioinformatics - Understanding benefits, risks, and responsible usage - Data visualization with ggplot - Learning R’s powerful plotting capabilities"
   },
   {
-    "objectID": "posts/day3/index.html#nextflow-channel-and-process",
-    "href": "posts/day3/index.html#nextflow-channel-and-process",
-    "title": "Day 3 of MedBioInfo",
+    "objectID": "posts/day5/index.html#morning-session---ai-in-bioinformatics",
+    "href": "posts/day5/index.html#morning-session---ai-in-bioinformatics",
+    "title": "Day 5 of MedBioInfo",
     "section": "",
-    "text": "Channel Process FastQC"
+    "text": "In just 3 years, Large Language Models (LLMs) have become mainstream. ChatGPT gained 100 million users in 2 months after its 2022 release, making it the fastest-growing consumer application in history.\nKey AI developments: - Generative Pretrained Transformers (GPTs) - The chatbots we know - Training on massive datasets - Learning from internet-scale data - Task-specific training - Customized through prompt engineering\n\n\n\nML has been used in bioinformatics for decades: - Supervised learning - Classification and regression on annotated data - Unsupervised learning - Pattern discovery without human input - Applications - Clustering, association, dimensionality reduction\nGenAI represents the next evolutionary step in applying ML to our lives."
   },
   {
-    "objectID": "posts/day3/index.html#key-learnings",
-    "href": "posts/day3/index.html#key-learnings",
-    "title": "Day 3 of MedBioInfo",
+    "objectID": "posts/day5/index.html#critical-issues-with-ai",
+    "href": "posts/day5/index.html#critical-issues-with-ai",
+    "title": "Day 5 of MedBioInfo",
     "section": "",
-    "text": "[Concept 1]\n[Concept 2]\n[Concept 3]\n\n\n\n\n\nTool 1: [Description and use case]\nTool 2: [Description and use case]"
+    "text": "AI models inherit biases from their training data: - Historical bias - “History written by the winners” - Internet bias - Unequal access and participation - Quality issues - Not everyone contributes equally online\n\nProblem: AI will “happily hallucinate an answer” rather than admit uncertainty\n\n\n\n\nLearning concerns: - 2025 study showed adults using ChatGPT for essays were consistently outperformed by those writing without AI - Significantly lower brain engagement when using AI assistance\nProductivity paradox: - Study of experienced developers (5+ years) found AI tools actually reduced productivity - Time spent on prompting, reviewing AI responses, and being idle - Less time actually coding and problem-solving\n\n\n\nCritical concerns for bioinformatics: - Biological data is highly sensitive - Often legally protected - Terms of Service violations - Many users unknowingly share protected data - Copyright issues - Legal battles over training data usage - GDPR compliance - Need for compliant tools\nBest practices: - Check Terms of Service explicitly and frequently - Use GDPR-compliant tools when possible - Share data descriptions, not actual datasets - Be wary of browser extensions that steal personal data\n\n\n\nResource consumption: - Data centers use more electricity than many countries - Massive water requirements for cooling - Built near poor communities, often draining local resources\nExample: Saying “please” and “thank you” to ChatGPT has cost OpenAI tens of millions in electricity costs.\n\n\n\nAI is already changing language patterns: - Words like “delve” and “meticulous” increasingly common in academic talks - Different AI models have distinct writing styles (idiolects) - 24% of internet content was AI-generated by end of 2023 (up from 2-3% in 2022)"
   },
   {
-    "objectID": "posts/day3/index.html#practical-work",
-    "href": "posts/day3/index.html#practical-work",
-    "title": "Day 3 of MedBioInfo",
+    "objectID": "posts/day5/index.html#responsible-ai-usage-guidelines",
+    "href": "posts/day5/index.html#responsible-ai-usage-guidelines",
+    "title": "Day 5 of MedBioInfo",
     "section": "",
-    "text": "Today we ran our first Nextflow script! Here’s the complete hello.nf script:\n#!/usr/bin/env nextflow\n\nparams.greeting = 'Hello world!'\ngreeting_ch = Channel.of(params.greeting)\n\nprocess SPLITLETTERS {\n    input:\n    val x\n\n    output:\n    path 'chunk_*'\n\n    script:\n    \"\"\"\n    printf '$x' | split -b 6 - chunk_\n    \"\"\"\n}\n\nprocess CONVERTTOUPPER {\n    input:\n    path y\n\n    output:\n    stdout\n\n    script:\n    \"\"\"\n    cat $y | tr '[a-z]' '[A-Z]' \n    \"\"\"\n}\n\nworkflow {\n    letters_ch = SPLITLETTERS(greeting_ch)\n    results_ch = CONVERTTOUPPER(letters_ch.flatten())\n    results_ch.view{ it }\n}\nWhen we run this script:\nnextflow run hello.nf\nWe get this output:\nN E X T F L O W   ~  version 25.04.7\n\nLaunching `hello.nf` [jolly_faraday] DSL2 - revision: f5e335f983\n\nexecutor &gt;  local (3)\n[96/fd5f07] SPLITLETTERS (1)   [100%] 1 of 1 ✔\n[7e/dad424] CONVERTTOUPPER (2) [100%] 2 of 2 ✔\nHELLO \nWORLD!\nThis workflow demonstrates several key Nextflow concepts: - Channels: greeting_ch carries data between processes - SPLITLETTERS process: Uses split command to break text into 6-byte chunks - CONVERTTOUPPER process: Converts text to uppercase using tr command - Workflow: Connects processes with .flatten() to handle multiple outputs - Output: Uses .view{ it } to display results\n\n\n\nOne of the powerful features of Nextflow is the ability to override parameters from the command line. We can change the greeting message without modifying the script:\npixi run nextflow run hello.nf -resume --greeting 'Bonjour le monde!'\nThis demonstrates: - Parameter override: --greeting changes the default message - Resume functionality: -resume allows Nextflow to skip already completed tasks - Pixi integration: Using pixi run to manage the environment - Flexibility: Same workflow, different input data\n\n\n\n\n# Add your Python code examples from today\nprint(\"Day 3 of MedBioInfo!\")\n\nDay 3 of MedBioInfo!\n\n\n# Your actual code here\n\n\n# Add your R code examples from today\n# library(package_name)\n# data analysis code"
+    "text": "Am I phrasing my prompt effectively?\nCan I find this information another way?\nHow much time am I actually saving?\nDo I know enough to identify AI errors?\nWhat are the consequences of testing AI solutions?\n\n\n\n\n\nMaintain curiosity - Don’t let AI replace your desire to learn\nSeek explanations - Understand what AI tells you\nValidate independently - Find expert sources to confirm\nActive learning - Use AI as a tool, not a replacement for thinking\n\n\nRemember: You don’t need AI. Before AI, you were perfectly capable of scientific work. Don’t confuse convenience with need!"
   },
   {
-    "objectID": "posts/day3/index.html#challenges-and-solutions",
-    "href": "posts/day3/index.html#challenges-and-solutions",
-    "title": "Day 3 of MedBioInfo",
+    "objectID": "posts/day5/index.html#afternoon-session---data-visualization-with-ggplot",
+    "href": "posts/day5/index.html#afternoon-session---data-visualization-with-ggplot",
+    "title": "Day 5 of MedBioInfo",
     "section": "",
-    "text": "Problem: [Describe the challenge]\nSolution: [How you solved it]\n\n\n\nProblem: [Another challenge]\nSolution: [Your approach]"
+    "text": "After completing downstream analyses, visualization becomes crucial for: - Results presentation - Making findings accessible - Pattern recognition - Discovering insights in data - Communication - Sharing discoveries with others\nggplot2 is R’s powerful visualization package, part of the tidyverse ecosystem.\n\n\n\nThe package offers incredible versatility for creating: - Statistical plots - Scatter plots, histograms, box plots - Multi-dimensional visualizations - Faceting and grouping - Custom themes - Professional publication-ready graphics - Interactive elements - Enhanced user engagement\n\n\n\nWe worked through practical examples using the NBIS tutorial by Roy Francis, covering:\n# Basic ggplot structure\nlibrary(ggplot2)\n\n# Example scatter plot\nggplot(data = dataset, aes(x = variable1, y = variable2)) +\n  geom_point() +\n  theme_minimal() +\n  labs(title = \"My Analysis Results\",\n       x = \"X-axis Label\",\n       y = \"Y-axis Label\")\n\n# Advanced plotting with facets\nggplot(data = dataset, aes(x = variable1, y = variable2, color = group)) +\n  geom_point() +\n  facet_wrap(~category) +\n  theme_bw()\n\n\n\n\nGrammar of Graphics - Systematic approach to building plots\nLayered approach - Adding elements incrementally\nAesthetic mappings - Connecting data to visual properties\nGeometric objects - Points, lines, bars, etc.\nThemes and styling - Professional appearance"
   },
   {
-    "objectID": "posts/day3/index.html#insights-and-connections",
-    "href": "posts/day3/index.html#insights-and-connections",
-    "title": "Day 3 of MedBioInfo",
+    "objectID": "posts/day5/index.html#insights-and-connections",
+    "href": "posts/day5/index.html#insights-and-connections",
+    "title": "Day 5 of MedBioInfo",
     "section": "",
-    "text": "[Key quote or insight from today]\n\n\nInsight 1: [What clicked for you?]\nInsight 2: [Connection to previous days]\nInsight 3: [Something that surprised you]"
+    "text": "“As scientists, we know we should use peer-reviewed resources. GPTs have been widely shown to fabricate citations.”\n\nThe discussion highlighted how AI challenges traditional scientific methodology: - Verification burden - Every AI-generated citation must be checked - Personal responsibility - Users liable for AI-generated content - Quality vs. speed - Balancing efficiency with accuracy\n\n\n\nData visualization serves as the bridge between complex analyses and understanding: - Makes patterns visible that might be hidden in raw data - Enables hypothesis generation through visual exploration - Facilitates scientific communication across disciplines"
   },
   {
-    "objectID": "posts/day3/index.html#questions-for-further-exploration",
-    "href": "posts/day3/index.html#questions-for-further-exploration",
-    "title": "Day 3 of MedBioInfo",
+    "objectID": "posts/day5/index.html#comparison-with-previous-days",
+    "href": "posts/day5/index.html#comparison-with-previous-days",
+    "title": "Day 5 of MedBioInfo",
     "section": "",
-    "text": "[Question 1]\n[Question 2]\n[Question 3]"
+    "text": "Day 1: Data management and FAIR principles → Foundation for trustworthy research\nDay 2: Environments and quality control → Technical reliability\nDay 3: Nextflow and workflow management → Computational reproducibility\n\nDay 4: nf-core pipelines and RNAseq → Production bioinformatics\nDay 5: AI ethics and visualization → Responsible analysis and communication"
   },
   {
-    "objectID": "posts/day3/index.html#looking-ahead",
-    "href": "posts/day3/index.html#looking-ahead",
-    "title": "Day 3 of MedBioInfo",
+    "objectID": "posts/day5/index.html#key-takeaways",
+    "href": "posts/day5/index.html#key-takeaways",
+    "title": "Day 5 of MedBioInfo",
     "section": "",
-    "text": "Goals for tomorrow: - [ ] [Goal 1] - [ ] [Goal 2] - [ ] [Goal 3]"
+    "text": "Critical evaluation is essential - don’t use AI as a black box\nUnderstand limitations - bias, hallucinations, environmental cost\nMaintain agency - preserve your ability to think and learn\nData protection - be extremely careful with sensitive biological data\n\n\n\n\n\nggplot mastery opens powerful communication possibilities\nGrammar of graphics provides systematic approach to visualization\nPractice essential - hands-on experience builds intuition"
   },
   {
-    "objectID": "posts/day3/index.html#resources",
-    "href": "posts/day3/index.html#resources",
-    "title": "Day 3 of MedBioInfo",
+    "objectID": "posts/day5/index.html#questions-for-further-exploration",
+    "href": "posts/day5/index.html#questions-for-further-exploration",
+    "title": "Day 5 of MedBioInfo",
     "section": "",
-    "text": "[Useful links from today]\n[Documentation or papers mentioned]\n[Course materials]\n\n\nEnd of Day 3! Ready for what Day 4 brings. 🎯"
+    "text": "How can we develop institutional policies for responsible AI use in research?\nWhat visualization techniques best serve different types of biological data?\nHow do we balance AI efficiency with scientific rigor and learning?"
   },
   {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
+    "objectID": "posts/day5/index.html#looking-ahead",
+    "href": "posts/day5/index.html#looking-ahead",
+    "title": "Day 5 of MedBioInfo",
     "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+    "text": "Goals for future work: - [ ] Develop personal AI usage guidelines for research - [ ] Master advanced ggplot techniques for publication-quality figures - [ ] Practice critical evaluation of AI-generated content - [ ] Create visualization portfolio for different data types"
+  },
+  {
+    "objectID": "posts/day5/index.html#resources-and-references",
+    "href": "posts/day5/index.html#resources-and-references",
+    "title": "Day 5 of MedBioInfo",
+    "section": "",
+    "text": "IBM: Supervised vs Unsupervised Learning\nMETR Study on AI Productivity\nNature: AI in Education\nAI Citation Fabrication Research\n\n\n\n\n\nggplot2 Official Documentation\nNBIS ggplot Tutorial\nR for Data Science - ggplot Chapter\n\n\n\n\n\nAI in Bioinformatics\nggplot Visualization\n\n\nDay 5 complete! A day of critical thinking and practical skills - exactly what modern bioinformatics requires. 🤖📊🧬"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "August´s mbi-blog",
     "section": "",
-    "text": "Post With Code\n\n\n\nnews\n\ncode\n\nanalysis\n\n\n\n\n\n\n\n\n\nOct 10, 2025\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nOct 7, 2025\n\n\nTristan O’Malley\n\n\n\n\n\n\n\n\n\n\n\n\nDay 3 of MedBioInfo\n\n\n\nmedbioinfo\n\nlearning\n\ndata-science\n\n\n\nDay 3 reflections and learnings from medical bioinformatics course\n\n\n\n\n\nOct 28, 2024\n\n\nAugust Lundholm\n\n\n\n\n\n\n\n\n\n\n\n\nDay 2 of applied bioinformatics\n\n\n\nmedbioinfo\n\nlearning\n\ndata-science\n\n\n\nContinuing my journey through applied bioinformatics - Day 2\n\n\n\n\n\nOct 27, 2024\n\n\nAugust Lundholm\n\n\n\n\n\n\n\n\n\n\n\n\nDay 1\n\n\n\nblog\n\n\n\nReflections and notes from day 1.\n\n\n\n\n\nJun 10, 2024\n\n\nAugust Lundholm\n\n\n\n\n\nNo matching items"
+    "text": "Day 4 of MedBioInfo\n\n\n\nmedbioinfo\n\nlearning\n\ndata-science\n\nnf-core\n\n\n\nDay 4 - Advanced nf-core pipelines and RNAseq analysis\n\n\n\n\n\nOct 28, 2024\n\n\nAugust Lundholm\n\n\n\n\n\n\n\n\n\n\n\n\nDay 3 of MedBioInfo\n\n\n\nmedbioinfo\n\nlearning\n\ndata-science\n\n\n\nDay 3 reflections and learnings from medical bioinformatics course\n\n\n\n\n\nOct 28, 2024\n\n\nAugust Lundholm\n\n\n\n\n\n\n\n\n\n\n\n\nDay 5 of MedBioInfo\n\n\n\nmedbioinfo\n\nlearning\n\ndata-science\n\nAI\n\nvisualization\n\n\n\nDay 5 - AI in Bioinformatics and Data Visualization with ggplot\n\n\n\n\n\nOct 28, 2024\n\n\nAugust Lundholm\n\n\n\n\n\n\n\n\n\n\n\n\nDay 2 of applied bioinformatics\n\n\n\nmedbioinfo\n\nlearning\n\ndata-science\n\n\n\nContinuing my journey through applied bioinformatics - Day 2\n\n\n\n\n\nOct 27, 2024\n\n\nAugust Lundholm\n\n\n\n\n\n\n\n\n\n\n\n\nDay 1\n\n\n\nblog\n\n\n\nReflections and notes from day 1.\n\n\n\n\n\nJun 10, 2024\n\n\nAugust Lundholm\n\n\n\n\n\nNo matching items"
   }
 ]
