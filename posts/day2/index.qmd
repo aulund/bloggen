@@ -40,4 +40,4 @@ Building containers from scratch feels a bit advanced, but understanding how the
 
 ---
 
-*That's a wrap for Day 2! Looking forward to what Day 3 brings.
+*That's all for today
