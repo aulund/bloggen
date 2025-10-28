@@ -10,54 +10,7 @@
 <atom:link href="https://aulund.github.io/bloggen/index.xml" rel="self" type="application/rss+xml"/>
 <description>A blog built with Quarto</description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Thu, 09 Oct 2025 22:00:00 GMT</lastBuildDate>
-<item>
-  <title>Post With Code</title>
-  <dc:creator>Harlow Malloc</dc:creator>
-  <link>https://aulund.github.io/bloggen/posts/post-with-code/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>This is a post with executable code.</p>
-
-
-<!-- -->
-
-
- ]]></description>
-  <category>news</category>
-  <category>code</category>
-  <category>analysis</category>
-  <guid>https://aulund.github.io/bloggen/posts/post-with-code/</guid>
-  <pubDate>Thu, 09 Oct 2025 22:00:00 GMT</pubDate>
-  <media:content url="https://aulund.github.io/bloggen/posts/post-with-code/image.jpg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>Welcome To My Blog</title>
-  <dc:creator>Tristan O&#39;Malley</dc:creator>
-  <link>https://aulund.github.io/bloggen/posts/welcome/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>This is the first post in a Quarto blog. Welcome!</p>
-<p><img src="https://aulund.github.io/bloggen/posts/welcome/thumbnail.jpg" class="img-fluid"></p>
-<p>Since this post doesn’t specify an explicit <code>image</code>, the first image in the post will be used in the listing page of posts.</p>
-
-
-<!-- -->
-
-
- ]]></description>
-  <category>news</category>
-  <guid>https://aulund.github.io/bloggen/posts/welcome/</guid>
-  <pubDate>Mon, 06 Oct 2025 22:00:00 GMT</pubDate>
-</item>
+<lastBuildDate>Sun, 27 Oct 2024 23:00:00 GMT</lastBuildDate>
 <item>
   <title>Day 4 of MedBioInfo</title>
   <dc:creator>August Lundholm</dc:creator>
@@ -468,6 +421,301 @@ font-style: inherit;">'Bonjour le monde!'</span></span></code></pre></div></div>
   <category>learning</category>
   <category>data-science</category>
   <guid>https://aulund.github.io/bloggen/posts/day3/</guid>
+  <pubDate>Sun, 27 Oct 2024 23:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Day 5 of MedBioInfo</title>
+  <dc:creator>August Lundholm</dc:creator>
+  <link>https://aulund.github.io/bloggen/posts/day5/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="day-5-of-medbioinfo" class="level1">
+<h1>Day 5 of MedBioInfo</h1>
+<p>Day 5 brought us an important discussion about AI in bioinformatics and hands-on data visualization with ggplot! A perfect combination of critical thinking and practical skills.</p>
+<section id="todays-focus" class="level2">
+<h2 class="anchored" data-anchor-id="todays-focus">Today’s Focus</h2>
+<p>Today we covered two important topics: - <strong>Critical evaluation of AI in bioinformatics</strong> - Understanding benefits, risks, and responsible usage - <strong>Data visualization with ggplot</strong> - Learning R’s powerful plotting capabilities</p>
+</section>
+<section id="morning-session---ai-in-bioinformatics" class="level2">
+<h2 class="anchored" data-anchor-id="morning-session---ai-in-bioinformatics">Morning Session - AI in Bioinformatics</h2>
+<section id="the-ai-revolution" class="level3">
+<h3 class="anchored" data-anchor-id="the-ai-revolution">The AI Revolution</h3>
+<p>In just 3 years, Large Language Models (LLMs) have become mainstream. ChatGPT gained <strong>100 million users in 2 months</strong> after its 2022 release, making it the fastest-growing consumer application in history.</p>
+<p>Key AI developments: - <strong>Generative Pretrained Transformers (GPTs)</strong> - The chatbots we know - <strong>Training on massive datasets</strong> - Learning from internet-scale data - <strong>Task-specific training</strong> - Customized through prompt engineering</p>
+</section>
+<section id="machine-learning-in-bioinformatics---historical-context" class="level3">
+<h3 class="anchored" data-anchor-id="machine-learning-in-bioinformatics---historical-context">Machine Learning in Bioinformatics - Historical Context</h3>
+<p>ML has been used in bioinformatics for decades: - <strong>Supervised learning</strong> - Classification and regression on annotated data - <strong>Unsupervised learning</strong> - Pattern discovery without human input - <strong>Applications</strong> - Clustering, association, dimensionality reduction</p>
+<p>GenAI represents the next evolutionary step in applying ML to our lives.</p>
+</section>
+</section>
+<section id="critical-issues-with-ai" class="level2">
+<h2 class="anchored" data-anchor-id="critical-issues-with-ai">Critical Issues with AI</h2>
+<section id="training-data-bias" class="level3">
+<h3 class="anchored" data-anchor-id="training-data-bias">1. Training Data Bias</h3>
+<p>AI models inherit biases from their training data: - <strong>Historical bias</strong> - “History written by the winners” - <strong>Internet bias</strong> - Unequal access and participation - <strong>Quality issues</strong> - Not everyone contributes equally online</p>
+<blockquote class="blockquote">
+<p>Problem: AI will “happily hallucinate an answer” rather than admit uncertainty</p>
+</blockquote>
+</section>
+<section id="impact-on-learning-and-productivity" class="level3">
+<h3 class="anchored" data-anchor-id="impact-on-learning-and-productivity">2. Impact on Learning and Productivity</h3>
+<p><strong>Learning concerns:</strong> - 2025 study showed adults using ChatGPT for essays were <strong>consistently outperformed</strong> by those writing without AI - <strong>Significantly lower brain engagement</strong> when using AI assistance</p>
+<p><strong>Productivity paradox:</strong> - Study of experienced developers (5+ years) found AI tools actually <strong>reduced productivity</strong> - Time spent on prompting, reviewing AI responses, and being idle - Less time actually coding and problem-solving</p>
+</section>
+<section id="data-privacy-and-legal-issues" class="level3">
+<h3 class="anchored" data-anchor-id="data-privacy-and-legal-issues">3. Data Privacy and Legal Issues</h3>
+<p><strong>Critical concerns for bioinformatics:</strong> - <strong>Biological data is highly sensitive</strong> - Often legally protected - <strong>Terms of Service violations</strong> - Many users unknowingly share protected data - <strong>Copyright issues</strong> - Legal battles over training data usage - <strong>GDPR compliance</strong> - Need for compliant tools</p>
+<p><strong>Best practices:</strong> - Check Terms of Service explicitly and frequently - Use GDPR-compliant tools when possible - Share data descriptions, not actual datasets - Be wary of browser extensions that steal personal data</p>
+</section>
+<section id="environmental-impact" class="level3">
+<h3 class="anchored" data-anchor-id="environmental-impact">4. Environmental Impact</h3>
+<p><strong>Resource consumption:</strong> - Data centers use more electricity than many countries - Massive water requirements for cooling - Built near poor communities, often draining local resources</p>
+<p><strong>Example:</strong> Saying “please” and “thank you” to ChatGPT has cost OpenAI tens of millions in electricity costs.</p>
+</section>
+<section id="changing-how-we-communicate" class="level3">
+<h3 class="anchored" data-anchor-id="changing-how-we-communicate">5. Changing How We Communicate</h3>
+<p>AI is already changing language patterns: - Words like “delve” and “meticulous” increasingly common in academic talks - Different AI models have distinct writing styles (idiolects) - 24% of internet content was AI-generated by end of 2023 (up from 2-3% in 2022)</p>
+</section>
+</section>
+<section id="responsible-ai-usage-guidelines" class="level2">
+<h2 class="anchored" data-anchor-id="responsible-ai-usage-guidelines">Responsible AI Usage Guidelines</h2>
+<section id="questions-to-ask-before-using-ai" class="level3">
+<h3 class="anchored" data-anchor-id="questions-to-ask-before-using-ai">Questions to Ask Before Using AI:</h3>
+<ol type="1">
+<li><strong>Am I phrasing my prompt effectively?</strong></li>
+<li><strong>Can I find this information another way?</strong></li>
+<li><strong>How much time am I actually saving?</strong></li>
+<li><strong>Do I know enough to identify AI errors?</strong></li>
+<li><strong>What are the consequences of testing AI solutions?</strong></li>
+</ol>
+</section>
+<section id="key-principles" class="level3">
+<h3 class="anchored" data-anchor-id="key-principles">Key Principles:</h3>
+<ul>
+<li><strong>Maintain curiosity</strong> - Don’t let AI replace your desire to learn</li>
+<li><strong>Seek explanations</strong> - Understand what AI tells you</li>
+<li><strong>Validate independently</strong> - Find expert sources to confirm</li>
+<li><strong>Active learning</strong> - Use AI as a tool, not a replacement for thinking</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>Remember:</strong> You don’t need AI. Before AI, you were perfectly capable of scientific work. Don’t confuse convenience with need!</p>
+</blockquote>
+</section>
+</section>
+<section id="afternoon-session---data-visualization-with-ggplot" class="level2">
+<h2 class="anchored" data-anchor-id="afternoon-session---data-visualization-with-ggplot">Afternoon Session - Data Visualization with ggplot</h2>
+<section id="introduction-to-ggplot" class="level3">
+<h3 class="anchored" data-anchor-id="introduction-to-ggplot">Introduction to ggplot</h3>
+<p>After completing downstream analyses, visualization becomes crucial for: - <strong>Results presentation</strong> - Making findings accessible - <strong>Pattern recognition</strong> - Discovering insights in data - <strong>Communication</strong> - Sharing discoveries with others</p>
+<p><a href="https://ggplot2.tidyverse.org/">ggplot2</a> is R’s powerful visualization package, part of the tidyverse ecosystem.</p>
+</section>
+<section id="ggplot-capabilities" class="level3">
+<h3 class="anchored" data-anchor-id="ggplot-capabilities">ggplot Capabilities</h3>
+<p>The package offers incredible versatility for creating: - <strong>Statistical plots</strong> - Scatter plots, histograms, box plots - <strong>Multi-dimensional visualizations</strong> - Faceting and grouping - <strong>Custom themes</strong> - Professional publication-ready graphics - <strong>Interactive elements</strong> - Enhanced user engagement</p>
+</section>
+<section id="hands-on-practice" class="level3">
+<h3 class="anchored" data-anchor-id="hands-on-practice">Hands-on Practice</h3>
+<p>We worked through practical examples using the <a href="https://nbisweden.github.io/raukr-2023/labs/ggplot/">NBIS tutorial by Roy Francis</a>, covering:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Basic ggplot structure</span></span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggplot2)</span>
+<span id="cb1-3"></span>
+<span id="cb1-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Example scatter plot</span></span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> dataset, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> variable1, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> variable2)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"My Analysis Results"</span>,</span>
+<span id="cb1-9">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"X-axis Label"</span>,</span>
+<span id="cb1-10">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Y-axis Label"</span>)</span>
+<span id="cb1-11"></span>
+<span id="cb1-12"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Advanced plotting with facets</span></span>
+<span id="cb1-13"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> dataset, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> variable1, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> variable2, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> group)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-15">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>category) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-16">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_bw</span>()</span></code></pre></div></div>
+</section>
+<section id="key-ggplot-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="key-ggplot-concepts">Key ggplot Concepts</h3>
+<ul>
+<li><strong>Grammar of Graphics</strong> - Systematic approach to building plots</li>
+<li><strong>Layered approach</strong> - Adding elements incrementally</li>
+<li><strong>Aesthetic mappings</strong> - Connecting data to visual properties</li>
+<li><strong>Geometric objects</strong> - Points, lines, bars, etc.</li>
+<li><strong>Themes and styling</strong> - Professional appearance</li>
+</ul>
+</section>
+</section>
+<section id="insights-and-connections" class="level2">
+<h2 class="anchored" data-anchor-id="insights-and-connections">Insights and Connections</h2>
+<section id="ai-and-scientific-integrity" class="level3">
+<h3 class="anchored" data-anchor-id="ai-and-scientific-integrity">AI and Scientific Integrity</h3>
+<blockquote class="blockquote">
+<p>“As scientists, we know we should use peer-reviewed resources. GPTs have been widely shown to fabricate citations.”</p>
+</blockquote>
+<p>The discussion highlighted how AI challenges traditional scientific methodology: - <strong>Verification burden</strong> - Every AI-generated citation must be checked - <strong>Personal responsibility</strong> - Users liable for AI-generated content - <strong>Quality vs.&nbsp;speed</strong> - Balancing efficiency with accuracy</p>
+</section>
+<section id="visualization-as-communication" class="level3">
+<h3 class="anchored" data-anchor-id="visualization-as-communication">Visualization as Communication</h3>
+<p>Data visualization serves as the bridge between complex analyses and understanding: - <strong>Makes patterns visible</strong> that might be hidden in raw data - <strong>Enables hypothesis generation</strong> through visual exploration - <strong>Facilitates scientific communication</strong> across disciplines</p>
+</section>
+</section>
+<section id="comparison-with-previous-days" class="level2">
+<h2 class="anchored" data-anchor-id="comparison-with-previous-days">Comparison with Previous Days</h2>
+<ul>
+<li><strong>Day 1</strong>: Data management and FAIR principles → Foundation for trustworthy research</li>
+<li><strong>Day 2</strong>: Environments and quality control → Technical reliability</li>
+<li><strong>Day 3</strong>: Nextflow and workflow management → Computational reproducibility<br>
+</li>
+<li><strong>Day 4</strong>: nf-core pipelines and RNAseq → Production bioinformatics</li>
+<li><strong>Day 5</strong>: AI ethics and visualization → Responsible analysis and communication</li>
+</ul>
+</section>
+<section id="key-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h2>
+<section id="ai-in-bioinformatics" class="level3">
+<h3 class="anchored" data-anchor-id="ai-in-bioinformatics">AI in Bioinformatics</h3>
+<ul>
+<li><strong>Critical evaluation</strong> is essential - don’t use AI as a black box</li>
+<li><strong>Understand limitations</strong> - bias, hallucinations, environmental cost</li>
+<li><strong>Maintain agency</strong> - preserve your ability to think and learn</li>
+<li><strong>Data protection</strong> - be extremely careful with sensitive biological data</li>
+</ul>
+</section>
+<section id="data-visualization" class="level3">
+<h3 class="anchored" data-anchor-id="data-visualization">Data Visualization</h3>
+<ul>
+<li><strong>ggplot mastery</strong> opens powerful communication possibilities</li>
+<li><strong>Grammar of graphics</strong> provides systematic approach to visualization</li>
+<li><strong>Practice essential</strong> - hands-on experience builds intuition</li>
+</ul>
+</section>
+</section>
+<section id="questions-for-further-exploration" class="level2">
+<h2 class="anchored" data-anchor-id="questions-for-further-exploration">Questions for Further Exploration</h2>
+<ol type="1">
+<li>How can we develop institutional policies for responsible AI use in research?</li>
+<li>What visualization techniques best serve different types of biological data?</li>
+<li>How do we balance AI efficiency with scientific rigor and learning?</li>
+</ol>
+</section>
+<section id="looking-ahead" class="level2">
+<h2 class="anchored" data-anchor-id="looking-ahead">Looking Ahead</h2>
+<p>Goals for future work: - [ ] Develop personal AI usage guidelines for research - [ ] Master advanced ggplot techniques for publication-quality figures - [ ] Practice critical evaluation of AI-generated content - [ ] Create visualization portfolio for different data types</p>
+</section>
+<section id="resources-and-references" class="level2">
+<h2 class="anchored" data-anchor-id="resources-and-references">Resources and References</h2>
+<section id="ai-resources" class="level3">
+<h3 class="anchored" data-anchor-id="ai-resources">AI Resources:</h3>
+<ul>
+<li><a href="https://www.ibm.com/think/topics/supervised-vs-unsupervised-learning">IBM: Supervised vs Unsupervised Learning</a></li>
+<li><a href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/">METR Study on AI Productivity</a></li>
+<li><a href="https://www.nature.com/articles/s41599-025-04787-y">Nature: AI in Education</a></li>
+<li><a href="https://www.nature.com/articles/s41598-023-41032-5">AI Citation Fabrication Research</a></li>
+</ul>
+</section>
+<section id="visualization-resources" class="level3">
+<h3 class="anchored" data-anchor-id="visualization-resources">Visualization Resources:</h3>
+<ul>
+<li><a href="https://ggplot2.tidyverse.org/">ggplot2 Official Documentation</a></li>
+<li><a href="https://nbisweden.github.io/raukr-2023/labs/ggplot/">NBIS ggplot Tutorial</a></li>
+<li><a href="https://r4ds.had.co.nz/data-visualisation.html">R for Data Science - ggplot Chapter</a></li>
+</ul>
+</section>
+<section id="course-materials" class="level3">
+<h3 class="anchored" data-anchor-id="course-materials">Course Materials:</h3>
+<ul>
+<li><a href="https://amrei-bp.github.io/Applied_Bioinformatics_MedBioInfo_2025/course_AI.html">AI in Bioinformatics</a></li>
+<li><a href="https://amrei-bp.github.io/Applied_Bioinformatics_MedBioInfo_2025/course_ggplot.html">ggplot Visualization</a></li>
+</ul>
+<hr>
+<p><em>Day 5 complete! A day of critical thinking and practical skills - exactly what modern bioinformatics requires.</em> 🤖📊🧬</p>
+
+
+<!-- -->
+
+</section>
+</section>
+</section>
+
+ ]]></description>
+  <category>medbioinfo</category>
+  <category>learning</category>
+  <category>data-science</category>
+  <category>AI</category>
+  <category>visualization</category>
+  <guid>https://aulund.github.io/bloggen/posts/day5/</guid>
   <pubDate>Sun, 27 Oct 2024 23:00:00 GMT</pubDate>
 </item>
 <item>
