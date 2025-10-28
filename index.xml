@@ -187,6 +187,20 @@ background-color: null;
 font-style: inherit;">'Bonjour le monde!'</span></span></code></pre></div></div>
 <p>This demonstrates: - <strong>Parameter override</strong>: <code>--greeting</code> changes the default message - <strong>Resume functionality</strong>: <code>-resume</code> allows Nextflow to skip already completed tasks - <strong>Pixi integration</strong>: Using <code>pixi run</code> to manage the environment - <strong>Flexibility</strong>: Same workflow, different input data</p>
 </section>
+<section id="nf-core-training" class="level3">
+<h3 class="anchored" data-anchor-id="nf-core-training">nf-core Training</h3>
+<p>We also worked with nf-core pipelines and quality control analysis. The training included running FastQC and MultiQC on sample data:</p>
+<section id="quality-control-reports" class="level4">
+<h4 class="anchored" data-anchor-id="quality-control-reports">Quality Control Reports</h4>
+<ul>
+<li><a href="gut_1_fastqc.html">FastQC Report - Sample 1</a> - Individual quality control report for gut sample 1</li>
+<li><a href="gut_2_fastqc.html">FastQC Report - Sample 2</a> - Individual quality control report for gut sample 2<br>
+</li>
+<li><a href="multiqc_report.html">MultiQC Report</a> - Comprehensive report combining all QC metrics</li>
+</ul>
+<p>These reports demonstrate: - <strong>FastQC analysis</strong>: Per-base quality scores, sequence composition, adapter contamination - <strong>MultiQC aggregation</strong>: Combined visualization of multiple samples - <strong>nf-core standards</strong>: Industry best practices for bioinformatics workflows</p>
+</section>
+</section>
 <section id="code-examples" class="level3">
 <h3 class="anchored" data-anchor-id="code-examples">Code Examples</h3>
 <div class="cell">

@@ -213,6 +213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#running-nextflow-hello-world" id="toc-running-nextflow-hello-world" class="nav-link" data-scroll-target="#running-nextflow-hello-world">Running Nextflow Hello World</a></li>
   <li><a href="#customizing-parameters" id="toc-customizing-parameters" class="nav-link" data-scroll-target="#customizing-parameters">Customizing Parameters</a></li>
+  <li><a href="#nf-core-training" id="toc-nf-core-training" class="nav-link" data-scroll-target="#nf-core-training">nf-core Training</a></li>
   <li><a href="#code-examples" id="toc-code-examples" class="nav-link" data-scroll-target="#code-examples">Code Examples</a></li>
   </ul></li>
   <li><a href="#challenges-and-solutions" id="toc-challenges-and-solutions" class="nav-link" data-scroll-target="#challenges-and-solutions">Challenges and Solutions</a>
@@ -343,6 +344,20 @@ WORLD!</code></pre>
 <p>One of the powerful features of Nextflow is the ability to override parameters from the command line. We can change the greeting message without modifying the script:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run hello.nf <span class="at">-resume</span> <span class="at">--greeting</span> <span class="st">'Bonjour le monde!'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This demonstrates: - <strong>Parameter override</strong>: <code>--greeting</code> changes the default message - <strong>Resume functionality</strong>: <code>-resume</code> allows Nextflow to skip already completed tasks - <strong>Pixi integration</strong>: Using <code>pixi run</code> to manage the environment - <strong>Flexibility</strong>: Same workflow, different input data</p>
+</section>
+<section id="nf-core-training" class="level3">
+<h3 class="anchored" data-anchor-id="nf-core-training">nf-core Training</h3>
+<p>We also worked with nf-core pipelines and quality control analysis. The training included running FastQC and MultiQC on sample data:</p>
+<section id="quality-control-reports" class="level4">
+<h4 class="anchored" data-anchor-id="quality-control-reports">Quality Control Reports</h4>
+<ul>
+<li><a href="gut_1_fastqc.html">FastQC Report - Sample 1</a> - Individual quality control report for gut sample 1</li>
+<li><a href="gut_2_fastqc.html">FastQC Report - Sample 2</a> - Individual quality control report for gut sample 2<br>
+</li>
+<li><a href="multiqc_report.html">MultiQC Report</a> - Comprehensive report combining all QC metrics</li>
+</ul>
+<p>These reports demonstrate: - <strong>FastQC analysis</strong>: Per-base quality scores, sequence composition, adapter contamination - <strong>MultiQC aggregation</strong>: Combined visualization of multiple samples - <strong>nf-core standards</strong>: Industry best practices for bioinformatics workflows</p>
+</section>
 </section>
 <section id="code-examples" class="level3">
 <h3 class="anchored" data-anchor-id="code-examples">Code Examples</h3>
