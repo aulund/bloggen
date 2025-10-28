@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="August Lundholm">
+<meta name="dcterms.date" content="2024-10-28">
+<meta name="description" content="Day 4 - Advanced nf-core pipelines and RNAseq analysis">
+
+<title>Day 4 of MedBioInfo – August´s mbi-blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f93c2b1f3f0577f377aefa4848a86a36.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">August´s mbi-blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <div class="quarto-title-block"><div><h1 class="title">Day 4 of MedBioInfo</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+                  <div>
+        <div class="description">
+          Day 4 - Advanced nf-core pipelines and RNAseq analysis
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">medbioinfo</div>
+                <div class="quarto-category">learning</div>
+                <div class="quarto-category">data-science</div>
+                <div class="quarto-category">nf-core</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>August Lundholm </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 28, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#day-4-of-medbioinfo" id="toc-day-4-of-medbioinfo" class="nav-link active" data-scroll-target="#day-4-of-medbioinfo">Day 4 of MedBioInfo</a>
+  <ul class="collapse">
+  <li><a href="#todays-focus" id="toc-todays-focus" class="nav-link" data-scroll-target="#todays-focus">Today’s Focus</a></li>
+  <li><a href="#morning-session---nf-core-introduction" id="toc-morning-session---nf-core-introduction" class="nav-link" data-scroll-target="#morning-session---nf-core-introduction">Morning Session - nf-core Introduction</a>
+  <ul class="collapse">
+  <li><a href="#what-makes-nf-core-special" id="toc-what-makes-nf-core-special" class="nav-link" data-scroll-target="#what-makes-nf-core-special">What makes nf-core special?</a></li>
+  <li><a href="#finding-and-evaluating-pipelines" id="toc-finding-and-evaluating-pipelines" class="nav-link" data-scroll-target="#finding-and-evaluating-pipelines">Finding and Evaluating Pipelines</a></li>
+  </ul></li>
+  <li><a href="#afternoon-session---hands-on-pipeline-testing" id="toc-afternoon-session---hands-on-pipeline-testing" class="nav-link" data-scroll-target="#afternoon-session---hands-on-pipeline-testing">Afternoon Session - Hands-on Pipeline Testing</a>
+  <ul class="collapse">
+  <li><a href="#setting-up-the-environment" id="toc-setting-up-the-environment" class="nav-link" data-scroll-target="#setting-up-the-environment">Setting Up the Environment</a></li>
+  <li><a href="#testing-the-setup" id="toc-testing-the-setup" class="nav-link" data-scroll-target="#testing-the-setup">Testing the Setup</a></li>
+  <li><a href="#configuration-profile-setup" id="toc-configuration-profile-setup" class="nav-link" data-scroll-target="#configuration-profile-setup">Configuration Profile Setup</a></li>
+  <li><a href="#running-test-pipeline" id="toc-running-test-pipeline" class="nav-link" data-scroll-target="#running-test-pipeline">Running Test Pipeline</a></li>
+  </ul></li>
+  <li><a href="#advanced-topic---rnaseq-pipeline" id="toc-advanced-topic---rnaseq-pipeline" class="nav-link" data-scroll-target="#advanced-topic---rnaseq-pipeline">Advanced Topic - RNAseq Pipeline</a>
+  <ul class="collapse">
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation">Data Preparation</a></li>
+  <li><a href="#nf-core-launch-configuration" id="toc-nf-core-launch-configuration" class="nav-link" data-scroll-target="#nf-core-launch-configuration">nf-core Launch Configuration</a></li>
+  <li><a href="#running-the-full-pipeline" id="toc-running-the-full-pipeline" class="nav-link" data-scroll-target="#running-the-full-pipeline">Running the Full Pipeline</a></li>
+  </ul></li>
+  <li><a href="#key-learnings" id="toc-key-learnings" class="nav-link" data-scroll-target="#key-learnings">Key Learnings</a>
+  <ul class="collapse">
+  <li><a href="#technical-skills" id="toc-technical-skills" class="nav-link" data-scroll-target="#technical-skills">Technical Skills</a></li>
+  <li><a href="#nf-core-ecosystem-understanding" id="toc-nf-core-ecosystem-understanding" class="nav-link" data-scroll-target="#nf-core-ecosystem-understanding">nf-core Ecosystem Understanding</a></li>
+  </ul></li>
+  <li><a href="#challenges-and-solutions" id="toc-challenges-and-solutions" class="nav-link" data-scroll-target="#challenges-and-solutions">Challenges and Solutions</a>
+  <ul class="collapse">
+  <li><a href="#challenge-1" id="toc-challenge-1" class="nav-link" data-scroll-target="#challenge-1">Challenge 1</a></li>
+  <li><a href="#challenge-2" id="toc-challenge-2" class="nav-link" data-scroll-target="#challenge-2">Challenge 2</a></li>
+  <li><a href="#challenge-3" id="toc-challenge-3" class="nav-link" data-scroll-target="#challenge-3">Challenge 3</a></li>
+  </ul></li>
+  <li><a href="#insights-and-connections" id="toc-insights-and-connections" class="nav-link" data-scroll-target="#insights-and-connections">Insights and Connections</a></li>
+  <li><a href="#comparison-with-previous-days" id="toc-comparison-with-previous-days" class="nav-link" data-scroll-target="#comparison-with-previous-days">Comparison with Previous Days</a></li>
+  <li><a href="#questions-for-further-exploration" id="toc-questions-for-further-exploration" class="nav-link" data-scroll-target="#questions-for-further-exploration">Questions for Further Exploration</a></li>
+  <li><a href="#looking-ahead" id="toc-looking-ahead" class="nav-link" data-scroll-target="#looking-ahead">Looking Ahead</a></li>
+  <li><a href="#resources-and-references" id="toc-resources-and-references" class="nav-link" data-scroll-target="#resources-and-references">Resources and References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="day-4-of-medbioinfo" class="level1">
+<h1>Day 4 of MedBioInfo</h1>
+<p>Day 4 brought us deeper into the nf-core ecosystem! Today we moved from basic Nextflow to advanced pipeline usage with real biological data.</p>
+<section id="todays-focus" class="level2">
+<h2 class="anchored" data-anchor-id="todays-focus">Today’s Focus</h2>
+<p>Today we worked with: - nf-core pipeline introduction and evaluation - Testing pipelines with built-in test data<br>
+- Running the nf-core/rnaseq pipeline on real data - Understanding pipeline configuration and job submission</p>
+</section>
+<section id="morning-session---nf-core-introduction" class="level2">
+<h2 class="anchored" data-anchor-id="morning-session---nf-core-introduction">Morning Session - nf-core Introduction</h2>
+<section id="what-makes-nf-core-special" class="level3">
+<h3 class="anchored" data-anchor-id="what-makes-nf-core-special">What makes nf-core special?</h3>
+<p>The nf-core community provides: - <strong>Standardized pipelines</strong> for many bioinformatics workflows - <strong>Extensive documentation</strong> following consistent guidelines - <strong>Automatic input validation</strong> through the nf-core launcher - <strong>Consistent structure</strong> across all pipelines - <strong>Open source development</strong> by volunteer community</p>
+</section>
+<section id="finding-and-evaluating-pipelines" class="level3">
+<h3 class="anchored" data-anchor-id="finding-and-evaluating-pipelines">Finding and Evaluating Pipelines</h3>
+<p>We explored the <a href="https://nf-co.re/">nf-core homepage</a> and learned to evaluate pipelines by checking: - <strong>Usage documentation</strong> - understanding input requirements - <strong>Parameters</strong> - available customization options<br>
+- <strong>Output</strong> - expected results and file formats - <strong>Pipeline suitability</strong> for our specific data types</p>
+</section>
+</section>
+<section id="afternoon-session---hands-on-pipeline-testing" class="level2">
+<h2 class="anchored" data-anchor-id="afternoon-session---hands-on-pipeline-testing">Afternoon Session - Hands-on Pipeline Testing</h2>
+<section id="setting-up-the-environment" class="level3">
+<h3 class="anchored" data-anchor-id="setting-up-the-environment">Setting Up the Environment</h3>
+<p>First, we created a dedicated pixi environment for nf-core work:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> init nextflow_test <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> nextflow_test</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> add nextflow nf-core</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="testing-the-setup" class="level3">
+<h3 class="anchored" data-anchor-id="testing-the-setup">Testing the Setup</h3>
+<p>We verified our installation worked correctly:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow <span class="at">-version</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nf-core <span class="at">--help</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run hello</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Expected output:</p>
+<pre><code>N E X T F L O W
+version 25.04.7 build 5955
+created 08-09-2025 13:29 UTC (15:29 CEST)
+cite doi:10.1038/nbt.3820
+http://nextflow.io</code></pre>
+</section>
+<section id="configuration-profile-setup" class="level3">
+<h3 class="anchored" data-anchor-id="configuration-profile-setup">Configuration Profile Setup</h3>
+<p>We downloaded the HPC2N configuration file for server-specific settings:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/hpc2n.config</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Key configuration parameters: - <code>max_memory = 128.GB</code> - <code>max_cpus = 28</code> - <code>max_time = 168.h</code> - <code>executor = 'slurm'</code></p>
+</section>
+<section id="running-test-pipeline" class="level3">
+<h3 class="anchored" data-anchor-id="running-test-pipeline">Running Test Pipeline</h3>
+<p>We tested the Sarek variant calling pipeline with built-in test data:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run nf-core/sarek <span class="at">-profile</span> test <span class="at">--outdir</span> sarek_test <span class="at">-c</span> hpc2n.config</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Command breakdown: - <code>pixi run</code> - Use our pixi environment - <code>nextflow run</code> - Execute with Nextflow - <code>nf-core/sarek</code> - Pipeline name/location - <code>-profile test</code> - Use built-in test data - <code>--outdir sarek_test</code> - Output directory - <code>-c hpc2n.config</code> - Server configuration file</p>
+<p>The test run completed in ~3.5 minutes, demonstrating successful setup.</p>
+</section>
+</section>
+<section id="advanced-topic---rnaseq-pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="advanced-topic---rnaseq-pipeline">Advanced Topic - RNAseq Pipeline</h2>
+<section id="data-preparation" class="level3">
+<h3 class="anchored" data-anchor-id="data-preparation">Data Preparation</h3>
+<p>For real analysis, we worked with RNAseq data located at:</p>
+<pre><code>medbioinfo2025/common_data/RNAseq</code></pre>
+<p>We created symbolic links to organize our data:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> data</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> data</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-s</span> ../../common_data/RNAseq/<span class="pp">*</span>.fastq.gz .</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Project structure:</p>
+<pre><code>.
+├── data
+│   ├── SRR5223504_1.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223504_1.fastq.gz
+│   ├── SRR5223504_2.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223504_2.fastq.gz
+│   ├── SRR5223517_1.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223517_1.fastq.gz
+│   └── ... (additional samples)
+├── pixi.lock
+└── pixi.toml</code></pre>
+</section>
+<section id="nf-core-launch-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="nf-core-launch-configuration">nf-core Launch Configuration</h3>
+<p>We used the nf-core launcher to configure the RNAseq pipeline:</p>
+<ol type="1">
+<li><strong>Working and results directories</strong> - Set absolute paths</li>
+<li><strong>Input CSV file</strong> - Created samplesheet according to pipeline requirements<br>
+</li>
+<li><strong>Reference genome</strong> - Used updated human genome references</li>
+<li><strong>Resume option</strong> - Enabled for fault tolerance</li>
+</ol>
+</section>
+<section id="running-the-full-pipeline" class="level3">
+<h3 class="anchored" data-anchor-id="running-the-full-pipeline">Running the Full Pipeline</h3>
+<p>Two execution methods were available:</p>
+<section id="direct-execution" class="level4">
+<h4 class="anchored" data-anchor-id="direct-execution">Direct execution:</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run nf-core/rnaseq <span class="at">-r</span> 3.19.0 <span class="at">-resume</span> <span class="at">-params-file</span> nf-params.json <span class="at">-c</span> hpc2n.config</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="batch-submission" class="level4">
+<h4 class="anchored" data-anchor-id="batch-submission">Batch submission:</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash -l</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -A our_proj_allocation</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -n 5</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -t 24:00:00</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="ex">/your_home_directory/.pixi/bin/pixi</span> run nextflow run nf-core/rnaseq <span class="at">-r</span> 3.19.0 <span class="at">-params-file</span> /your_path/nf-params.json <span class="at">-c</span> server.config</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+</section>
+<section id="key-learnings" class="level2">
+<h2 class="anchored" data-anchor-id="key-learnings">Key Learnings</h2>
+<section id="technical-skills" class="level3">
+<h3 class="anchored" data-anchor-id="technical-skills">Technical Skills</h3>
+<ul>
+<li><strong>Pipeline evaluation</strong> - How to assess nf-core pipelines for your data</li>
+<li><strong>Environment management</strong> - Using pixi for reproducible setups</li>
+<li><strong>Configuration management</strong> - Server-specific settings and parameter files</li>
+<li><strong>Job submission</strong> - Both interactive and batch execution methods</li>
+<li><strong>Data organization</strong> - Proper file linking and project structure</li>
+</ul>
+</section>
+<section id="nf-core-ecosystem-understanding" class="level3">
+<h3 class="anchored" data-anchor-id="nf-core-ecosystem-understanding">nf-core Ecosystem Understanding</h3>
+<ul>
+<li><strong>Community-driven development</strong> - Volunteer-maintained pipelines</li>
+<li><strong>Standardization benefits</strong> - Consistent documentation and structure</li>
+<li><strong>Quality control importance</strong> - Understanding pipeline suitability for data</li>
+<li><strong>Reproducibility features</strong> - Parameter files and configuration tracking</li>
+</ul>
+</section>
+</section>
+<section id="challenges-and-solutions" class="level2">
+<h2 class="anchored" data-anchor-id="challenges-and-solutions">Challenges and Solutions</h2>
+<section id="challenge-1" class="level3">
+<h3 class="anchored" data-anchor-id="challenge-1">Challenge 1</h3>
+<p><strong>Problem</strong>: Understanding which pipeline is suitable for my specific data type<br>
+<strong>Solution</strong>: Systematic evaluation using nf-core documentation sections (Usage, Parameters, Output)</p>
+</section>
+<section id="challenge-2" class="level3">
+<h3 class="anchored" data-anchor-id="challenge-2">Challenge 2</h3>
+<p><strong>Problem</strong>: Configuration file setup for server-specific requirements<br>
+<strong>Solution</strong>: Download and customize HPC2N configuration template with appropriate resource limits</p>
+</section>
+<section id="challenge-3" class="level3">
+<h3 class="anchored" data-anchor-id="challenge-3">Challenge 3</h3>
+<p><strong>Problem</strong>: Managing complex parameter files for pipeline runs<br>
+<strong>Solution</strong>: Use nf-core launcher to generate JSON parameter files automatically</p>
+</section>
+</section>
+<section id="insights-and-connections" class="level2">
+<h2 class="anchored" data-anchor-id="insights-and-connections">Insights and Connections</h2>
+<blockquote class="blockquote">
+<p>“nf-core transforms bioinformatics from custom scripting to standardized, reproducible workflows”</p>
+</blockquote>
+<ul>
+<li><strong>Building on Day 3</strong>: We moved from basic Nextflow concepts to production-ready pipelines</li>
+<li><strong>Real-world application</strong>: Working with actual RNAseq data instead of toy examples<br>
+</li>
+<li><strong>Community aspect</strong>: Understanding the collaborative nature of modern bioinformatics</li>
+<li><strong>Quality focus</strong>: Emphasis on validation and understanding rather than black-box usage</li>
+</ul>
+</section>
+<section id="comparison-with-previous-days" class="level2">
+<h2 class="anchored" data-anchor-id="comparison-with-previous-days">Comparison with Previous Days</h2>
+<ul>
+<li><strong>Day 1</strong>: Data management and FAIR principles → Foundation for reproducible research</li>
+<li><strong>Day 2</strong>: Environments and quality control → Tools for reliable analysis</li>
+<li><strong>Day 3</strong>: Nextflow and workflow management → Core workflow technology</li>
+<li><strong>Day 4</strong>: nf-core pipelines and RNAseq → Production bioinformatics applications</li>
+</ul>
+</section>
+<section id="questions-for-further-exploration" class="level2">
+<h2 class="anchored" data-anchor-id="questions-for-further-exploration">Questions for Further Exploration</h2>
+<ol type="1">
+<li>How do I evaluate if a pipeline is actively maintained and suitable for my research?</li>
+<li>What are best practices for customizing nf-core pipelines for specific research needs?</li>
+<li>How can I contribute back to the nf-core community with improvements or new modules?</li>
+</ol>
+</section>
+<section id="looking-ahead" class="level2">
+<h2 class="anchored" data-anchor-id="looking-ahead">Looking Ahead</h2>
+<p>Goals for Day 5: - [ ] Analyze RNAseq pipeline output in detail - [ ] Explore other nf-core pipelines relevant to my research - [ ] Practice parameter optimization for real datasets</p>
+</section>
+<section id="resources-and-references" class="level2">
+<h2 class="anchored" data-anchor-id="resources-and-references">Resources and References</h2>
+<ul>
+<li><a href="https://nf-co.re/">nf-core homepage</a></li>
+<li><a href="https://nf-co.re/rnaseq/3.19.0/">nf-core/rnaseq pipeline</a></li>
+<li><a href="https://nf-co.re/sarek/3.4.2/">nf-core/sarek pipeline</a></li>
+<li><a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/hpc2n.config">HPC2N configuration files</a></li>
+<li><a href="https://amrei-bp.github.io/Applied_Bioinformatics_MedBioInfo_2025/">Course materials</a></li>
+</ul>
+<hr>
+<p><em>Day 4 complete! From simple workflows to production pipelines - the power of standardized bioinformatics is incredible.</em> 🧬🚀</p>
+
+
+<!-- -->
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/aulund\.github\.io\/bloggen");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Day 4 of MedBioInfo"</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2024-10-28</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [medbioinfo, learning, data-science, nf-core]</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "August Lundholm"</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Day 4 - Advanced nf-core pipelines and RNAseq analysis"</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="an">draft:</span><span class="co"> false</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="fu"># Day 4 of MedBioInfo</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>Day 4 brought us deeper into the nf-core ecosystem! Today we moved from basic Nextflow to advanced pipeline usage with real biological data.</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="fu">## Today's Focus</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>Today we worked with:</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>nf-core pipeline introduction and evaluation</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Testing pipelines with built-in test data  </span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Running the nf-core/rnaseq pipeline on real data</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Understanding pipeline configuration and job submission</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="fu">## Morning Session - nf-core Introduction</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="fu">### What makes nf-core special?</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>The nf-core community provides:</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Standardized pipelines** for many bioinformatics workflows</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Extensive documentation** following consistent guidelines</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Automatic input validation** through the nf-core launcher</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Consistent structure** across all pipelines</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Open source development** by volunteer community</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a><span class="fu">### Finding and Evaluating Pipelines</span></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>We explored the <span class="co">[</span><span class="ot">nf-core homepage</span><span class="co">](https://nf-co.re/)</span> and learned to evaluate pipelines by checking:</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Usage documentation** - understanding input requirements</span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Parameters** - available customization options  </span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Output** - expected results and file formats</span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Pipeline suitability** for our specific data types</span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a><span class="fu">## Afternoon Session - Hands-on Pipeline Testing</span></span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a><span class="fu">### Setting Up the Environment</span></span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>First, we created a dedicated pixi environment for nf-core work:</span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
+<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> init nextflow_test <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda</span>
+<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> nextflow_test</span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> add nextflow nf-core</span>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a><span class="fu">### Testing the Setup</span></span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a>We verified our installation worked correctly:</span>
+<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
+<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow <span class="at">-version</span></span>
+<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nf-core <span class="at">--help</span></span>
+<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run hello</span>
+<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a>Expected output:</span>
+<span id="cb11-64"><a href="#cb11-64" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-65"><a href="#cb11-65" aria-hidden="true" tabindex="-1"></a><span class="in">N E X T F L O W</span></span>
+<span id="cb11-66"><a href="#cb11-66" aria-hidden="true" tabindex="-1"></a><span class="in">version 25.04.7 build 5955</span></span>
+<span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a><span class="in">created 08-09-2025 13:29 UTC (15:29 CEST)</span></span>
+<span id="cb11-68"><a href="#cb11-68" aria-hidden="true" tabindex="-1"></a><span class="in">cite doi:10.1038/nbt.3820</span></span>
+<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a><span class="in">http://nextflow.io</span></span>
+<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a><span class="fu">### Configuration Profile Setup</span></span>
+<span id="cb11-73"><a href="#cb11-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-74"><a href="#cb11-74" aria-hidden="true" tabindex="-1"></a>We downloaded the HPC2N configuration file for server-specific settings:</span>
+<span id="cb11-75"><a href="#cb11-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
+<span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/hpc2n.config</span>
+<span id="cb11-78"><a href="#cb11-78" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a>Key configuration parameters:</span>
+<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`max_memory = 128.GB`</span></span>
+<span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`max_cpus = 28`</span> </span>
+<span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`max_time = 168.h`</span></span>
+<span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`executor = 'slurm'`</span></span>
+<span id="cb11-85"><a href="#cb11-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-86"><a href="#cb11-86" aria-hidden="true" tabindex="-1"></a><span class="fu">### Running Test Pipeline</span></span>
+<span id="cb11-87"><a href="#cb11-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-88"><a href="#cb11-88" aria-hidden="true" tabindex="-1"></a>We tested the Sarek variant calling pipeline with built-in test data:</span>
+<span id="cb11-89"><a href="#cb11-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-90"><a href="#cb11-90" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
+<span id="cb11-91"><a href="#cb11-91" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run nf-core/sarek <span class="at">-profile</span> test <span class="at">--outdir</span> sarek_test <span class="at">-c</span> hpc2n.config</span>
+<span id="cb11-92"><a href="#cb11-92" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-93"><a href="#cb11-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-94"><a href="#cb11-94" aria-hidden="true" tabindex="-1"></a>Command breakdown:</span>
+<span id="cb11-95"><a href="#cb11-95" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`pixi run`</span> - Use our pixi environment</span>
+<span id="cb11-96"><a href="#cb11-96" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`nextflow run`</span> - Execute with Nextflow</span>
+<span id="cb11-97"><a href="#cb11-97" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`nf-core/sarek`</span> - Pipeline name/location</span>
+<span id="cb11-98"><a href="#cb11-98" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`-profile test`</span> - Use built-in test data</span>
+<span id="cb11-99"><a href="#cb11-99" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`--outdir sarek_test`</span> - Output directory</span>
+<span id="cb11-100"><a href="#cb11-100" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`-c hpc2n.config`</span> - Server configuration file</span>
+<span id="cb11-101"><a href="#cb11-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-102"><a href="#cb11-102" aria-hidden="true" tabindex="-1"></a>The test run completed in ~3.5 minutes, demonstrating successful setup.</span>
+<span id="cb11-103"><a href="#cb11-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-104"><a href="#cb11-104" aria-hidden="true" tabindex="-1"></a><span class="fu">## Advanced Topic - RNAseq Pipeline</span></span>
+<span id="cb11-105"><a href="#cb11-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-106"><a href="#cb11-106" aria-hidden="true" tabindex="-1"></a><span class="fu">### Data Preparation</span></span>
+<span id="cb11-107"><a href="#cb11-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-108"><a href="#cb11-108" aria-hidden="true" tabindex="-1"></a>For real analysis, we worked with RNAseq data located at:</span>
+<span id="cb11-109"><a href="#cb11-109" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-110"><a href="#cb11-110" aria-hidden="true" tabindex="-1"></a><span class="in">medbioinfo2025/common_data/RNAseq</span></span>
+<span id="cb11-111"><a href="#cb11-111" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-112"><a href="#cb11-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-113"><a href="#cb11-113" aria-hidden="true" tabindex="-1"></a>We created symbolic links to organize our data:</span>
+<span id="cb11-114"><a href="#cb11-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-115"><a href="#cb11-115" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
+<span id="cb11-116"><a href="#cb11-116" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> data</span>
+<span id="cb11-117"><a href="#cb11-117" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> data</span>
+<span id="cb11-118"><a href="#cb11-118" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-s</span> ../../common_data/RNAseq/<span class="pp">*</span>.fastq.gz .</span>
+<span id="cb11-119"><a href="#cb11-119" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span>
+<span id="cb11-120"><a href="#cb11-120" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-121"><a href="#cb11-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-122"><a href="#cb11-122" aria-hidden="true" tabindex="-1"></a>Project structure:</span>
+<span id="cb11-123"><a href="#cb11-123" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-124"><a href="#cb11-124" aria-hidden="true" tabindex="-1"></a><span class="in">.</span></span>
+<span id="cb11-125"><a href="#cb11-125" aria-hidden="true" tabindex="-1"></a><span class="in">├── data</span></span>
+<span id="cb11-126"><a href="#cb11-126" aria-hidden="true" tabindex="-1"></a><span class="in">│   ├── SRR5223504_1.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223504_1.fastq.gz</span></span>
+<span id="cb11-127"><a href="#cb11-127" aria-hidden="true" tabindex="-1"></a><span class="in">│   ├── SRR5223504_2.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223504_2.fastq.gz</span></span>
+<span id="cb11-128"><a href="#cb11-128" aria-hidden="true" tabindex="-1"></a><span class="in">│   ├── SRR5223517_1.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223517_1.fastq.gz</span></span>
+<span id="cb11-129"><a href="#cb11-129" aria-hidden="true" tabindex="-1"></a><span class="in">│   └── ... (additional samples)</span></span>
+<span id="cb11-130"><a href="#cb11-130" aria-hidden="true" tabindex="-1"></a><span class="in">├── pixi.lock</span></span>
+<span id="cb11-131"><a href="#cb11-131" aria-hidden="true" tabindex="-1"></a><span class="in">└── pixi.toml</span></span>
+<span id="cb11-132"><a href="#cb11-132" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-133"><a href="#cb11-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-134"><a href="#cb11-134" aria-hidden="true" tabindex="-1"></a><span class="fu">### nf-core Launch Configuration</span></span>
+<span id="cb11-135"><a href="#cb11-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-136"><a href="#cb11-136" aria-hidden="true" tabindex="-1"></a>We used the nf-core launcher to configure the RNAseq pipeline:</span>
+<span id="cb11-137"><a href="#cb11-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-138"><a href="#cb11-138" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Working and results directories** - Set absolute paths</span>
+<span id="cb11-139"><a href="#cb11-139" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Input CSV file** - Created samplesheet according to pipeline requirements  </span>
+<span id="cb11-140"><a href="#cb11-140" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Reference genome** - Used updated human genome references</span>
+<span id="cb11-141"><a href="#cb11-141" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Resume option** - Enabled for fault tolerance</span>
+<span id="cb11-142"><a href="#cb11-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-143"><a href="#cb11-143" aria-hidden="true" tabindex="-1"></a><span class="fu">### Running the Full Pipeline</span></span>
+<span id="cb11-144"><a href="#cb11-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-145"><a href="#cb11-145" aria-hidden="true" tabindex="-1"></a>Two execution methods were available:</span>
+<span id="cb11-146"><a href="#cb11-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-147"><a href="#cb11-147" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Direct execution:</span></span>
+<span id="cb11-148"><a href="#cb11-148" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
+<span id="cb11-149"><a href="#cb11-149" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run nf-core/rnaseq <span class="at">-r</span> 3.19.0 <span class="at">-resume</span> <span class="at">-params-file</span> nf-params.json <span class="at">-c</span> hpc2n.config</span>
+<span id="cb11-150"><a href="#cb11-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-151"><a href="#cb11-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-152"><a href="#cb11-152" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Batch submission:</span></span>
+<span id="cb11-153"><a href="#cb11-153" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
+<span id="cb11-154"><a href="#cb11-154" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash -l</span></span>
+<span id="cb11-155"><a href="#cb11-155" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -A our_proj_allocation</span></span>
+<span id="cb11-156"><a href="#cb11-156" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -n 5</span></span>
+<span id="cb11-157"><a href="#cb11-157" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -t 24:00:00</span></span>
+<span id="cb11-158"><a href="#cb11-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-159"><a href="#cb11-159" aria-hidden="true" tabindex="-1"></a><span class="ex">/your_home_directory/.pixi/bin/pixi</span> run nextflow run nf-core/rnaseq <span class="at">-r</span> 3.19.0 <span class="at">-params-file</span> /your_path/nf-params.json <span class="at">-c</span> server.config</span>
+<span id="cb11-160"><a href="#cb11-160" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-161"><a href="#cb11-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-162"><a href="#cb11-162" aria-hidden="true" tabindex="-1"></a><span class="fu">## Key Learnings</span></span>
+<span id="cb11-163"><a href="#cb11-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-164"><a href="#cb11-164" aria-hidden="true" tabindex="-1"></a><span class="fu">### Technical Skills</span></span>
+<span id="cb11-165"><a href="#cb11-165" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Pipeline evaluation** - How to assess nf-core pipelines for your data</span>
+<span id="cb11-166"><a href="#cb11-166" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Environment management** - Using pixi for reproducible setups</span>
+<span id="cb11-167"><a href="#cb11-167" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Configuration management** - Server-specific settings and parameter files</span>
+<span id="cb11-168"><a href="#cb11-168" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Job submission** - Both interactive and batch execution methods</span>
+<span id="cb11-169"><a href="#cb11-169" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Data organization** - Proper file linking and project structure</span>
+<span id="cb11-170"><a href="#cb11-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-171"><a href="#cb11-171" aria-hidden="true" tabindex="-1"></a><span class="fu">### nf-core Ecosystem Understanding</span></span>
+<span id="cb11-172"><a href="#cb11-172" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Community-driven development** - Volunteer-maintained pipelines</span>
+<span id="cb11-173"><a href="#cb11-173" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Standardization benefits** - Consistent documentation and structure</span>
+<span id="cb11-174"><a href="#cb11-174" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Quality control importance** - Understanding pipeline suitability for data</span>
+<span id="cb11-175"><a href="#cb11-175" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Reproducibility features** - Parameter files and configuration tracking</span>
+<span id="cb11-176"><a href="#cb11-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-177"><a href="#cb11-177" aria-hidden="true" tabindex="-1"></a><span class="fu">## Challenges and Solutions</span></span>
+<span id="cb11-178"><a href="#cb11-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-179"><a href="#cb11-179" aria-hidden="true" tabindex="-1"></a><span class="fu">### Challenge 1</span></span>
+<span id="cb11-180"><a href="#cb11-180" aria-hidden="true" tabindex="-1"></a>**Problem**: Understanding which pipeline is suitable for my specific data type  </span>
+<span id="cb11-181"><a href="#cb11-181" aria-hidden="true" tabindex="-1"></a>**Solution**: Systematic evaluation using nf-core documentation sections (Usage, Parameters, Output)</span>
+<span id="cb11-182"><a href="#cb11-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-183"><a href="#cb11-183" aria-hidden="true" tabindex="-1"></a><span class="fu">### Challenge 2  </span></span>
+<span id="cb11-184"><a href="#cb11-184" aria-hidden="true" tabindex="-1"></a>**Problem**: Configuration file setup for server-specific requirements  </span>
+<span id="cb11-185"><a href="#cb11-185" aria-hidden="true" tabindex="-1"></a>**Solution**: Download and customize HPC2N configuration template with appropriate resource limits</span>
+<span id="cb11-186"><a href="#cb11-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-187"><a href="#cb11-187" aria-hidden="true" tabindex="-1"></a><span class="fu">### Challenge 3</span></span>
+<span id="cb11-188"><a href="#cb11-188" aria-hidden="true" tabindex="-1"></a>**Problem**: Managing complex parameter files for pipeline runs  </span>
+<span id="cb11-189"><a href="#cb11-189" aria-hidden="true" tabindex="-1"></a>**Solution**: Use nf-core launcher to generate JSON parameter files automatically</span>
+<span id="cb11-190"><a href="#cb11-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-191"><a href="#cb11-191" aria-hidden="true" tabindex="-1"></a><span class="fu">## Insights and Connections</span></span>
+<span id="cb11-192"><a href="#cb11-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-193"><a href="#cb11-193" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; "nf-core transforms bioinformatics from custom scripting to standardized, reproducible workflows"</span></span>
+<span id="cb11-194"><a href="#cb11-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-195"><a href="#cb11-195" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Building on Day 3**: We moved from basic Nextflow concepts to production-ready pipelines</span>
+<span id="cb11-196"><a href="#cb11-196" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Real-world application**: Working with actual RNAseq data instead of toy examples  </span>
+<span id="cb11-197"><a href="#cb11-197" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Community aspect**: Understanding the collaborative nature of modern bioinformatics</span>
+<span id="cb11-198"><a href="#cb11-198" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Quality focus**: Emphasis on validation and understanding rather than black-box usage</span>
+<span id="cb11-199"><a href="#cb11-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-200"><a href="#cb11-200" aria-hidden="true" tabindex="-1"></a><span class="fu">## Comparison with Previous Days</span></span>
+<span id="cb11-201"><a href="#cb11-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-202"><a href="#cb11-202" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Day 1**: Data management and FAIR principles → Foundation for reproducible research</span>
+<span id="cb11-203"><a href="#cb11-203" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Day 2**: Environments and quality control → Tools for reliable analysis</span>
+<span id="cb11-204"><a href="#cb11-204" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Day 3**: Nextflow and workflow management → Core workflow technology</span>
+<span id="cb11-205"><a href="#cb11-205" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Day 4**: nf-core pipelines and RNAseq → Production bioinformatics applications</span>
+<span id="cb11-206"><a href="#cb11-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-207"><a href="#cb11-207" aria-hidden="true" tabindex="-1"></a><span class="fu">## Questions for Further Exploration</span></span>
+<span id="cb11-208"><a href="#cb11-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-209"><a href="#cb11-209" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>How do I evaluate if a pipeline is actively maintained and suitable for my research?</span>
+<span id="cb11-210"><a href="#cb11-210" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>What are best practices for customizing nf-core pipelines for specific research needs?</span>
+<span id="cb11-211"><a href="#cb11-211" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>How can I contribute back to the nf-core community with improvements or new modules?</span>
+<span id="cb11-212"><a href="#cb11-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-213"><a href="#cb11-213" aria-hidden="true" tabindex="-1"></a><span class="fu">## Looking Ahead</span></span>
+<span id="cb11-214"><a href="#cb11-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-215"><a href="#cb11-215" aria-hidden="true" tabindex="-1"></a>Goals for Day 5:</span>
+<span id="cb11-216"><a href="#cb11-216" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Analyze RNAseq pipeline output in detail</span>
+<span id="cb11-217"><a href="#cb11-217" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Explore other nf-core pipelines relevant to my research</span>
+<span id="cb11-218"><a href="#cb11-218" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Practice parameter optimization for real datasets</span>
+<span id="cb11-219"><a href="#cb11-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-220"><a href="#cb11-220" aria-hidden="true" tabindex="-1"></a><span class="fu">## Resources and References</span></span>
+<span id="cb11-221"><a href="#cb11-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-222"><a href="#cb11-222" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">nf-core homepage</span><span class="co">](https://nf-co.re/)</span></span>
+<span id="cb11-223"><a href="#cb11-223" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">nf-core/rnaseq pipeline</span><span class="co">](https://nf-co.re/rnaseq/3.19.0/)</span></span>
+<span id="cb11-224"><a href="#cb11-224" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">nf-core/sarek pipeline</span><span class="co">](https://nf-co.re/sarek/3.4.2/)</span></span>
+<span id="cb11-225"><a href="#cb11-225" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">HPC2N configuration files</span><span class="co">](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/hpc2n.config)</span></span>
+<span id="cb11-226"><a href="#cb11-226" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Course materials</span><span class="co">](https://amrei-bp.github.io/Applied_Bioinformatics_MedBioInfo_2025/)</span></span>
+<span id="cb11-227"><a href="#cb11-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-228"><a href="#cb11-228" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb11-229"><a href="#cb11-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-230"><a href="#cb11-230" aria-hidden="true" tabindex="-1"></a>*Day 4 complete! From simple workflows to production pipelines - the power of standardized bioinformatics is incredible.* 🧬🚀</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
