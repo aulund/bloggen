@@ -285,9 +285,8 @@ WORLD!</code></pre>
 </section>
 <section id="customizing-parameters" class="level3">
 <h3 class="anchored" data-anchor-id="customizing-parameters">Customizing Parameters</h3>
-<p>One of the powerful features of Nextflow is the ability to override parameters from the command line. We can change the greeting message without modifying the script:</p>
+<p>One of the features of Nextflow is the ability to override parameters from the command line. We can change the greeting message without modifying the script:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run hello.nf <span class="at">-resume</span> <span class="at">--greeting</span> <span class="st">'Bonjour le monde!'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This demonstrates: - <strong>Parameter override</strong>: <code>--greeting</code> changes the default message - <strong>Resume functionality</strong>: <code>-resume</code> allows Nextflow to skip already completed tasks - <strong>Pixi integration</strong>: Using <code>pixi run</code> to manage the environment - <strong>Flexibility</strong>: Same workflow, different input data</p>
 </section>
 <section id="nextflow-rna-seq-pipeline" class="level3">
 <h3 class="anchored" data-anchor-id="nextflow-rna-seq-pipeline">Nextflow RNA-seq pipeline</h3>
@@ -307,7 +306,7 @@ WORLD!</code></pre>
 </li>
 <li><a href="multiqc_report.html">MultiQC Report</a> - Comprehensive report combining all QC metrics</li>
 </ul>
-<p>These reports demonstrate: - <strong>FastQC analysis</strong>: Per-base quality scores, sequence composition, adapter contamination - <strong>MultiQC aggregation</strong>: Combined visualization of multiple samples - <strong>nf-core standards</strong>: Industry best practices for bioinformatics workflows</p>
+<p>These reports demonstrate: - <strong>FastQC analysis</strong>: Per-base quality scores, sequence composition, adapter contamination - <strong>MultiQC aggregation</strong>: Combined visualization of multiple samples</p>
 <hr>
 <p>End of Day 3!</p>
 
@@ -864,42 +863,33 @@ WORLD!</code></pre>
 <span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a><span class="fu">### Customizing Parameters</span></span>
 <span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a>One of the powerful features of Nextflow is the ability to override parameters from the command line. We can change the greeting message without modifying the script:</span>
+<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a>One of the features of Nextflow is the ability to override parameters from the command line. We can change the greeting message without modifying the script:</span>
 <span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
 <span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run hello.nf <span class="at">-resume</span> <span class="at">--greeting</span> <span class="st">'Bonjour le monde!'</span></span>
 <span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a>This demonstrates:</span>
-<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Parameter override**: <span class="in">`--greeting`</span> changes the default message</span>
-<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Resume functionality**: <span class="in">`-resume`</span> allows Nextflow to skip already completed tasks</span>
-<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Pixi integration**: Using <span class="in">`pixi run`</span> to manage the environment</span>
-<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Flexibility**: Same workflow, different input data</span>
+<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a><span class="fu">### Nextflow RNA-seq pipeline</span></span>
+<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a>We also worked with building our own nextflow pipelines for quality control of rna-seq data. The training included running FastQC and MultiQC on sample data:</span>
+<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a><span class="al">![Channel Process FastQC](channel-process_fqc.png)</span>{width=80% fig-align="center"}</span>
 <span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a><span class="fu">### Nextflow RNA-seq pipeline</span></span>
+<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a>*Figure 2: Nextflow channel and process architecture for FastQC quality control. This diagram shows how input data flows through channels into FastQC processes. Each process can run independently while channels manage data flow between steps.*</span>
 <span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a>We also worked with building our own nextflow pipelines for quality control of rna-seq data. The training included running FastQC and MultiQC on sample data:</span>
+<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Quality Control Reports</span></span>
 <span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a><span class="al">![Channel Process FastQC](channel-process_fqc.png)</span>{width=80% fig-align="center"}</span>
-<span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a>*Figure 2: Nextflow channel and process architecture for FastQC quality control. This diagram shows how input data flows through channels into FastQC processes. Each process can run independently while channels manage data flow between steps.*</span>
+<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">FastQC Report - Sample 1</span><span class="co">](gut_1_fastqc.html)</span> - Individual quality control report for gut sample 1</span>
+<span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">FastQC Report - Sample 2</span><span class="co">](gut_2_fastqc.html)</span> - Individual quality control report for gut sample 2  </span>
+<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">MultiQC Report</span><span class="co">](multiqc_report.html)</span> - Comprehensive report combining all QC metrics</span>
 <span id="cb5-113"><a href="#cb5-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-114"><a href="#cb5-114" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Quality Control Reports</span></span>
-<span id="cb5-115"><a href="#cb5-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-116"><a href="#cb5-116" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">FastQC Report - Sample 1</span><span class="co">](gut_1_fastqc.html)</span> - Individual quality control report for gut sample 1</span>
-<span id="cb5-117"><a href="#cb5-117" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">FastQC Report - Sample 2</span><span class="co">](gut_2_fastqc.html)</span> - Individual quality control report for gut sample 2  </span>
-<span id="cb5-118"><a href="#cb5-118" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">MultiQC Report</span><span class="co">](multiqc_report.html)</span> - Comprehensive report combining all QC metrics</span>
+<span id="cb5-114"><a href="#cb5-114" aria-hidden="true" tabindex="-1"></a>These reports demonstrate:</span>
+<span id="cb5-115"><a href="#cb5-115" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**FastQC analysis**: Per-base quality scores, sequence composition, adapter contamination</span>
+<span id="cb5-116"><a href="#cb5-116" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**MultiQC aggregation**: Combined visualization of multiple samples</span>
+<span id="cb5-117"><a href="#cb5-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-118"><a href="#cb5-118" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb5-119"><a href="#cb5-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-120"><a href="#cb5-120" aria-hidden="true" tabindex="-1"></a>These reports demonstrate:</span>
-<span id="cb5-121"><a href="#cb5-121" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**FastQC analysis**: Per-base quality scores, sequence composition, adapter contamination</span>
-<span id="cb5-122"><a href="#cb5-122" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**MultiQC aggregation**: Combined visualization of multiple samples</span>
-<span id="cb5-123"><a href="#cb5-123" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**nf-core standards**: Industry best practices for bioinformatics workflows</span>
-<span id="cb5-124"><a href="#cb5-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-125"><a href="#cb5-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-126"><a href="#cb5-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-127"><a href="#cb5-127" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb5-128"><a href="#cb5-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-129"><a href="#cb5-129" aria-hidden="true" tabindex="-1"></a>End of Day 3!</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb5-120"><a href="#cb5-120" aria-hidden="true" tabindex="-1"></a>End of Day 3!</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
