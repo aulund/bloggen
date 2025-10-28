@@ -1,13 +1,13 @@
 ---
 title: "Day 2 of applied bioinformatics"
-date: 2024-10-27
+date: 2025-10-07
 categories: [medbioinfo, learning, data-science]
 author: "August Lundholm"
 description: "Continuing my journey through applied bioinformatics - Day 2"
 draft: false
 ---
 
----
+# Day 2 of MedBioInfo
 title: "Day 2 of MedBioInfo"
 date: 2025-10-07
 categories: [medbioinfo, learning, data-science]
