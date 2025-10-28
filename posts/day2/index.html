@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="August Lundholm">
-<meta name="dcterms.date" content="2024-10-27">
+<meta name="dcterms.date" content="2025-10-07">
 <meta name="description" content="Continuing my journey through applied bioinformatics - Day 2">
 
 <title>Day 2 of applied bioinformatics – August´s mbi-blog</title>
@@ -182,7 +182,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">October 27, 2024</p>
+        <p class="date">October 7, 2025</p>
       </div>
     </div>
     
@@ -217,6 +217,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="day-2-of-medbioinfo" class="level1">
 <h1>Day 2 of MedBioInfo</h1>
+<p>title: “Day 2 of MedBioInfo” date: 2025-10-07 categories: [medbioinfo, learning, data-science]</p>
 <p>Welcome back to my learning journey! Here are my reflections and key takeaways from day 2.</p>
 <section id="todays-focus" class="level2">
 <h2 class="anchored" data-anchor-id="todays-focus">Today’s Focus</h2>
@@ -697,7 +698,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Day 2 of applied bioinformatics"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2024-10-27</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2025-10-07</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [medbioinfo, learning, data-science]</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "August Lundholm"</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Continuing my journey through applied bioinformatics - Day 2"</span></span>
@@ -705,39 +706,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu"># Day 2 of MedBioInfo</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>Welcome back to my learning journey! Here are my reflections and key takeaways from day 2.</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">## Today's Focus</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>Today we covered four main topics:</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Introduction to environments</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Quality control with Pixi and Slurm</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Introduction to containers  </span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Quality control with containers</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction to Environments</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>Since I work with variant visualisations, large datasets, and a mix of custom scripts and publication-ready figures it’s crucial that my toolchain is consistent and reproducible across systems and collaborators. Using Pixi (or another environment manager) keeps everything isolated and version-controlled, so I don’t end up with “it works on my computer” issues.</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>Having a dedicated environment for each project makes it easier to share my setup — others can just clone the repository and get the exact same tools and versions. It also prevents older pipelines or scripts from breaking when dependencies update.</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>When I prepare figures or analyses for papers, Pixi can help me keep track of software versions, channels, and dependencies — which makes the “Methods” section reproducible.</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>Pixi supports multiple platforms and I can test everything locally and then run it on the cluster with minimal risk of environment mismatch.</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="fu">## Quality Control with Pixi and Slurm</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>title: "Day 2 of MedBioInfo"</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>date: 2025-10-07</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>categories: <span class="co">[</span><span class="ot">medbioinfo, learning, data-science</span><span class="co">]</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>Welcome back to my learning journey! Here are my reflections and key takeaways from day 2.</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## Today's Focus</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>Today we covered four main topics:</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Introduction to environments</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Quality control with Pixi and Slurm</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Introduction to containers  </span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Quality control with containers</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction to Environments</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>Since I work with variant visualisations, large datasets, and a mix of custom scripts and publication-ready figures it’s crucial that my toolchain is consistent and reproducible across systems and collaborators. Using Pixi (or another environment manager) keeps everything isolated and version-controlled, so I don’t end up with “it works on my computer” issues.</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>Having a dedicated environment for each project makes it easier to share my setup — others can just clone the repository and get the exact same tools and versions. It also prevents older pipelines or scripts from breaking when dependencies update.</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>When I prepare figures or analyses for papers, Pixi can help me keep track of software versions, channels, and dependencies — which makes the “Methods” section reproducible.</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>Pixi supports multiple platforms and I can test everything locally and then run it on the cluster with minimal risk of environment mismatch.</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>Quality control isn’t the most exciting part of bioinformatics, but it’s one of the most important. If the sequencing data is bad, everything that comes after will be unreliable. Running FastQC and MultiQC early on saves time later, even if the results themselves are pretty basic.</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>It also makes me think more about how I organize things. Having a clear directory structure and running everything inside a controlled environment like Pixi helps keep track of what was actually done. It’s easy to lose that overview once the project grows.</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>Working with SLURM and screen is a bit clunky at first, but it’s useful to understand how jobs run on the cluster. Being able to rerun things reproducibly — same data, same tools, same parameters — is really the main point.</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="fu">##  Introduction to Containers</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>Reproducibility is a constant problem in bioinformatics, and containers make it more manageable. They keep analyses stable even when systems or dependencies change. It’s also a practical way to share workflows without needing to explain every installation step.</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>Building containers from scratch feels a bit advanced, but understanding how they work makes the overall workflow more reliable.</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">## Quality Control with Pixi and Slurm</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>Quality control isn’t the most exciting part of bioinformatics, but it’s one of the most important. If the sequencing data is bad, everything that comes after will be unreliable. Running FastQC and MultiQC early on saves time later, even if the results themselves are pretty basic.</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>It also makes me think more about how I organize things. Having a clear directory structure and running everything inside a controlled environment like Pixi helps keep track of what was actually done. It’s easy to lose that overview once the project grows.</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>Working with SLURM and screen is a bit clunky at first, but it’s useful to understand how jobs run on the cluster. Being able to rerun things reproducibly — same data, same tools, same parameters — is really the main point.</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="fu">##  Introduction to Containers</span></span>
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>*That's all for today</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>Reproducibility is a constant problem in bioinformatics, and containers make it more manageable. They keep analyses stable even when systems or dependencies change. It’s also a practical way to share workflows without needing to explain every installation step.</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>Building containers from scratch feels a bit advanced, but understanding how they work makes the overall workflow more reliable.</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>*That's all for today</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
