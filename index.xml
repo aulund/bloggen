@@ -81,16 +81,6 @@
 </figure>
 </div>
 <p><em>Figure 1: Nextflow workflow management system overview. This diagram illustrates the core concepts of Nextflow including processes, channels, and how data flows through a computational pipeline. Nextflow enables scalable and portable bioinformatics workflows.</em></p>
-</section>
-<section id="nextflow-channel-and-process" class="level2">
-<h2 class="anchored" data-anchor-id="nextflow-channel-and-process">Nextflow Channel and Process</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://aulund.github.io/bloggen/posts/day3/channel-process_fqc.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption>Channel Process FastQC</figcaption>
-</figure>
-</div>
-<p><em>Figure 2: Nextflow channel and process architecture for FastQC quality control. This diagram shows how input data flows through channels into FastQC processes, demonstrating the modular and parallel nature of Nextflow workflows. Each process can run independently while channels manage data flow between steps.</em></p>
 <section id="running-nextflow-hello-world" class="level3">
 <h3 class="anchored" data-anchor-id="running-nextflow-hello-world">Running Nextflow Hello World</h3>
 <p>Today we ran our first Nextflow script! Here’s the complete <code>hello.nf</code> script:</p>
@@ -163,6 +153,13 @@ font-style: inherit;">'Bonjour le monde!'</span></span></code></pre></div></div>
 <section id="nextflow-rna-seq-pipeline" class="level3">
 <h3 class="anchored" data-anchor-id="nextflow-rna-seq-pipeline">Nextflow RNA-seq pipeline</h3>
 <p>We also worked with building our own nextflow pipelines for quality control of rna-seq data. The training included running FastQC and MultiQC on sample data:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://aulund.github.io/bloggen/posts/day3/channel-process_fqc.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Channel Process FastQC</figcaption>
+</figure>
+</div>
+<p><em>Figure 2: Nextflow channel and process architecture for FastQC quality control. This diagram shows how input data flows through channels into FastQC processes. Each process can run independently while channels manage data flow between steps.</em></p>
 <section id="quality-control-reports" class="level4">
 <h4 class="anchored" data-anchor-id="quality-control-reports">Quality Control Reports</h4>
 <ul>
