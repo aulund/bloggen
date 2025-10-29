@@ -145,6 +145,84 @@ ggplot(data = dataset, aes(x = variable1, y = variable2, color = group)) +
 
 ![Faceted scatter plot with color grouping](faceted_scatter_plot.png){fig-alt="Advanced scatter plot with color grouping and faceting by category, demonstrating ggplot's layered approach." width="80%"}
 
+### Advanced Tutorial Examples
+
+We also worked through two complex examples from the NBIS tutorial that demonstrate professional-level data visualization techniques:
+
+#### 1. Economist-Style Corruption vs Development Scatter Plot
+
+This recreation of [The Economist's corruption analysis](https://www.economist.com/blogs/dailychart/2011/12/corruption-and-development) demonstrates advanced ggplot2 techniques:
+
+```r
+# Read and process the data
+ec <- read.csv("data_economist.csv", header = TRUE)
+
+# Refactor regions with line breaks for legend
+ec$Region <- factor(ec$Region,
+                    levels = c("EU W. Europe", "Americas", "Asia Pacific",
+                              "East EU Cemt Asia", "MENA", "SSA"),
+                    labels = c("OECD", "Americas", "Asia &\nOceania",
+                              "Central &\nEastern Europe",
+                              "Middle East &\nNorth Africa",
+                              "Sub-Saharan\nAfrica"))
+
+# Create sophisticated scatter plot with trend line
+ggplot(ec, aes(x = CPI, y = HDI, color = Region)) +
+  geom_smooth(aes(fill = "red"), method = "lm", formula = y ~ poly(x, 2), 
+              se = FALSE, color = "red", linewidth = 0.6) +
+  geom_point(shape = 21, size = 3, stroke = 0.8, fill = "white") +
+  geom_text(data = subset(ec, Country %in% labels), aes(label = Country),
+            color = "black", size = 2.5) +
+  scale_color_manual(values = c("#23576E", "#099FDB", "#29B00E", 
+                               "#208F84", "#F55840", "#924F3E")) +
+  labs(title = "Corruption and human development") +
+  theme_minimal()
+```
+
+![Corruption and Human Development Analysis](tutorial_corruption_plot.png){fig-alt="Professional recreation of The Economist's corruption vs human development scatter plot showing the relationship between corruption perceptions and quality of life across countries." width="90%"}
+
+#### 2. Wall Street Journal-Style Measles Heatmap
+
+This recreation of [WSJ's measles vaccination impact visualization](http://graphics.wsj.com/infectious-diseases-and-vaccines/) shows complex data transformation and heatmap creation:
+
+```r
+# Read and transform the complex dataset
+me <- read.csv("data_wsj.csv", header = TRUE, stringsAsFactors = FALSE, skip = 2)
+
+# Custom function for handling missing data
+fun1 <- function(x) ifelse(all(is.na(x)), NA, sum(x, na.rm = TRUE))
+
+# Complex data transformation pipeline
+me3 <- me %>%
+  gather(key = state, value = value, -YEAR, -WEEK) %>%
+  mutate(value = str_replace(value, "^-$", NA_character_),
+         value = as.numeric(value)) %>%
+  group_by(YEAR, state) %>% 
+  summarise(total = fun1(value), .groups = "drop") %>%
+  mutate(state = str_replace_all(state, "[.]", " "),
+         state = str_to_title(state))
+
+# Create sophisticated heatmap with custom color scale
+ggplot(me3, aes(x = year, y = reorder(state, desc(state)), fill = total)) +
+  geom_tile(color = "white", linewidth = 0.25) +
+  scale_fill_gradientn(colors = cols, na.value = "grey95",
+                       limits = c(0, 4000),
+                       values = c(0, 0.01, 0.02, 0.03, 0.09, 0.1, 0.15, 0.25, 0.4, 0.5, 1)) +
+  geom_segment(x = 1963, xend = 1963, y = 0, yend = 51.5, linewidth = 0.6) +
+  annotate("text", label = "Vaccine introduced", x = 1963, y = 53) +
+  coord_fixed() +
+  theme_minimal()
+```
+
+![Measles Cases Heatmap](tutorial_measles_heatmap.png){fig-alt="Professional recreation of the Wall Street Journal's measles cases heatmap showing the dramatic impact of vaccine introduction in 1963 across US states." width="90%"}
+
+These advanced examples demonstrate:
+- **Complex data transformation** using tidyverse functions
+- **Custom color palettes** and sophisticated scaling
+- **Annotation techniques** for highlighting key events
+- **Professional styling** matching publication standards
+- **Multi-layered plotting** with geom combinations
+
 ### Key ggplot Concepts
 
 - **Grammar of Graphics** - Systematic approach to building plots
