@@ -13,7 +13,7 @@ Day 5  we had an important discussion about AI in bioinformatics (actually the d
 
 ## Today's Focus
 
-Today we covered two important topics:
+Today we covered two topics:
 - **Critical evaluation of AI in bioinformatics** - We talked about the benefits, risks, and responsible usage
 - **Data visualization with ggplot** - Learning plottign in R
 
@@ -24,11 +24,6 @@ Today we covered two important topics:
 
 In just 3 years, Large Language Models (LLMs) have become mainstream. ChatGPT gained **100 million users in 2 months** after its 2022 release, making it the fastest-growing consumer application in history.
 
-Key AI developments:
-- **Generative Pretrained Transformers (GPTs)** - The chatbots we know
-- **Training on massive datasets** - Learning from internet-scale data
-- **Task-specific training** - Customized through prompt engineering
-
 ### Machine Learning in Bioinformatics - Historical Context
 
 ML has been used in bioinformatics for decades:
@@ -36,7 +31,7 @@ ML has been used in bioinformatics for decades:
 - **Unsupervised learning** - Pattern discovery without human input
 - **Applications** - Clustering, association, dimensionality reduction
 
-GenAI represents the next evolutionary step in applying ML to our lives.
+GenAI represents the next evolutionary step in applying machine learning into our lives.
 
 ## Critical Issues with AI
 
@@ -47,16 +42,16 @@ AI models inherit biases from their training data:
 - **Internet bias** - Unequal access and participation
 - **Quality issues** - Not everyone contributes equally online
 
-> Problem: AI will "happily hallucinate an answer" rather than admit uncertainty
+> AI is not trained to be wrong and will "happily hallucinate an answer" rather than admit uncertainty
 
 ### 2. Impact on Learning and Productivity
 
 **Learning concerns:**
-- 2025 study showed adults using ChatGPT for essays were **consistently outperformed** by those writing without AI
-- **Significantly lower brain engagement** when using AI assistance
+- 2025 study showed adults using ChatGPT for essays were consistently outperformed by those writing without AI
+- Significantly lower brain engagement when using AI assistance
 
 **Productivity paradox:**
-- Study of experienced developers (5+ years) found AI tools actually **reduced productivity**
+- Study of experienced developers (5+ years) found AI tools actually reduced productivity
 - Time spent on prompting, reviewing AI responses, and being idle
 - Less time actually coding and problem-solving
 
@@ -65,10 +60,10 @@ AI models inherit biases from their training data:
 ### 3. Data Privacy and Legal Issues
 
 **Critical concerns for bioinformatics:**
-- **Biological data is highly sensitive** - Often legally protected
-- **Terms of Service violations** - Many users unknowingly share protected data
-- **Copyright issues** - Legal battles over training data usage
-- **GDPR compliance** - Need for compliant tools
+- Biological data is highly sensitive and often legally protected
+- Terms of Service violations
+- Copyright issues
+- GDPR compliance
 
 **Best practices:**
 - Check Terms of Service explicitly and frequently
@@ -83,8 +78,6 @@ AI models inherit biases from their training data:
 - Massive water requirements for cooling
 - Built near poor communities, often draining local resources
 
-**Example:** Saying "please" and "thank you" to ChatGPT has cost OpenAI tens of millions in electricity costs.
-
 ### 5. Changing How We Communicate
 
 AI is already changing language patterns:
@@ -98,19 +91,11 @@ AI is already changing language patterns:
 
 ### Questions to Ask Before Using AI:
 
-1. **Am I phrasing my prompt effectively?**
-2. **Can I find this information another way?**
-3. **How much time am I actually saving?**
-4. **Do I know enough to identify AI errors?**
-5. **What are the consequences of testing AI solutions?**
-
-### Key Principles:
-
-- **Maintain curiosity** - Don't let AI replace your desire to learn
-- **Seek explanations** - Understand what AI tells you
-- **Validate independently** - Find expert sources to confirm
-- **Active learning** - Use AI as a tool, not a replacement for thinking
-
+1. Am I phrasing my prompt effectively?
+2. Can I find this information another way?
+3. How much time am I actually saving?
+4. Do I know enough to identify AI errors?
+5. What are the consequences of testing AI solutions?
 
 ## Afternoon Session - Data Visualization with ggplot
 
@@ -146,7 +131,11 @@ ggplot(data = dataset, aes(x = variable1, y = variable2)) +
   labs(title = "My Analysis Results",
        x = "X-axis Label",
        y = "Y-axis Label")
+```
 
+![Basic scatter plot example](/Users/aulund/Documents/GitHub/bloggen/posts/day5/basic_scatter_plot.png){fig-alt="Basic scatter plot showing the relationship between two variables with minimal theme styling." width="70%"}
+
+```r
 # Advanced plotting with facets
 ggplot(data = dataset, aes(x = variable1, y = variable2, color = group)) +
   geom_point() +
@@ -154,67 +143,7 @@ ggplot(data = dataset, aes(x = variable1, y = variable2, color = group)) +
   theme_bw()
 ```
 
-### Example Visualizations
-
-Here are some practical examples of ggplot2 in bioinformatics contexts:
-
-#### 1. Differential Gene Expression Analysis (MA Plot)
-
-```r
-# Create MA plot for gene expression analysis
-ggplot(gene_data, aes(x = avg_expression, y = log2_fold_change, color = significance)) +
-  geom_point(alpha = 0.7, size = 2) +
-  geom_hline(yintercept = 0, linetype = "dashed", color = "gray50") +
-  scale_color_manual(values = c("Significant" = "#E31A1C", "Not Significant" = "#1F78B4")) +
-  labs(title = "MA Plot: Gene Expression Analysis",
-       subtitle = "Differential expression between control and treatment",
-       x = "Average Expression (log2)",
-       y = "Log2 Fold Change",
-       color = "Statistical\nSignificance") +
-  theme_minimal()
-```
-
-![MA plot showing differential gene expression analysis](/Users/aulund/Documents/GitHub/bloggen/posts/day5/gene_expression_ma_plot.png){fig-alt="MA plot displaying gene expression differences between control and treatment conditions, with significant genes highlighted in red." width="80%"}
-
-#### 2. Quality Control Metrics with Faceting
-
-```r
-# Quality control visualization across different batches
-qc_data %>%
-  ggplot(aes(x = gc_content, y = duplication_rate, color = batch, size = read_count/1000000)) +
-  geom_point(alpha = 0.7) +
-  facet_wrap(~batch, ncol = 3) +
-  scale_size_continuous(name = "Read Count\n(Millions)", range = c(2, 8)) +
-  scale_color_viridis_d(name = "Batch") +
-  labs(title = "Quality Control Metrics Across Batches",
-       subtitle = "GC content vs duplication rate, sized by read count",
-       x = "GC Content (%)",
-       y = "Duplication Rate (%)") +
-  theme_bw()
-```
-
-![Quality control metrics visualization with faceting by batch](/Users/aulund/Documents/GitHub/bloggen/posts/day5/qc_metrics_faceted.png){fig-alt="Faceted scatter plot showing quality control metrics (GC content vs duplication rate) across different sequencing batches, with point size representing read count." width="90%"}
-
-#### 3. Time Series Analysis
-
-```r
-# Tracking sequencing run success over time
-ggplot(time_data, aes(x = date)) +
-  geom_line(aes(y = successful_runs, color = "Successful"), linewidth = 1.2) +
-  geom_line(aes(y = failed_runs, color = "Failed"), linewidth = 1.2) +
-  geom_point(aes(y = successful_runs, color = "Successful"), size = 2) +
-  geom_point(aes(y = failed_runs, color = "Failed"), size = 2) +
-  scale_color_manual(values = c("Successful" = "#2E8B57", "Failed" = "#DC143C")) +
-  scale_x_date(date_labels = "%b %Y", date_breaks = "2 months") +
-  labs(title = "Sequencing Run Success Rate Over Time",
-       subtitle = "Tracking laboratory performance throughout 2025",
-       x = "Date",
-       y = "Number of Runs",
-       color = "Run Status") +
-  theme_minimal()
-```
-
-![Time series plot of sequencing run success rates](/Users/aulund/Documents/GitHub/bloggen/posts/day5/sequencing_timeline.png){fig-alt="Line plot showing successful vs failed sequencing runs over time throughout 2025, demonstrating laboratory performance tracking." width="90%"}
+![Faceted scatter plot with color grouping](/Users/aulund/Documents/GitHub/bloggen/posts/day5/faceted_scatter_plot.png){fig-alt="Advanced scatter plot with color grouping and faceting by category, demonstrating ggplot's layered approach." width="80%"}
 
 ### Key ggplot Concepts
 
@@ -224,76 +153,11 @@ ggplot(time_data, aes(x = date)) +
 - **Geometric objects** - Points, lines, bars, etc.
 - **Themes and styling** - Professional appearance
 
-## Insights and Connections
-
-### AI and Scientific Integrity
-
-> "As scientists, we know we should use peer-reviewed resources. GPTs have been widely shown to fabricate citations."
-
-The discussion highlighted how AI challenges traditional scientific methodology:
-- **Verification burden** - Every AI-generated citation must be checked
-- **Personal responsibility** - Users liable for AI-generated content
-- **Quality vs. speed** - Balancing efficiency with accuracy
-
-### Visualization as Communication
-
-Data visualization serves as the bridge between complex analyses and understanding:
-- **Makes patterns visible** that might be hidden in raw data
-- **Enables hypothesis generation** through visual exploration
-- **Facilitates scientific communication** across disciplines
-
-## Comparison with Previous Days
-
-- **Day 1**: Data management and FAIR principles → Foundation for trustworthy research
-- **Day 2**: Environments and quality control → Technical reliability
-- **Day 3**: Nextflow and workflow management → Computational reproducibility  
-- **Day 4**: nf-core pipelines and RNAseq → Production bioinformatics
-- **Day 5**: AI ethics and visualization → Responsible analysis and communication
-
-## Key Takeaways
-
-### AI in Bioinformatics
-- **Critical evaluation** is essential - don't use AI as a black box
-- **Understand limitations** - bias, hallucinations, environmental cost
-- **Maintain agency** - preserve your ability to think and learn
-- **Data protection** - be extremely careful with sensitive biological data
-
-### Data Visualization
-- **ggplot mastery** opens powerful communication possibilities
-- **Grammar of graphics** provides systematic approach to visualization
-- **Practice essential** - hands-on experience builds intuition
-
-## Questions for Further Exploration
-
-1. How can we develop institutional policies for responsible AI use in research?
-2. What visualization techniques best serve different types of biological data?
-3. How do we balance AI efficiency with scientific rigor and learning?
-
-## Looking Ahead
-
-Goals for future work:
-- [ ] Develop personal AI usage guidelines for research
-- [ ] Master advanced ggplot techniques for publication-quality figures
-- [ ] Practice critical evaluation of AI-generated content
-- [ ] Create visualization portfolio for different data types
 
 ## Resources and References
-
-### AI Resources:
-- [IBM: Supervised vs Unsupervised Learning](https://www.ibm.com/think/topics/supervised-vs-unsupervised-learning)
-- [METR Study on AI Productivity](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/)
-- [Nature: AI in Education](https://www.nature.com/articles/s41599-025-04787-y)
-- [AI Citation Fabrication Research](https://www.nature.com/articles/s41598-023-41032-5)
-
-### Visualization Resources:
-- [ggplot2 Official Documentation](https://ggplot2.tidyverse.org/)
 - [NBIS ggplot Tutorial](https://nbisweden.github.io/raukr-2023/labs/ggplot/)
-- [R for Data Science - ggplot Chapter](https://r4ds.had.co.nz/data-visualisation.html)
 
-### Course Materials:
-- [AI in Bioinformatics](https://amrei-bp.github.io/Applied_Bioinformatics_MedBioInfo_2025/course_AI.html)
-- [ggplot Visualization](https://amrei-bp.github.io/Applied_Bioinformatics_MedBioInfo_2025/course_ggplot.html)
 
 ---
 
-*Day 5 complete! A day of critical thinking and practical skills - exactly what modern bioinformatics requires.* 🤖📊🧬
+*Day 5 complete and the course done! Thank you amrei for a really good and interesting course! 
