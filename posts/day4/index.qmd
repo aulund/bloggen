@@ -9,7 +9,7 @@ draft: false
 
 # Day 4 of MedBioInfo
 
-Day 4 brought us deeper into the nf-core ecosystem! Today we moved from basic Nextflow to advanced pipeline usage with real biological data.
+Today we moved from basic Nextflow to more advanced pipeline usage with real biological data.
 
 ## Today's Focus
 
@@ -17,7 +17,6 @@ Today we worked with:
 - nf-core pipeline introduction and evaluation
 - Testing pipelines with built-in test data  
 - Running the nf-core/rnaseq pipeline on real data
-- Understanding pipeline configuration and job submission
 
 ## Morning Session - nf-core Introduction
 
@@ -137,12 +136,12 @@ We used the nf-core launcher to configure the RNAseq pipeline:
 
 1. **Working and results directories** - Set absolute paths
 2. **Input CSV file** - Created samplesheet according to pipeline requirements  
-3. **Reference genome** - Used updated human genome references
+3. **Reference genome** - used human genome references
 4. **Resume option** - Enabled for fault tolerance
 
 ### Running the Full Pipeline
 
-Two execution methods were available:
+Two execution methods:
 
 #### Direct execution:
 ```bash
@@ -159,72 +158,13 @@ pixi run nextflow run nf-core/rnaseq -r 3.19.0 -resume -params-file nf-params.js
 /your_home_directory/.pixi/bin/pixi run nextflow run nf-core/rnaseq -r 3.19.0 -params-file /your_path/nf-params.json -c server.config
 ```
 
-## Key Learnings
-
-### Technical Skills
-- **Pipeline evaluation** - How to assess nf-core pipelines for your data
-- **Environment management** - Using pixi for reproducible setups
-- **Configuration management** - Server-specific settings and parameter files
-- **Job submission** - Both interactive and batch execution methods
-- **Data organization** - Proper file linking and project structure
-
-### nf-core Ecosystem Understanding
-- **Community-driven development** - Volunteer-maintained pipelines
-- **Standardization benefits** - Consistent documentation and structure
-- **Quality control importance** - Understanding pipeline suitability for data
-- **Reproducibility features** - Parameter files and configuration tracking
-
-## Challenges and Solutions
-
-### Challenge 1
-**Problem**: Understanding which pipeline is suitable for my specific data type  
-**Solution**: Systematic evaluation using nf-core documentation sections (Usage, Parameters, Output)
-
-### Challenge 2  
-**Problem**: Configuration file setup for server-specific requirements  
-**Solution**: Download and customize HPC2N configuration template with appropriate resource limits
-
-### Challenge 3
-**Problem**: Managing complex parameter files for pipeline runs  
-**Solution**: Use nf-core launcher to generate JSON parameter files automatically
-
-## Insights and Connections
-
-> "nf-core transforms bioinformatics from custom scripting to standardized, reproducible workflows"
-
-- **Building on Day 3**: We moved from basic Nextflow concepts to production-ready pipelines
-- **Real-world application**: Working with actual RNAseq data instead of toy examples  
-- **Community aspect**: Understanding the collaborative nature of modern bioinformatics
-- **Quality focus**: Emphasis on validation and understanding rather than black-box usage
-
-## Comparison with Previous Days
-
-- **Day 1**: Data management and FAIR principles → Foundation for reproducible research
-- **Day 2**: Environments and quality control → Tools for reliable analysis
-- **Day 3**: Nextflow and workflow management → Core workflow technology
-- **Day 4**: nf-core pipelines and RNAseq → Production bioinformatics applications
-
-## Questions for Further Exploration
-
-1. How do I evaluate if a pipeline is actively maintained and suitable for my research?
-2. What are best practices for customizing nf-core pipelines for specific research needs?
-3. How can I contribute back to the nf-core community with improvements or new modules?
-
-## Looking Ahead
-
-Goals for Day 5:
-- [ ] Analyze RNAseq pipeline output in detail
-- [ ] Explore other nf-core pipelines relevant to my research
-- [ ] Practice parameter optimization for real datasets
 
 ## Resources and References
 
 - [nf-core homepage](https://nf-co.re/)
 - [nf-core/rnaseq pipeline](https://nf-co.re/rnaseq/3.19.0/)
 - [nf-core/sarek pipeline](https://nf-co.re/sarek/3.4.2/)
-- [HPC2N configuration files](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/hpc2n.config)
-- [Course materials](https://amrei-bp.github.io/Applied_Bioinformatics_MedBioInfo_2025/)
 
 ---
 
-*Day 4 complete! From simple workflows to production pipelines - the power of standardized bioinformatics is incredible.* 🧬🚀
+*Day 4 complete!
