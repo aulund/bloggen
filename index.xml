@@ -99,10 +99,6 @@
 <p>After completing analyses, visualization becomes crucial</p>
 <p><a href="https://ggplot2.tidyverse.org/">ggplot2</a> is R’s visualization package</p>
 </section>
-<section id="ggplot-capabilities" class="level3">
-<h3 class="anchored" data-anchor-id="ggplot-capabilities">ggplot Capabilities</h3>
-<p>The package offers incredible versatility for creating: - <strong>Statistical plots</strong> - Scatter plots, histograms, box plots - <strong>Multi-dimensional visualizations</strong> - Faceting and grouping - <strong>Custom themes</strong> - Professional publication-ready graphics - <strong>Interactive elements</strong> - Enhanced user engagement</p>
-</section>
 <section id="hands-on-practice" class="level3">
 <h3 class="anchored" data-anchor-id="hands-on-practice">Hands-on Practice</h3>
 <p>We worked through practical examples using the <a href="https://nbisweden.github.io/raukr-2023/labs/ggplot/">NBIS tutorial by Roy Francis</a>, covering:</p>
@@ -690,18 +686,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div></div>
 <figcaption>Measles Cases Heatmap</figcaption>
 </figure>
 </div>
-<p>These advanced examples demonstrate: - <strong>Complex data transformation</strong> using tidyverse functions - <strong>Custom color palettes</strong> and sophisticated scaling - <strong>Annotation techniques</strong> for highlighting key events - <strong>Professional styling</strong> matching publication standards - <strong>Multi-layered plotting</strong> with geom combinations</p>
 </section>
-</section>
-<section id="key-ggplot-concepts" class="level3">
-<h3 class="anchored" data-anchor-id="key-ggplot-concepts">Key ggplot Concepts</h3>
-<ul>
-<li><strong>Grammar of Graphics</strong> - Systematic approach to building plots</li>
-<li><strong>Layered approach</strong> - Adding elements incrementally</li>
-<li><strong>Aesthetic mappings</strong> - Connecting data to visual properties</li>
-<li><strong>Geometric objects</strong> - Points, lines, bars, etc.</li>
-<li><strong>Themes and styling</strong> - Professional appearance</li>
-</ul>
 </section>
 </section>
 <section id="resources-and-references" class="level2">
