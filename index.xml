@@ -96,8 +96,8 @@
 <h2 class="anchored" data-anchor-id="afternoon-session---data-visualization-with-ggplot">Afternoon Session - Data Visualization with ggplot</h2>
 <section id="introduction-to-ggplot" class="level3">
 <h3 class="anchored" data-anchor-id="introduction-to-ggplot">Introduction to ggplot</h3>
-<p>After completing downstream analyses, visualization becomes crucial for: - <strong>Results presentation</strong> - Making findings accessible - <strong>Pattern recognition</strong> - Discovering insights in data - <strong>Communication</strong> - Sharing discoveries with others</p>
-<p><a href="https://ggplot2.tidyverse.org/">ggplot2</a> is R’s powerful visualization package, part of the tidyverse ecosystem.</p>
+<p>After completing analyses, visualization becomes crucial</p>
+<p><a href="https://ggplot2.tidyverse.org/">ggplot2</a> is R’s visualization package</p>
 </section>
 <section id="ggplot-capabilities" class="level3">
 <h3 class="anchored" data-anchor-id="ggplot-capabilities">ggplot Capabilities</h3>
