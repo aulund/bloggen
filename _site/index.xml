@@ -26,18 +26,17 @@
 <p>Day 5 we had an important discussion about AI in bioinformatics (actually the discussion were onday 4 because of us maxing out our allocated processing power on hp2nc and things were moved around) and a lecture + excerzises in data visualization with ggplot!</p>
 <section id="todays-focus" class="level2">
 <h2 class="anchored" data-anchor-id="todays-focus">Today’s Focus</h2>
-<p>Today we covered two important topics: - <strong>Critical evaluation of AI in bioinformatics</strong> - We talked about the benefits, risks, and responsible usage - <strong>Data visualization with ggplot</strong> - Learning plottign in R</p>
+<p>Today we covered two topics: - <strong>Critical evaluation of AI in bioinformatics</strong> - We talked about the benefits, risks, and responsible usage - <strong>Data visualization with ggplot</strong> - Learning plottign in R</p>
 </section>
 <section id="morning-session---ai-in-bioinformatics" class="level2">
 <h2 class="anchored" data-anchor-id="morning-session---ai-in-bioinformatics">Morning Session - AI in Bioinformatics</h2>
 <!-- Replace "image.png" with the actual filename in the same folder -->
 <p><img src="https://aulund.github.io/bloggen/Users/aulund/Documents/GitHub/bloggen/posts/day5/genai_marketshare.png" class="img-fluid" style="width:80.0%" alt="Marketshare of the different generative AI chatbots."> ### The AI Revolution</p>
 <p>In just 3 years, Large Language Models (LLMs) have become mainstream. ChatGPT gained <strong>100 million users in 2 months</strong> after its 2022 release, making it the fastest-growing consumer application in history.</p>
-<p>Key AI developments: - <strong>Generative Pretrained Transformers (GPTs)</strong> - The chatbots we know - <strong>Training on massive datasets</strong> - Learning from internet-scale data - <strong>Task-specific training</strong> - Customized through prompt engineering</p>
 <section id="machine-learning-in-bioinformatics---historical-context" class="level3">
 <h3 class="anchored" data-anchor-id="machine-learning-in-bioinformatics---historical-context">Machine Learning in Bioinformatics - Historical Context</h3>
 <p>ML has been used in bioinformatics for decades: - <strong>Supervised learning</strong> - Classification and regression on annotated data - <strong>Unsupervised learning</strong> - Pattern discovery without human input - <strong>Applications</strong> - Clustering, association, dimensionality reduction</p>
-<p>GenAI represents the next evolutionary step in applying ML to our lives.</p>
+<p>GenAI represents the next evolutionary step in applying machine learning into our lives.</p>
 </section>
 </section>
 <section id="critical-issues-with-ai" class="level2">
@@ -46,13 +45,13 @@
 <h3 class="anchored" data-anchor-id="training-data-bias">1. Training Data Bias</h3>
 <p>AI models inherit biases from their training data: - <strong>Historical bias</strong> - “History written by the winners” - <strong>Internet bias</strong> - Unequal access and participation - <strong>Quality issues</strong> - Not everyone contributes equally online</p>
 <blockquote class="blockquote">
-<p>Problem: AI will “happily hallucinate an answer” rather than admit uncertainty</p>
+<p>AI is not trained to be wrong and will “happily hallucinate an answer” rather than admit uncertainty</p>
 </blockquote>
 </section>
 <section id="impact-on-learning-and-productivity" class="level3">
 <h3 class="anchored" data-anchor-id="impact-on-learning-and-productivity">2. Impact on Learning and Productivity</h3>
-<p><strong>Learning concerns:</strong> - 2025 study showed adults using ChatGPT for essays were <strong>consistently outperformed</strong> by those writing without AI - <strong>Significantly lower brain engagement</strong> when using AI assistance</p>
-<p><strong>Productivity paradox:</strong> - Study of experienced developers (5+ years) found AI tools actually <strong>reduced productivity</strong> - Time spent on prompting, reviewing AI responses, and being idle - Less time actually coding and problem-solving</p>
+<p><strong>Learning concerns:</strong> - 2025 study showed adults using ChatGPT for essays were consistently outperformed by those writing without AI - Significantly lower brain engagement when using AI assistance</p>
+<p><strong>Productivity paradox:</strong> - Study of experienced developers (5+ years) found AI tools actually reduced productivity - Time spent on prompting, reviewing AI responses, and being idle - Less time actually coding and problem-solving</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://aulund.github.io/bloggen/Users/aulund/Documents/GitHub/bloggen/posts/day5/metr_ai.png" class="img-fluid figure-img" style="width:70.0%" alt="METR study results showing the impact of AI tools on experienced developer productivity."></p>
@@ -62,13 +61,12 @@
 </section>
 <section id="data-privacy-and-legal-issues" class="level3">
 <h3 class="anchored" data-anchor-id="data-privacy-and-legal-issues">3. Data Privacy and Legal Issues</h3>
-<p><strong>Critical concerns for bioinformatics:</strong> - <strong>Biological data is highly sensitive</strong> - Often legally protected - <strong>Terms of Service violations</strong> - Many users unknowingly share protected data - <strong>Copyright issues</strong> - Legal battles over training data usage - <strong>GDPR compliance</strong> - Need for compliant tools</p>
+<p><strong>Critical concerns for bioinformatics:</strong> - Biological data is highly sensitive and often legally protected - Terms of Service violations - Copyright issues - GDPR compliance</p>
 <p><strong>Best practices:</strong> - Check Terms of Service explicitly and frequently - Use GDPR-compliant tools when possible - Share data descriptions, not actual datasets - Be wary of browser extensions that steal personal data</p>
 </section>
 <section id="environmental-impact" class="level3">
 <h3 class="anchored" data-anchor-id="environmental-impact">4. Environmental Impact</h3>
 <p><strong>Resource consumption:</strong> - Data centers use more electricity than many countries - Massive water requirements for cooling - Built near poor communities, often draining local resources</p>
-<p><strong>Example:</strong> Saying “please” and “thank you” to ChatGPT has cost OpenAI tens of millions in electricity costs.</p>
 </section>
 <section id="changing-how-we-communicate" class="level3">
 <h3 class="anchored" data-anchor-id="changing-how-we-communicate">5. Changing How We Communicate</h3>
@@ -86,21 +84,12 @@
 <section id="questions-to-ask-before-using-ai" class="level3">
 <h3 class="anchored" data-anchor-id="questions-to-ask-before-using-ai">Questions to Ask Before Using AI:</h3>
 <ol type="1">
-<li><strong>Am I phrasing my prompt effectively?</strong></li>
-<li><strong>Can I find this information another way?</strong></li>
-<li><strong>How much time am I actually saving?</strong></li>
-<li><strong>Do I know enough to identify AI errors?</strong></li>
-<li><strong>What are the consequences of testing AI solutions?</strong></li>
+<li>Am I phrasing my prompt effectively?</li>
+<li>Can I find this information another way?</li>
+<li>How much time am I actually saving?</li>
+<li>Do I know enough to identify AI errors?</li>
+<li>What are the consequences of testing AI solutions?</li>
 </ol>
-</section>
-<section id="key-principles" class="level3">
-<h3 class="anchored" data-anchor-id="key-principles">Key Principles:</h3>
-<ul>
-<li><strong>Maintain curiosity</strong> - Don’t let AI replace your desire to learn</li>
-<li><strong>Seek explanations</strong> - Understand what AI tells you</li>
-<li><strong>Validate independently</strong> - Find expert sources to confirm</li>
-<li><strong>Active learning</strong> - Use AI as a tool, not a replacement for thinking</li>
-</ul>
 </section>
 </section>
 <section id="afternoon-session---data-visualization-with-ggplot" class="level2">
@@ -166,12 +155,17 @@ font-style: inherit;">"X-axis Label"</span>,</span>
 background-color: null;
 font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Y-axis Label"</span>)</span>
-<span id="cb1-11"></span>
-<span id="cb1-12"><span class="co" style="color: #5E5E5E;
+font-style: inherit;">"Y-axis Label"</span>)</span></code></pre></div></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://aulund.github.io/bloggen/Users/aulund/Documents/GitHub/bloggen/posts/day5/basic_scatter_plot.png" class="img-fluid figure-img" style="width:70.0%" alt="Basic scatter plot showing the relationship between two variables with minimal theme styling."></p>
+<figcaption>Basic scatter plot example</figcaption>
+</figure>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Advanced plotting with facets</span></span>
-<span id="cb1-13"><span class="fu" style="color: #4758AB;
+<span id="cb2-2"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -186,403 +180,27 @@ background-color: null;
 font-style: inherit;">color =</span> group)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb1-14">  <span class="fu" style="color: #4758AB;
+<span id="cb2-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb1-15">  <span class="fu" style="color: #4758AB;
+<span id="cb2-4">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">~</span>category) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb1-16">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme_bw</span>()</span></code></pre></div></div>
-</section>
-<section id="example-visualizations" class="level3">
-<h3 class="anchored" data-anchor-id="example-visualizations">Example Visualizations</h3>
-<p>Here are some practical examples of ggplot2 in bioinformatics contexts:</p>
-<section id="differential-gene-expression-analysis-ma-plot" class="level4">
-<h4 class="anchored" data-anchor-id="differential-gene-expression-analysis-ma-plot">1. Differential Gene Expression Analysis (MA Plot)</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Create MA plot for gene expression analysis</span></span>
-<span id="cb2-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(gene_data, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> avg_expression, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> log2_fold_change, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> significance)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb2-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.7</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb2-4">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_hline</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">yintercept =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">linetype =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"dashed"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"gray50"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
 <span id="cb2-5">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">scale_color_manual</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">values =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Significant"</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"#E31A1C"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Not Significant"</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"#1F78B4"</span>)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb2-6">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"MA Plot: Gene Expression Analysis"</span>,</span>
-<span id="cb2-7">       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Differential expression between control and treatment"</span>,</span>
-<span id="cb2-8">       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Average Expression (log2)"</span>,</span>
-<span id="cb2-9">       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Log2 Fold Change"</span>,</span>
-<span id="cb2-10">       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Statistical</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\n</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">Significance"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb2-11">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme_minimal</span>()</span></code></pre></div></div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://aulund.github.io/bloggen/Users/aulund/Documents/GitHub/bloggen/posts/day5/gene_expression_ma_plot.png" class="img-fluid figure-img" style="width:80.0%" alt="MA plot displaying gene expression differences between control and treatment conditions, with significant genes highlighted in red."></p>
-<figcaption>MA plot showing differential gene expression analysis</figcaption>
-</figure>
-</div>
-</section>
-<section id="quality-control-metrics-with-faceting" class="level4">
-<h4 class="anchored" data-anchor-id="quality-control-metrics-with-faceting">2. Quality Control Metrics with Faceting</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Quality control visualization across different batches</span></span>
-<span id="cb3-2">qc_data <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb3-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> gc_content, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> duplication_rate, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> batch, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">size =</span> read_count<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1000000</span>)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb3-4">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.7</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb3-5">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span>batch, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">ncol =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb3-6">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">scale_size_continuous</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">name =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Read Count</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\n</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">(Millions)"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">range =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">8</span>)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb3-7">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">scale_color_viridis_d</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">name =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Batch"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb3-8">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Quality Control Metrics Across Batches"</span>,</span>
-<span id="cb3-9">       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"GC content vs duplication rate, sized by read count"</span>,</span>
-<span id="cb3-10">       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"GC Content (%)"</span>,</span>
-<span id="cb3-11">       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Duplication Rate (%)"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb3-12">  <span class="fu" style="color: #4758AB;
-background-color: null;
 font-style: inherit;">theme_bw</span>()</span></code></pre></div></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://aulund.github.io/bloggen/Users/aulund/Documents/GitHub/bloggen/posts/day5/qc_metrics_faceted.png" class="img-fluid figure-img" style="width:90.0%" alt="Faceted scatter plot showing quality control metrics (GC content vs duplication rate) across different sequencing batches, with point size representing read count."></p>
-<figcaption>Quality control metrics visualization with faceting by batch</figcaption>
+<p><img src="https://aulund.github.io/bloggen/Users/aulund/Documents/GitHub/bloggen/posts/day5/faceted_scatter_plot.png" class="img-fluid figure-img" style="width:80.0%" alt="Advanced scatter plot with color grouping and faceting by category, demonstrating ggplot's layered approach."></p>
+<figcaption>Faceted scatter plot with color grouping</figcaption>
 </figure>
 </div>
-</section>
-<section id="time-series-analysis" class="level4">
-<h4 class="anchored" data-anchor-id="time-series-analysis">3. Time Series Analysis</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Tracking sequencing run success over time</span></span>
-<span id="cb4-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(time_data, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> date)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb4-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_line</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> successful_runs, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Successful"</span>), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">linewidth =</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1.2</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb4-4">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_line</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> failed_runs, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Failed"</span>), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">linewidth =</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1.2</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb4-5">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_point</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> successful_runs, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Successful"</span>), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb4-6">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_point</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> failed_runs, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Failed"</span>), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb4-7">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">scale_color_manual</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">values =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Successful"</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"#2E8B57"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Failed"</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"#DC143C"</span>)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb4-8">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">scale_x_date</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">date_labels =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"%b %Y"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">date_breaks =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"2 months"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb4-9">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Sequencing Run Success Rate Over Time"</span>,</span>
-<span id="cb4-10">       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Tracking laboratory performance throughout 2025"</span>,</span>
-<span id="cb4-11">       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Date"</span>,</span>
-<span id="cb4-12">       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Number of Runs"</span>,</span>
-<span id="cb4-13">       <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Run Status"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb4-14">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme_minimal</span>()</span></code></pre></div></div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://aulund.github.io/bloggen/Users/aulund/Documents/GitHub/bloggen/posts/day5/sequencing_timeline.png" class="img-fluid figure-img" style="width:90.0%" alt="Line plot showing successful vs failed sequencing runs over time throughout 2025, demonstrating laboratory performance tracking."></p>
-<figcaption>Time series plot of sequencing run success rates</figcaption>
-</figure>
-</div>
-</section>
 </section>
 <section id="key-ggplot-concepts" class="level3">
 <h3 class="anchored" data-anchor-id="key-ggplot-concepts">Key ggplot Concepts</h3>
@@ -595,95 +213,17 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div></div>
 </ul>
 </section>
 </section>
-<section id="insights-and-connections" class="level2">
-<h2 class="anchored" data-anchor-id="insights-and-connections">Insights and Connections</h2>
-<section id="ai-and-scientific-integrity" class="level3">
-<h3 class="anchored" data-anchor-id="ai-and-scientific-integrity">AI and Scientific Integrity</h3>
-<blockquote class="blockquote">
-<p>“As scientists, we know we should use peer-reviewed resources. GPTs have been widely shown to fabricate citations.”</p>
-</blockquote>
-<p>The discussion highlighted how AI challenges traditional scientific methodology: - <strong>Verification burden</strong> - Every AI-generated citation must be checked - <strong>Personal responsibility</strong> - Users liable for AI-generated content - <strong>Quality vs.&nbsp;speed</strong> - Balancing efficiency with accuracy</p>
-</section>
-<section id="visualization-as-communication" class="level3">
-<h3 class="anchored" data-anchor-id="visualization-as-communication">Visualization as Communication</h3>
-<p>Data visualization serves as the bridge between complex analyses and understanding: - <strong>Makes patterns visible</strong> that might be hidden in raw data - <strong>Enables hypothesis generation</strong> through visual exploration - <strong>Facilitates scientific communication</strong> across disciplines</p>
-</section>
-</section>
-<section id="comparison-with-previous-days" class="level2">
-<h2 class="anchored" data-anchor-id="comparison-with-previous-days">Comparison with Previous Days</h2>
-<ul>
-<li><strong>Day 1</strong>: Data management and FAIR principles → Foundation for trustworthy research</li>
-<li><strong>Day 2</strong>: Environments and quality control → Technical reliability</li>
-<li><strong>Day 3</strong>: Nextflow and workflow management → Computational reproducibility<br>
-</li>
-<li><strong>Day 4</strong>: nf-core pipelines and RNAseq → Production bioinformatics</li>
-<li><strong>Day 5</strong>: AI ethics and visualization → Responsible analysis and communication</li>
-</ul>
-</section>
-<section id="key-takeaways" class="level2">
-<h2 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h2>
-<section id="ai-in-bioinformatics" class="level3">
-<h3 class="anchored" data-anchor-id="ai-in-bioinformatics">AI in Bioinformatics</h3>
-<ul>
-<li><strong>Critical evaluation</strong> is essential - don’t use AI as a black box</li>
-<li><strong>Understand limitations</strong> - bias, hallucinations, environmental cost</li>
-<li><strong>Maintain agency</strong> - preserve your ability to think and learn</li>
-<li><strong>Data protection</strong> - be extremely careful with sensitive biological data</li>
-</ul>
-</section>
-<section id="data-visualization" class="level3">
-<h3 class="anchored" data-anchor-id="data-visualization">Data Visualization</h3>
-<ul>
-<li><strong>ggplot mastery</strong> opens powerful communication possibilities</li>
-<li><strong>Grammar of graphics</strong> provides systematic approach to visualization</li>
-<li><strong>Practice essential</strong> - hands-on experience builds intuition</li>
-</ul>
-</section>
-</section>
-<section id="questions-for-further-exploration" class="level2">
-<h2 class="anchored" data-anchor-id="questions-for-further-exploration">Questions for Further Exploration</h2>
-<ol type="1">
-<li>How can we develop institutional policies for responsible AI use in research?</li>
-<li>What visualization techniques best serve different types of biological data?</li>
-<li>How do we balance AI efficiency with scientific rigor and learning?</li>
-</ol>
-</section>
-<section id="looking-ahead" class="level2">
-<h2 class="anchored" data-anchor-id="looking-ahead">Looking Ahead</h2>
-<p>Goals for future work: - [ ] Develop personal AI usage guidelines for research - [ ] Master advanced ggplot techniques for publication-quality figures - [ ] Practice critical evaluation of AI-generated content - [ ] Create visualization portfolio for different data types</p>
-</section>
 <section id="resources-and-references" class="level2">
 <h2 class="anchored" data-anchor-id="resources-and-references">Resources and References</h2>
-<section id="ai-resources" class="level3">
-<h3 class="anchored" data-anchor-id="ai-resources">AI Resources:</h3>
 <ul>
-<li><a href="https://www.ibm.com/think/topics/supervised-vs-unsupervised-learning">IBM: Supervised vs Unsupervised Learning</a></li>
-<li><a href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/">METR Study on AI Productivity</a></li>
-<li><a href="https://www.nature.com/articles/s41599-025-04787-y">Nature: AI in Education</a></li>
-<li><a href="https://www.nature.com/articles/s41598-023-41032-5">AI Citation Fabrication Research</a></li>
-</ul>
-</section>
-<section id="visualization-resources" class="level3">
-<h3 class="anchored" data-anchor-id="visualization-resources">Visualization Resources:</h3>
-<ul>
-<li><a href="https://ggplot2.tidyverse.org/">ggplot2 Official Documentation</a></li>
 <li><a href="https://nbisweden.github.io/raukr-2023/labs/ggplot/">NBIS ggplot Tutorial</a></li>
-<li><a href="https://r4ds.had.co.nz/data-visualisation.html">R for Data Science - ggplot Chapter</a></li>
-</ul>
-</section>
-<section id="course-materials" class="level3">
-<h3 class="anchored" data-anchor-id="course-materials">Course Materials:</h3>
-<ul>
-<li><a href="https://amrei-bp.github.io/Applied_Bioinformatics_MedBioInfo_2025/course_AI.html">AI in Bioinformatics</a></li>
-<li><a href="https://amrei-bp.github.io/Applied_Bioinformatics_MedBioInfo_2025/course_ggplot.html">ggplot Visualization</a></li>
 </ul>
 <hr>
-<p><em>Day 5 complete! A day of critical thinking and practical skills - exactly what modern bioinformatics requires.</em> 🤖📊🧬</p>
+<p>*Day 5 complete and the course done! Thank you amrei for a really good and interesting course!</p>
 
 
 <!-- -->
 
-</section>
 </section>
 </section>
 

@@ -9,19 +9,17 @@ draft: false
 
 # Day 3 of MedBioInfo
 
-Welcome to Day 3! Here are my reflections and key takeaways from today's sessions.
-
 ## Today's Focus
 
 Today we worked with Nextflow and workflow management.
 
 ![Nextflow Overview](nextflow_overview.png){width=80% fig-align="center"}
 
-*Figure 1: Nextflow workflow management system overview. This diagram illustrates the core concepts of Nextflow including processes, channels, and how data flows through a computational pipeline. Nextflow enables scalable and portable bioinformatics workflows.*
+*Figure 1: Nextflow workflow management system overview. This diagram illustrates the core concepts of Nextflow including processes, channels, and how data flows through a computational pipeline.*
 
 ### Running Nextflow Hello World
 
-Today we ran our first Nextflow script! Here's the complete `hello.nf` script:
+Today we ran our first Nextflow script:
 
 ```nextflow
 #!/usr/bin/env nextflow

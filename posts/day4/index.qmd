@@ -3,7 +3,7 @@ title: "Day 4 of MedBioInfo"
 date: 2025-10-09
 categories: [medbioinfo, learning, data-science, nf-core]
 author: "August Lundholm"
-description: "Day 4 - Advanced nf-core pipelines and RNAseq analysis"
+description: "Day 4 - nf-core pipelines and RNAseq analysis"
 draft: false
 ---
 
@@ -23,19 +23,19 @@ Today we worked with:
 ### What makes nf-core special?
 
 The nf-core community provides:
-- **Standardized pipelines** for many bioinformatics workflows
-- **Extensive documentation** following consistent guidelines
-- **Automatic input validation** through the nf-core launcher
-- **Consistent structure** across all pipelines
-- **Open source development** by volunteer community
+- Standardized pipelines for many bioinformatics workflows
+- Extensive documentation following consistent guidelines
+- Automatic input validation through the nf-core launcher
+- Consistent structure across all pipelines
+- Open source development by volunteer community
 
 ### Finding and Evaluating Pipelines
 
 We explored the [nf-core homepage](https://nf-co.re/) and learned to evaluate pipelines by checking:
-- **Usage documentation** - understanding input requirements
-- **Parameters** - available customization options  
-- **Output** - expected results and file formats
-- **Pipeline suitability** for our specific data types
+- Usage documentation - understanding input requirements
+- Parameters - available customization options  
+- Output - expected results and file formats
+- Pipeline suitability for our specific data types
 
 ## Afternoon Session - Hands-on Pipeline Testing
 
@@ -167,4 +167,4 @@ pixi run nextflow run nf-core/rnaseq -r 3.19.0 -resume -params-file nf-params.js
 
 ---
 
-*Day 4 complete!
+**Day 4 complete!**
