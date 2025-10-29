@@ -115,18 +115,18 @@ font-style: inherit;">library</span>(ggplot2)</span>
 <span id="cb1-3"></span>
 <span id="cb1-4"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># Example scatter plot</span></span>
+font-style: inherit;"># Example scatter plot using iris dataset</span></span>
 <span id="cb1-5"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">data =</span> dataset, <span class="fu" style="color: #4758AB;
+font-style: inherit;">data =</span> iris, <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">x =</span> variable1, <span class="at" style="color: #657422;
+font-style: inherit;">x =</span> Petal.Length, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">y =</span> variable2)) <span class="sc" style="color: #5E5E5E;
+font-style: inherit;">y =</span> Petal.Width)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
 <span id="cb1-6">  <span class="fu" style="color: #4758AB;
@@ -150,34 +150,34 @@ font-style: inherit;">"My Analysis Results"</span>,</span>
 background-color: null;
 font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"X-axis Label"</span>,</span>
+font-style: inherit;">"Petal Length"</span>,</span>
 <span id="cb1-10">       <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Y-axis Label"</span>)</span></code></pre></div></div>
+font-style: inherit;">"Petal Width"</span>)</span></code></pre></div></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://aulund.github.io/bloggen/posts/day5/basic_scatter_plot.png" class="img-fluid figure-img" style="width:70.0%" alt="Basic scatter plot showing the relationship between two variables with minimal theme styling."></p>
+<p><img src="https://aulund.github.io/bloggen/posts/day5/basic_scatter_plot.png" class="img-fluid figure-img" style="width:70.0%" alt="Basic scatter plot showing the relationship between petal length and width using the iris dataset with minimal theme styling."></p>
 <figcaption>Basic scatter plot example</figcaption>
 </figure>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># Advanced plotting with facets</span></span>
+font-style: inherit;"># Advanced plotting with facets using iris dataset</span></span>
 <span id="cb2-2"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">data =</span> dataset, <span class="fu" style="color: #4758AB;
+font-style: inherit;">data =</span> iris, <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">x =</span> variable1, <span class="at" style="color: #657422;
+font-style: inherit;">x =</span> Petal.Length, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">y =</span> variable2, <span class="at" style="color: #657422;
+font-style: inherit;">y =</span> Petal.Width, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">color =</span> group)) <span class="sc" style="color: #5E5E5E;
+font-style: inherit;">color =</span> Species)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
 <span id="cb2-3">  <span class="fu" style="color: #4758AB;
@@ -189,7 +189,7 @@ font-style: inherit;">+</span></span>
 background-color: null;
 font-style: inherit;">facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">~</span>category) <span class="sc" style="color: #5E5E5E;
+font-style: inherit;">~</span>Species) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
 <span id="cb2-5">  <span class="fu" style="color: #4758AB;
@@ -197,7 +197,7 @@ background-color: null;
 font-style: inherit;">theme_bw</span>()</span></code></pre></div></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://aulund.github.io/bloggen/posts/day5/faceted_scatter_plot.png" class="img-fluid figure-img" style="width:80.0%" alt="Advanced scatter plot with color grouping and faceting by category, demonstrating ggplot's layered approach."></p>
+<p><img src="https://aulund.github.io/bloggen/posts/day5/faceted_scatter_plot.png" class="img-fluid figure-img" style="width:80.0%" alt="Advanced scatter plot with color grouping by species and faceting, demonstrating ggplot's layered approach using the iris dataset."></p>
 <figcaption>Faceted scatter plot with color grouping</figcaption>
 </figure>
 </div>
