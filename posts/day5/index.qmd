@@ -124,26 +124,26 @@ We worked through practical examples using the [NBIS tutorial by Roy Francis](ht
 # Basic ggplot structure
 library(ggplot2)
 
-# Example scatter plot
-ggplot(data = dataset, aes(x = variable1, y = variable2)) +
+# Example scatter plot using iris dataset
+ggplot(data = iris, aes(x = Petal.Length, y = Petal.Width)) +
   geom_point() +
   theme_minimal() +
   labs(title = "My Analysis Results",
-       x = "X-axis Label",
-       y = "Y-axis Label")
+       x = "Petal Length",
+       y = "Petal Width")
 ```
 
-![Basic scatter plot example](basic_scatter_plot.png){fig-alt="Basic scatter plot showing the relationship between two variables with minimal theme styling." width="70%"}
+![Basic scatter plot example](basic_scatter_plot.png){fig-alt="Basic scatter plot showing the relationship between petal length and width using the iris dataset with minimal theme styling." width="70%"}
 
 ```r
-# Advanced plotting with facets
-ggplot(data = dataset, aes(x = variable1, y = variable2, color = group)) +
+# Advanced plotting with facets using iris dataset
+ggplot(data = iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +
   geom_point() +
-  facet_wrap(~category) +
+  facet_wrap(~Species) +
   theme_bw()
 ```
 
-![Faceted scatter plot with color grouping](faceted_scatter_plot.png){fig-alt="Advanced scatter plot with color grouping and faceting by category, demonstrating ggplot's layered approach." width="80%"}
+![Faceted scatter plot with color grouping](faceted_scatter_plot.png){fig-alt="Advanced scatter plot with color grouping by species and faceting, demonstrating ggplot's layered approach using the iris dataset." width="80%"}
 
 ### Advanced Tutorial Examples
 

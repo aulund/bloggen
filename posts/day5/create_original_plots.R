@@ -1,36 +1,31 @@
 # Create visualizations from the original ggplot examples in the blog post
+# Using the iris dataset as in the NBIS tutorial
 library(ggplot2)
 
 # Set working directory to save plots
 setwd("/Users/aulund/Documents/GitHub/bloggen/posts/day5")
 
-# Create sample dataset to match the original examples
-set.seed(123)
-dataset <- data.frame(
-  variable1 = rnorm(50, mean = 10, sd = 3),
-  variable2 = rnorm(50, mean = 15, sd = 4) + rnorm(50, mean = 0, sd = 1),
-  group = sample(c("Group A", "Group B", "Group C"), 50, replace = TRUE),
-  category = sample(c("Category 1", "Category 2"), 50, replace = TRUE)
-)
+# Use the built-in iris dataset
+data("iris")
 
-# Example 1: Basic scatter plot from the original code
-p1 <- ggplot(data = dataset, aes(x = variable1, y = variable2)) +
+# Example 1: Basic scatter plot from the original code using iris
+p1 <- ggplot(data = iris, aes(x = Petal.Length, y = Petal.Width)) +
   geom_point() +
   theme_minimal() +
   labs(title = "My Analysis Results",
-       x = "X-axis Label",
-       y = "Y-axis Label")
+       x = "Petal Length", 
+       y = "Petal Width")
 
 ggsave("basic_scatter_plot.png", p1, width = 8, height = 6, dpi = 300)
 
-# Example 2: Advanced plotting with facets from the original code
-p2 <- ggplot(data = dataset, aes(x = variable1, y = variable2, color = group)) +
+# Example 2: Advanced plotting with facets from the original code using iris
+p2 <- ggplot(data = iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +
   geom_point() +
-  facet_wrap(~category) +
+  facet_wrap(~Species) +
   theme_bw()
 
 ggsave("faceted_scatter_plot.png", p2, width = 10, height = 6, dpi = 300)
 
-print("Original example plots created:")
+print("Original example plots created using iris dataset:")
 print("1. basic_scatter_plot.png")
 print("2. faceted_scatter_plot.png")

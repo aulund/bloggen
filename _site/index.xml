@@ -202,6 +202,497 @@ font-style: inherit;">theme_bw</span>()</span></code></pre></div></div>
 </figure>
 </div>
 </section>
+<section id="advanced-tutorial-examples" class="level3">
+<h3 class="anchored" data-anchor-id="advanced-tutorial-examples">Advanced Tutorial Examples</h3>
+<p>We also worked through two complex examples from the NBIS tutorial that demonstrate professional-level data visualization techniques:</p>
+<section id="economist-style-corruption-vs-development-scatter-plot" class="level4">
+<h4 class="anchored" data-anchor-id="economist-style-corruption-vs-development-scatter-plot">1. Economist-Style Corruption vs Development Scatter Plot</h4>
+<p>This recreation of <a href="https://www.economist.com/blogs/dailychart/2011/12/corruption-and-development">The Economist’s corruption analysis</a> demonstrates advanced ggplot2 techniques:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Read and process the data</span></span>
+<span id="cb3-2">ec <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"data_economist.csv"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">header =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span>
+<span id="cb3-3"></span>
+<span id="cb3-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Refactor regions with line breaks for legend</span></span>
+<span id="cb3-5">ec<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Region <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(ec<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Region,</span>
+<span id="cb3-6">                    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">levels =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"EU W. Europe"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Americas"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Asia Pacific"</span>,</span>
+<span id="cb3-7">                              <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"East EU Cemt Asia"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"MENA"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"SSA"</span>),</span>
+<span id="cb3-8">                    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">labels =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"OECD"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Americas"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Asia &amp;</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Oceania"</span>,</span>
+<span id="cb3-9">                              <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Central &amp;</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Eastern Europe"</span>,</span>
+<span id="cb3-10">                              <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Middle East &amp;</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">North Africa"</span>,</span>
+<span id="cb3-11">                              <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Sub-Saharan</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Africa"</span>))</span>
+<span id="cb3-12"></span>
+<span id="cb3-13"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create sophisticated scatter plot with trend line</span></span>
+<span id="cb3-14"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(ec, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> CPI, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> HDI, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> Region)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-15">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_smooth</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"red"</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">method =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lm"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">formula =</span> y <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">poly</span>(x, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>), </span>
+<span id="cb3-16">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">se =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"red"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.6</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-17">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">shape =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">21</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">stroke =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.8</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"white"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-18">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_text</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">subset</span>(ec, Country <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> labels), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> Country),</span>
+<span id="cb3-19">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2.5</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-20">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_color_manual</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#23576E"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#099FDB"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#29B00E"</span>, </span>
+<span id="cb3-21">                               <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#208F84"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#F55840"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#924F3E"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-22">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Corruption and human development"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-23">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://aulund.github.io/bloggen/posts/day5/tutorial_corruption_plot.png" class="img-fluid figure-img" style="width:90.0%" alt="Professional recreation of The Economist's corruption vs human development scatter plot showing the relationship between corruption perceptions and quality of life across countries."></p>
+<figcaption>Corruption and Human Development Analysis</figcaption>
+</figure>
+</div>
+</section>
+<section id="wall-street-journal-style-measles-heatmap" class="level4">
+<h4 class="anchored" data-anchor-id="wall-street-journal-style-measles-heatmap">2. Wall Street Journal-Style Measles Heatmap</h4>
+<p>This recreation of <a href="http://graphics.wsj.com/infectious-diseases-and-vaccines/">WSJ’s measles vaccination impact visualization</a> shows complex data transformation and heatmap creation:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Read and transform the complex dataset</span></span>
+<span id="cb4-2">me <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"data_wsj.csv"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">header =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">stringsAsFactors =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">skip =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)</span>
+<span id="cb4-3"></span>
+<span id="cb4-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Custom function for handling missing data</span></span>
+<span id="cb4-5">fun1 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(x) <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ifelse</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">all</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">is.na</span>(x)), <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sum</span>(x, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>))</span>
+<span id="cb4-6"></span>
+<span id="cb4-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Complex data transformation pipeline</span></span>
+<span id="cb4-8">me3 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> me <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb4-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gather</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">key =</span> state, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">value =</span> value, <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>YEAR, <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>WEEK) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb4-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">value =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_replace</span>(value, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"^-$"</span>, <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA_character_</span>),</span>
+<span id="cb4-11">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">value =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.numeric</span>(value)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb4-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(YEAR, state) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb4-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarise</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">total =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fun1</span>(value), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.groups =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"drop"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb4-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">state =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_replace_all</span>(state, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"[.]"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" "</span>),</span>
+<span id="cb4-15">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">state =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_to_title</span>(state))</span>
+<span id="cb4-16"></span>
+<span id="cb4-17"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create sophisticated heatmap with custom color scale</span></span>
+<span id="cb4-18"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(me3, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> year, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">reorder</span>(state, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">desc</span>(state)), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> total)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-19">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_tile</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"white"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.25</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-20">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_gradientn</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">colors =</span> cols, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.value =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"grey95"</span>,</span>
+<span id="cb4-21">                       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">limits =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4000</span>),</span>
+<span id="cb4-22">                       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.01</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.02</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.03</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.09</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.1</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.15</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.25</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.4</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-23">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_segment</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1963</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xend =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1963</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">yend =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">51.5</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.6</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-24">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">annotate</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Vaccine introduced"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1963</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">53</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-25">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">coord_fixed</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-26">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://aulund.github.io/bloggen/posts/day5/tutorial_measles_heatmap.png" class="img-fluid figure-img" style="width:90.0%" alt="Professional recreation of the Wall Street Journal's measles cases heatmap showing the dramatic impact of vaccine introduction in 1963 across US states."></p>
+<figcaption>Measles Cases Heatmap</figcaption>
+</figure>
+</div>
+<p>These advanced examples demonstrate: - <strong>Complex data transformation</strong> using tidyverse functions - <strong>Custom color palettes</strong> and sophisticated scaling - <strong>Annotation techniques</strong> for highlighting key events - <strong>Professional styling</strong> matching publication standards - <strong>Multi-layered plotting</strong> with geom combinations</p>
+</section>
+</section>
 <section id="key-ggplot-concepts" class="level3">
 <h3 class="anchored" data-anchor-id="key-ggplot-concepts">Key ggplot Concepts</h3>
 <ul>
