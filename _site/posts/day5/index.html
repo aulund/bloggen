@@ -314,8 +314,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="afternoon-session---data-visualization-with-ggplot">Afternoon Session - Data Visualization with ggplot</h2>
 <section id="introduction-to-ggplot" class="level3">
 <h3 class="anchored" data-anchor-id="introduction-to-ggplot">Introduction to ggplot</h3>
-<p>After completing downstream analyses, visualization becomes crucial for: - <strong>Results presentation</strong> - Making findings accessible - <strong>Pattern recognition</strong> - Discovering insights in data - <strong>Communication</strong> - Sharing discoveries with others</p>
-<p><a href="https://ggplot2.tidyverse.org/">ggplot2</a> is R’s powerful visualization package, part of the tidyverse ecosystem.</p>
+<p>After completing analyses, visualization becomes crucial</p>
+<p><a href="https://ggplot2.tidyverse.org/">ggplot2</a> is R’s visualization package</p>
 </section>
 <section id="ggplot-capabilities" class="level3">
 <h3 class="anchored" data-anchor-id="ggplot-capabilities">ggplot Capabilities</h3>
@@ -1006,144 +1006,141 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a><span class="fu">### Introduction to ggplot</span></span>
 <span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a>After completing downstream analyses, visualization becomes crucial for:</span>
-<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Results presentation** - Making findings accessible</span>
-<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Pattern recognition** - Discovering insights in data</span>
-<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Communication** - Sharing discoveries with others</span>
-<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">ggplot2</span><span class="co">](https://ggplot2.tidyverse.org/)</span> is R's powerful visualization package, part of the tidyverse ecosystem.</span>
-<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a><span class="fu">### ggplot Capabilities</span></span>
-<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-113"><a href="#cb5-113" aria-hidden="true" tabindex="-1"></a>The package offers incredible versatility for creating:</span>
-<span id="cb5-114"><a href="#cb5-114" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Statistical plots** - Scatter plots, histograms, box plots</span>
-<span id="cb5-115"><a href="#cb5-115" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Multi-dimensional visualizations** - Faceting and grouping</span>
-<span id="cb5-116"><a href="#cb5-116" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Custom themes** - Professional publication-ready graphics</span>
-<span id="cb5-117"><a href="#cb5-117" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Interactive elements** - Enhanced user engagement</span>
-<span id="cb5-118"><a href="#cb5-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-119"><a href="#cb5-119" aria-hidden="true" tabindex="-1"></a><span class="fu">### Hands-on Practice</span></span>
-<span id="cb5-120"><a href="#cb5-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-121"><a href="#cb5-121" aria-hidden="true" tabindex="-1"></a>We worked through practical examples using the <span class="co">[</span><span class="ot">NBIS tutorial by Roy Francis</span><span class="co">](https://nbisweden.github.io/raukr-2023/labs/ggplot/)</span>, covering:</span>
-<span id="cb5-122"><a href="#cb5-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-123"><a href="#cb5-123" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb5-124"><a href="#cb5-124" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic ggplot structure</span></span>
-<span id="cb5-125"><a href="#cb5-125" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb5-126"><a href="#cb5-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-127"><a href="#cb5-127" aria-hidden="true" tabindex="-1"></a><span class="co"># Example scatter plot using iris dataset</span></span>
-<span id="cb5-128"><a href="#cb5-128" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width)) <span class="sc">+</span></span>
-<span id="cb5-129"><a href="#cb5-129" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb5-130"><a href="#cb5-130" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb5-131"><a href="#cb5-131" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"My Analysis Results"</span>,</span>
-<span id="cb5-132"><a href="#cb5-132" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Petal Length"</span>,</span>
-<span id="cb5-133"><a href="#cb5-133" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Petal Width"</span>)</span>
-<span id="cb5-134"><a href="#cb5-134" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-135"><a href="#cb5-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-136"><a href="#cb5-136" aria-hidden="true" tabindex="-1"></a><span class="al">![Basic scatter plot example](basic_scatter_plot.png)</span>{fig-alt="Basic scatter plot showing the relationship between petal length and width using the iris dataset with minimal theme styling." width="70%"}</span>
-<span id="cb5-137"><a href="#cb5-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-138"><a href="#cb5-138" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb5-139"><a href="#cb5-139" aria-hidden="true" tabindex="-1"></a><span class="co"># Advanced plotting with facets using iris dataset</span></span>
-<span id="cb5-140"><a href="#cb5-140" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width, <span class="at">color =</span> Species)) <span class="sc">+</span></span>
-<span id="cb5-141"><a href="#cb5-141" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb5-142"><a href="#cb5-142" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Species) <span class="sc">+</span></span>
-<span id="cb5-143"><a href="#cb5-143" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
-<span id="cb5-144"><a href="#cb5-144" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-145"><a href="#cb5-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-146"><a href="#cb5-146" aria-hidden="true" tabindex="-1"></a><span class="al">![Faceted scatter plot with color grouping](faceted_scatter_plot.png)</span>{fig-alt="Advanced scatter plot with color grouping by species and faceting, demonstrating ggplot's layered approach using the iris dataset." width="80%"}</span>
-<span id="cb5-147"><a href="#cb5-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-148"><a href="#cb5-148" aria-hidden="true" tabindex="-1"></a><span class="fu">### Advanced Tutorial Examples</span></span>
-<span id="cb5-149"><a href="#cb5-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-150"><a href="#cb5-150" aria-hidden="true" tabindex="-1"></a>We also worked through two complex examples from the NBIS tutorial that demonstrate professional-level data visualization techniques:</span>
-<span id="cb5-151"><a href="#cb5-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-152"><a href="#cb5-152" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 1. Economist-Style Corruption vs Development Scatter Plot</span></span>
-<span id="cb5-153"><a href="#cb5-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-154"><a href="#cb5-154" aria-hidden="true" tabindex="-1"></a>This recreation of <span class="co">[</span><span class="ot">The Economist's corruption analysis</span><span class="co">](https://www.economist.com/blogs/dailychart/2011/12/corruption-and-development)</span> demonstrates advanced ggplot2 techniques:</span>
-<span id="cb5-155"><a href="#cb5-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-156"><a href="#cb5-156" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb5-157"><a href="#cb5-157" aria-hidden="true" tabindex="-1"></a><span class="co"># Read and process the data</span></span>
-<span id="cb5-158"><a href="#cb5-158" aria-hidden="true" tabindex="-1"></a>ec <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data_economist.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb5-159"><a href="#cb5-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-160"><a href="#cb5-160" aria-hidden="true" tabindex="-1"></a><span class="co"># Refactor regions with line breaks for legend</span></span>
-<span id="cb5-161"><a href="#cb5-161" aria-hidden="true" tabindex="-1"></a>ec<span class="sc">$</span>Region <span class="ot">&lt;-</span> <span class="fu">factor</span>(ec<span class="sc">$</span>Region,</span>
-<span id="cb5-162"><a href="#cb5-162" aria-hidden="true" tabindex="-1"></a>                    <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"EU W. Europe"</span>, <span class="st">"Americas"</span>, <span class="st">"Asia Pacific"</span>,</span>
-<span id="cb5-163"><a href="#cb5-163" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"East EU Cemt Asia"</span>, <span class="st">"MENA"</span>, <span class="st">"SSA"</span>),</span>
-<span id="cb5-164"><a href="#cb5-164" aria-hidden="true" tabindex="-1"></a>                    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"OECD"</span>, <span class="st">"Americas"</span>, <span class="st">"Asia &amp;</span><span class="sc">\n</span><span class="st">Oceania"</span>,</span>
-<span id="cb5-165"><a href="#cb5-165" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Central &amp;</span><span class="sc">\n</span><span class="st">Eastern Europe"</span>,</span>
-<span id="cb5-166"><a href="#cb5-166" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Middle East &amp;</span><span class="sc">\n</span><span class="st">North Africa"</span>,</span>
-<span id="cb5-167"><a href="#cb5-167" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Sub-Saharan</span><span class="sc">\n</span><span class="st">Africa"</span>))</span>
-<span id="cb5-168"><a href="#cb5-168" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-169"><a href="#cb5-169" aria-hidden="true" tabindex="-1"></a><span class="co"># Create sophisticated scatter plot with trend line</span></span>
-<span id="cb5-170"><a href="#cb5-170" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ec, <span class="fu">aes</span>(<span class="at">x =</span> CPI, <span class="at">y =</span> HDI, <span class="at">color =</span> Region)) <span class="sc">+</span></span>
-<span id="cb5-171"><a href="#cb5-171" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">fill =</span> <span class="st">"red"</span>), <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">2</span>), </span>
-<span id="cb5-172"><a href="#cb5-172" aria-hidden="true" tabindex="-1"></a>              <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb5-173"><a href="#cb5-173" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">stroke =</span> <span class="fl">0.8</span>, <span class="at">fill =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb5-174"><a href="#cb5-174" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> <span class="fu">subset</span>(ec, Country <span class="sc">%in%</span> labels), <span class="fu">aes</span>(<span class="at">label =</span> Country),</span>
-<span id="cb5-175"><a href="#cb5-175" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
-<span id="cb5-176"><a href="#cb5-176" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#23576E"</span>, <span class="st">"#099FDB"</span>, <span class="st">"#29B00E"</span>, </span>
-<span id="cb5-177"><a href="#cb5-177" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"#208F84"</span>, <span class="st">"#F55840"</span>, <span class="st">"#924F3E"</span>)) <span class="sc">+</span></span>
-<span id="cb5-178"><a href="#cb5-178" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Corruption and human development"</span>) <span class="sc">+</span></span>
-<span id="cb5-179"><a href="#cb5-179" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb5-180"><a href="#cb5-180" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-181"><a href="#cb5-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-182"><a href="#cb5-182" aria-hidden="true" tabindex="-1"></a><span class="al">![Corruption and Human Development Analysis](tutorial_corruption_plot.png)</span>{fig-alt="Professional recreation of The Economist's corruption vs human development scatter plot showing the relationship between corruption perceptions and quality of life across countries." width="90%"}</span>
-<span id="cb5-183"><a href="#cb5-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-184"><a href="#cb5-184" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 2. Wall Street Journal-Style Measles Heatmap</span></span>
-<span id="cb5-185"><a href="#cb5-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-186"><a href="#cb5-186" aria-hidden="true" tabindex="-1"></a>This recreation of <span class="co">[</span><span class="ot">WSJ's measles vaccination impact visualization</span><span class="co">](http://graphics.wsj.com/infectious-diseases-and-vaccines/)</span> shows complex data transformation and heatmap creation:</span>
-<span id="cb5-187"><a href="#cb5-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-188"><a href="#cb5-188" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb5-189"><a href="#cb5-189" aria-hidden="true" tabindex="-1"></a><span class="co"># Read and transform the complex dataset</span></span>
-<span id="cb5-190"><a href="#cb5-190" aria-hidden="true" tabindex="-1"></a>me <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data_wsj.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>, <span class="at">skip =</span> <span class="dv">2</span>)</span>
+<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a>After completing analyses, visualization becomes crucial</span>
+<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">ggplot2</span><span class="co">](https://ggplot2.tidyverse.org/)</span> is R's  visualization package</span>
+<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a><span class="fu">### ggplot Capabilities</span></span>
+<span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a>The package offers incredible versatility for creating:</span>
+<span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Statistical plots** - Scatter plots, histograms, box plots</span>
+<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Multi-dimensional visualizations** - Faceting and grouping</span>
+<span id="cb5-113"><a href="#cb5-113" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Custom themes** - Professional publication-ready graphics</span>
+<span id="cb5-114"><a href="#cb5-114" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Interactive elements** - Enhanced user engagement</span>
+<span id="cb5-115"><a href="#cb5-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-116"><a href="#cb5-116" aria-hidden="true" tabindex="-1"></a><span class="fu">### Hands-on Practice</span></span>
+<span id="cb5-117"><a href="#cb5-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-118"><a href="#cb5-118" aria-hidden="true" tabindex="-1"></a>We worked through practical examples using the <span class="co">[</span><span class="ot">NBIS tutorial by Roy Francis</span><span class="co">](https://nbisweden.github.io/raukr-2023/labs/ggplot/)</span>, covering:</span>
+<span id="cb5-119"><a href="#cb5-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-120"><a href="#cb5-120" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb5-121"><a href="#cb5-121" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic ggplot structure</span></span>
+<span id="cb5-122"><a href="#cb5-122" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb5-123"><a href="#cb5-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-124"><a href="#cb5-124" aria-hidden="true" tabindex="-1"></a><span class="co"># Example scatter plot using iris dataset</span></span>
+<span id="cb5-125"><a href="#cb5-125" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width)) <span class="sc">+</span></span>
+<span id="cb5-126"><a href="#cb5-126" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb5-127"><a href="#cb5-127" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb5-128"><a href="#cb5-128" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"My Analysis Results"</span>,</span>
+<span id="cb5-129"><a href="#cb5-129" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Petal Length"</span>,</span>
+<span id="cb5-130"><a href="#cb5-130" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Petal Width"</span>)</span>
+<span id="cb5-131"><a href="#cb5-131" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-132"><a href="#cb5-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-133"><a href="#cb5-133" aria-hidden="true" tabindex="-1"></a><span class="al">![Basic scatter plot example](basic_scatter_plot.png)</span>{fig-alt="Basic scatter plot showing the relationship between petal length and width using the iris dataset with minimal theme styling." width="70%"}</span>
+<span id="cb5-134"><a href="#cb5-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-135"><a href="#cb5-135" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb5-136"><a href="#cb5-136" aria-hidden="true" tabindex="-1"></a><span class="co"># Advanced plotting with facets using iris dataset</span></span>
+<span id="cb5-137"><a href="#cb5-137" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width, <span class="at">color =</span> Species)) <span class="sc">+</span></span>
+<span id="cb5-138"><a href="#cb5-138" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb5-139"><a href="#cb5-139" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Species) <span class="sc">+</span></span>
+<span id="cb5-140"><a href="#cb5-140" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb5-141"><a href="#cb5-141" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-142"><a href="#cb5-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-143"><a href="#cb5-143" aria-hidden="true" tabindex="-1"></a><span class="al">![Faceted scatter plot with color grouping](faceted_scatter_plot.png)</span>{fig-alt="Advanced scatter plot with color grouping by species and faceting, demonstrating ggplot's layered approach using the iris dataset." width="80%"}</span>
+<span id="cb5-144"><a href="#cb5-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-145"><a href="#cb5-145" aria-hidden="true" tabindex="-1"></a><span class="fu">### Advanced Tutorial Examples</span></span>
+<span id="cb5-146"><a href="#cb5-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-147"><a href="#cb5-147" aria-hidden="true" tabindex="-1"></a>We also worked through two complex examples from the NBIS tutorial that demonstrate professional-level data visualization techniques:</span>
+<span id="cb5-148"><a href="#cb5-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-149"><a href="#cb5-149" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 1. Economist-Style Corruption vs Development Scatter Plot</span></span>
+<span id="cb5-150"><a href="#cb5-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-151"><a href="#cb5-151" aria-hidden="true" tabindex="-1"></a>This recreation of <span class="co">[</span><span class="ot">The Economist's corruption analysis</span><span class="co">](https://www.economist.com/blogs/dailychart/2011/12/corruption-and-development)</span> demonstrates advanced ggplot2 techniques:</span>
+<span id="cb5-152"><a href="#cb5-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-153"><a href="#cb5-153" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb5-154"><a href="#cb5-154" aria-hidden="true" tabindex="-1"></a><span class="co"># Read and process the data</span></span>
+<span id="cb5-155"><a href="#cb5-155" aria-hidden="true" tabindex="-1"></a>ec <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data_economist.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-156"><a href="#cb5-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-157"><a href="#cb5-157" aria-hidden="true" tabindex="-1"></a><span class="co"># Refactor regions with line breaks for legend</span></span>
+<span id="cb5-158"><a href="#cb5-158" aria-hidden="true" tabindex="-1"></a>ec<span class="sc">$</span>Region <span class="ot">&lt;-</span> <span class="fu">factor</span>(ec<span class="sc">$</span>Region,</span>
+<span id="cb5-159"><a href="#cb5-159" aria-hidden="true" tabindex="-1"></a>                    <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"EU W. Europe"</span>, <span class="st">"Americas"</span>, <span class="st">"Asia Pacific"</span>,</span>
+<span id="cb5-160"><a href="#cb5-160" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"East EU Cemt Asia"</span>, <span class="st">"MENA"</span>, <span class="st">"SSA"</span>),</span>
+<span id="cb5-161"><a href="#cb5-161" aria-hidden="true" tabindex="-1"></a>                    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"OECD"</span>, <span class="st">"Americas"</span>, <span class="st">"Asia &amp;</span><span class="sc">\n</span><span class="st">Oceania"</span>,</span>
+<span id="cb5-162"><a href="#cb5-162" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Central &amp;</span><span class="sc">\n</span><span class="st">Eastern Europe"</span>,</span>
+<span id="cb5-163"><a href="#cb5-163" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Middle East &amp;</span><span class="sc">\n</span><span class="st">North Africa"</span>,</span>
+<span id="cb5-164"><a href="#cb5-164" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Sub-Saharan</span><span class="sc">\n</span><span class="st">Africa"</span>))</span>
+<span id="cb5-165"><a href="#cb5-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-166"><a href="#cb5-166" aria-hidden="true" tabindex="-1"></a><span class="co"># Create sophisticated scatter plot with trend line</span></span>
+<span id="cb5-167"><a href="#cb5-167" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ec, <span class="fu">aes</span>(<span class="at">x =</span> CPI, <span class="at">y =</span> HDI, <span class="at">color =</span> Region)) <span class="sc">+</span></span>
+<span id="cb5-168"><a href="#cb5-168" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">fill =</span> <span class="st">"red"</span>), <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">2</span>), </span>
+<span id="cb5-169"><a href="#cb5-169" aria-hidden="true" tabindex="-1"></a>              <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb5-170"><a href="#cb5-170" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">stroke =</span> <span class="fl">0.8</span>, <span class="at">fill =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb5-171"><a href="#cb5-171" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> <span class="fu">subset</span>(ec, Country <span class="sc">%in%</span> labels), <span class="fu">aes</span>(<span class="at">label =</span> Country),</span>
+<span id="cb5-172"><a href="#cb5-172" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb5-173"><a href="#cb5-173" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#23576E"</span>, <span class="st">"#099FDB"</span>, <span class="st">"#29B00E"</span>, </span>
+<span id="cb5-174"><a href="#cb5-174" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"#208F84"</span>, <span class="st">"#F55840"</span>, <span class="st">"#924F3E"</span>)) <span class="sc">+</span></span>
+<span id="cb5-175"><a href="#cb5-175" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Corruption and human development"</span>) <span class="sc">+</span></span>
+<span id="cb5-176"><a href="#cb5-176" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb5-177"><a href="#cb5-177" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-178"><a href="#cb5-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-179"><a href="#cb5-179" aria-hidden="true" tabindex="-1"></a><span class="al">![Corruption and Human Development Analysis](tutorial_corruption_plot.png)</span>{fig-alt="Professional recreation of The Economist's corruption vs human development scatter plot showing the relationship between corruption perceptions and quality of life across countries." width="90%"}</span>
+<span id="cb5-180"><a href="#cb5-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-181"><a href="#cb5-181" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 2. Wall Street Journal-Style Measles Heatmap</span></span>
+<span id="cb5-182"><a href="#cb5-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-183"><a href="#cb5-183" aria-hidden="true" tabindex="-1"></a>This recreation of <span class="co">[</span><span class="ot">WSJ's measles vaccination impact visualization</span><span class="co">](http://graphics.wsj.com/infectious-diseases-and-vaccines/)</span> shows complex data transformation and heatmap creation:</span>
+<span id="cb5-184"><a href="#cb5-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-185"><a href="#cb5-185" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb5-186"><a href="#cb5-186" aria-hidden="true" tabindex="-1"></a><span class="co"># Read and transform the complex dataset</span></span>
+<span id="cb5-187"><a href="#cb5-187" aria-hidden="true" tabindex="-1"></a>me <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data_wsj.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>, <span class="at">skip =</span> <span class="dv">2</span>)</span>
+<span id="cb5-188"><a href="#cb5-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-189"><a href="#cb5-189" aria-hidden="true" tabindex="-1"></a><span class="co"># Custom function for handling missing data</span></span>
+<span id="cb5-190"><a href="#cb5-190" aria-hidden="true" tabindex="-1"></a>fun1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">ifelse</span>(<span class="fu">all</span>(<span class="fu">is.na</span>(x)), <span class="cn">NA</span>, <span class="fu">sum</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
 <span id="cb5-191"><a href="#cb5-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-192"><a href="#cb5-192" aria-hidden="true" tabindex="-1"></a><span class="co"># Custom function for handling missing data</span></span>
-<span id="cb5-193"><a href="#cb5-193" aria-hidden="true" tabindex="-1"></a>fun1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">ifelse</span>(<span class="fu">all</span>(<span class="fu">is.na</span>(x)), <span class="cn">NA</span>, <span class="fu">sum</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb5-194"><a href="#cb5-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-195"><a href="#cb5-195" aria-hidden="true" tabindex="-1"></a><span class="co"># Complex data transformation pipeline</span></span>
-<span id="cb5-196"><a href="#cb5-196" aria-hidden="true" tabindex="-1"></a>me3 <span class="ot">&lt;-</span> me <span class="sc">%&gt;%</span></span>
-<span id="cb5-197"><a href="#cb5-197" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="at">key =</span> state, <span class="at">value =</span> value, <span class="sc">-</span>YEAR, <span class="sc">-</span>WEEK) <span class="sc">%&gt;%</span></span>
-<span id="cb5-198"><a href="#cb5-198" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">str_replace</span>(value, <span class="st">"^-$"</span>, <span class="cn">NA_character_</span>),</span>
-<span id="cb5-199"><a href="#cb5-199" aria-hidden="true" tabindex="-1"></a>         <span class="at">value =</span> <span class="fu">as.numeric</span>(value)) <span class="sc">%&gt;%</span></span>
-<span id="cb5-200"><a href="#cb5-200" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(YEAR, state) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-201"><a href="#cb5-201" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total =</span> <span class="fu">fun1</span>(value), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-202"><a href="#cb5-202" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">state =</span> <span class="fu">str_replace_all</span>(state, <span class="st">"[.]"</span>, <span class="st">" "</span>),</span>
-<span id="cb5-203"><a href="#cb5-203" aria-hidden="true" tabindex="-1"></a>         <span class="at">state =</span> <span class="fu">str_to_title</span>(state))</span>
-<span id="cb5-204"><a href="#cb5-204" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-205"><a href="#cb5-205" aria-hidden="true" tabindex="-1"></a><span class="co"># Create sophisticated heatmap with custom color scale</span></span>
-<span id="cb5-206"><a href="#cb5-206" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(me3, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> <span class="fu">reorder</span>(state, <span class="fu">desc</span>(state)), <span class="at">fill =</span> total)) <span class="sc">+</span></span>
-<span id="cb5-207"><a href="#cb5-207" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">linewidth =</span> <span class="fl">0.25</span>) <span class="sc">+</span></span>
-<span id="cb5-208"><a href="#cb5-208" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradientn</span>(<span class="at">colors =</span> cols, <span class="at">na.value =</span> <span class="st">"grey95"</span>,</span>
-<span id="cb5-209"><a href="#cb5-209" aria-hidden="true" tabindex="-1"></a>                       <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4000</span>),</span>
-<span id="cb5-210"><a href="#cb5-210" aria-hidden="true" tabindex="-1"></a>                       <span class="at">values =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.01</span>, <span class="fl">0.02</span>, <span class="fl">0.03</span>, <span class="fl">0.09</span>, <span class="fl">0.1</span>, <span class="fl">0.15</span>, <span class="fl">0.25</span>, <span class="fl">0.4</span>, <span class="fl">0.5</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb5-211"><a href="#cb5-211" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">x =</span> <span class="dv">1963</span>, <span class="at">xend =</span> <span class="dv">1963</span>, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> <span class="fl">51.5</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb5-212"><a href="#cb5-212" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">label =</span> <span class="st">"Vaccine introduced"</span>, <span class="at">x =</span> <span class="dv">1963</span>, <span class="at">y =</span> <span class="dv">53</span>) <span class="sc">+</span></span>
-<span id="cb5-213"><a href="#cb5-213" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>() <span class="sc">+</span></span>
-<span id="cb5-214"><a href="#cb5-214" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb5-215"><a href="#cb5-215" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-216"><a href="#cb5-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-217"><a href="#cb5-217" aria-hidden="true" tabindex="-1"></a><span class="al">![Measles Cases Heatmap](tutorial_measles_heatmap.png)</span>{fig-alt="Professional recreation of the Wall Street Journal's measles cases heatmap showing the dramatic impact of vaccine introduction in 1963 across US states." width="90%"}</span>
-<span id="cb5-218"><a href="#cb5-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-219"><a href="#cb5-219" aria-hidden="true" tabindex="-1"></a>These advanced examples demonstrate:</span>
-<span id="cb5-220"><a href="#cb5-220" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Complex data transformation** using tidyverse functions</span>
-<span id="cb5-221"><a href="#cb5-221" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Custom color palettes** and sophisticated scaling</span>
-<span id="cb5-222"><a href="#cb5-222" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Annotation techniques** for highlighting key events</span>
-<span id="cb5-223"><a href="#cb5-223" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Professional styling** matching publication standards</span>
-<span id="cb5-224"><a href="#cb5-224" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Multi-layered plotting** with geom combinations</span>
-<span id="cb5-225"><a href="#cb5-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-226"><a href="#cb5-226" aria-hidden="true" tabindex="-1"></a><span class="fu">### Key ggplot Concepts</span></span>
-<span id="cb5-227"><a href="#cb5-227" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-228"><a href="#cb5-228" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Grammar of Graphics** - Systematic approach to building plots</span>
-<span id="cb5-229"><a href="#cb5-229" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Layered approach** - Adding elements incrementally</span>
-<span id="cb5-230"><a href="#cb5-230" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Aesthetic mappings** - Connecting data to visual properties</span>
-<span id="cb5-231"><a href="#cb5-231" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Geometric objects** - Points, lines, bars, etc.</span>
-<span id="cb5-232"><a href="#cb5-232" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Themes and styling** - Professional appearance</span>
-<span id="cb5-233"><a href="#cb5-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-192"><a href="#cb5-192" aria-hidden="true" tabindex="-1"></a><span class="co"># Complex data transformation pipeline</span></span>
+<span id="cb5-193"><a href="#cb5-193" aria-hidden="true" tabindex="-1"></a>me3 <span class="ot">&lt;-</span> me <span class="sc">%&gt;%</span></span>
+<span id="cb5-194"><a href="#cb5-194" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="at">key =</span> state, <span class="at">value =</span> value, <span class="sc">-</span>YEAR, <span class="sc">-</span>WEEK) <span class="sc">%&gt;%</span></span>
+<span id="cb5-195"><a href="#cb5-195" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">str_replace</span>(value, <span class="st">"^-$"</span>, <span class="cn">NA_character_</span>),</span>
+<span id="cb5-196"><a href="#cb5-196" aria-hidden="true" tabindex="-1"></a>         <span class="at">value =</span> <span class="fu">as.numeric</span>(value)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-197"><a href="#cb5-197" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(YEAR, state) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-198"><a href="#cb5-198" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total =</span> <span class="fu">fun1</span>(value), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-199"><a href="#cb5-199" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">state =</span> <span class="fu">str_replace_all</span>(state, <span class="st">"[.]"</span>, <span class="st">" "</span>),</span>
+<span id="cb5-200"><a href="#cb5-200" aria-hidden="true" tabindex="-1"></a>         <span class="at">state =</span> <span class="fu">str_to_title</span>(state))</span>
+<span id="cb5-201"><a href="#cb5-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-202"><a href="#cb5-202" aria-hidden="true" tabindex="-1"></a><span class="co"># Create sophisticated heatmap with custom color scale</span></span>
+<span id="cb5-203"><a href="#cb5-203" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(me3, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> <span class="fu">reorder</span>(state, <span class="fu">desc</span>(state)), <span class="at">fill =</span> total)) <span class="sc">+</span></span>
+<span id="cb5-204"><a href="#cb5-204" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">linewidth =</span> <span class="fl">0.25</span>) <span class="sc">+</span></span>
+<span id="cb5-205"><a href="#cb5-205" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradientn</span>(<span class="at">colors =</span> cols, <span class="at">na.value =</span> <span class="st">"grey95"</span>,</span>
+<span id="cb5-206"><a href="#cb5-206" aria-hidden="true" tabindex="-1"></a>                       <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4000</span>),</span>
+<span id="cb5-207"><a href="#cb5-207" aria-hidden="true" tabindex="-1"></a>                       <span class="at">values =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.01</span>, <span class="fl">0.02</span>, <span class="fl">0.03</span>, <span class="fl">0.09</span>, <span class="fl">0.1</span>, <span class="fl">0.15</span>, <span class="fl">0.25</span>, <span class="fl">0.4</span>, <span class="fl">0.5</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb5-208"><a href="#cb5-208" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">x =</span> <span class="dv">1963</span>, <span class="at">xend =</span> <span class="dv">1963</span>, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> <span class="fl">51.5</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb5-209"><a href="#cb5-209" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">label =</span> <span class="st">"Vaccine introduced"</span>, <span class="at">x =</span> <span class="dv">1963</span>, <span class="at">y =</span> <span class="dv">53</span>) <span class="sc">+</span></span>
+<span id="cb5-210"><a href="#cb5-210" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>() <span class="sc">+</span></span>
+<span id="cb5-211"><a href="#cb5-211" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb5-212"><a href="#cb5-212" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-213"><a href="#cb5-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-214"><a href="#cb5-214" aria-hidden="true" tabindex="-1"></a><span class="al">![Measles Cases Heatmap](tutorial_measles_heatmap.png)</span>{fig-alt="Professional recreation of the Wall Street Journal's measles cases heatmap showing the dramatic impact of vaccine introduction in 1963 across US states." width="90%"}</span>
+<span id="cb5-215"><a href="#cb5-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-216"><a href="#cb5-216" aria-hidden="true" tabindex="-1"></a>These advanced examples demonstrate:</span>
+<span id="cb5-217"><a href="#cb5-217" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Complex data transformation** using tidyverse functions</span>
+<span id="cb5-218"><a href="#cb5-218" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Custom color palettes** and sophisticated scaling</span>
+<span id="cb5-219"><a href="#cb5-219" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Annotation techniques** for highlighting key events</span>
+<span id="cb5-220"><a href="#cb5-220" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Professional styling** matching publication standards</span>
+<span id="cb5-221"><a href="#cb5-221" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Multi-layered plotting** with geom combinations</span>
+<span id="cb5-222"><a href="#cb5-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-223"><a href="#cb5-223" aria-hidden="true" tabindex="-1"></a><span class="fu">### Key ggplot Concepts</span></span>
+<span id="cb5-224"><a href="#cb5-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-225"><a href="#cb5-225" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Grammar of Graphics** - Systematic approach to building plots</span>
+<span id="cb5-226"><a href="#cb5-226" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Layered approach** - Adding elements incrementally</span>
+<span id="cb5-227"><a href="#cb5-227" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Aesthetic mappings** - Connecting data to visual properties</span>
+<span id="cb5-228"><a href="#cb5-228" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Geometric objects** - Points, lines, bars, etc.</span>
+<span id="cb5-229"><a href="#cb5-229" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Themes and styling** - Professional appearance</span>
+<span id="cb5-230"><a href="#cb5-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-231"><a href="#cb5-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-232"><a href="#cb5-232" aria-hidden="true" tabindex="-1"></a><span class="fu">## Resources and References</span></span>
+<span id="cb5-233"><a href="#cb5-233" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">NBIS ggplot Tutorial</span><span class="co">](https://nbisweden.github.io/raukr-2023/labs/ggplot/)</span></span>
 <span id="cb5-234"><a href="#cb5-234" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-235"><a href="#cb5-235" aria-hidden="true" tabindex="-1"></a><span class="fu">## Resources and References</span></span>
-<span id="cb5-236"><a href="#cb5-236" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">NBIS ggplot Tutorial</span><span class="co">](https://nbisweden.github.io/raukr-2023/labs/ggplot/)</span></span>
+<span id="cb5-235"><a href="#cb5-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-236"><a href="#cb5-236" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb5-237"><a href="#cb5-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-238"><a href="#cb5-238" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-239"><a href="#cb5-239" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb5-240"><a href="#cb5-240" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-241"><a href="#cb5-241" aria-hidden="true" tabindex="-1"></a>*Day 5 complete and the course done! Thank you amrei for a really good and interesting course! </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb5-238"><a href="#cb5-238" aria-hidden="true" tabindex="-1"></a>*Day 5 complete and the course done! Thank you amrei for a really good and interesting course! </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

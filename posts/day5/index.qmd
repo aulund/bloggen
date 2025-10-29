@@ -101,20 +101,9 @@ AI is already changing language patterns:
 
 ### Introduction to ggplot
 
-After completing downstream analyses, visualization becomes crucial for:
-- **Results presentation** - Making findings accessible
-- **Pattern recognition** - Discovering insights in data
-- **Communication** - Sharing discoveries with others
+After completing analyses, visualization becomes crucial
 
-[ggplot2](https://ggplot2.tidyverse.org/) is R's powerful visualization package, part of the tidyverse ecosystem.
-
-### ggplot Capabilities
-
-The package offers incredible versatility for creating:
-- **Statistical plots** - Scatter plots, histograms, box plots
-- **Multi-dimensional visualizations** - Faceting and grouping
-- **Custom themes** - Professional publication-ready graphics
-- **Interactive elements** - Enhanced user engagement
+[ggplot2](https://ggplot2.tidyverse.org/) is R's  visualization package
 
 ### Hands-on Practice
 
@@ -216,20 +205,6 @@ ggplot(me3, aes(x = year, y = reorder(state, desc(state)), fill = total)) +
 
 ![Measles Cases Heatmap](tutorial_measles_heatmap.png){fig-alt="Professional recreation of the Wall Street Journal's measles cases heatmap showing the dramatic impact of vaccine introduction in 1963 across US states." width="90%"}
 
-These advanced examples demonstrate:
-- **Complex data transformation** using tidyverse functions
-- **Custom color palettes** and sophisticated scaling
-- **Annotation techniques** for highlighting key events
-- **Professional styling** matching publication standards
-- **Multi-layered plotting** with geom combinations
-
-### Key ggplot Concepts
-
-- **Grammar of Graphics** - Systematic approach to building plots
-- **Layered approach** - Adding elements incrementally
-- **Aesthetic mappings** - Connecting data to visual properties
-- **Geometric objects** - Points, lines, bars, etc.
-- **Themes and styling** - Professional appearance
 
 
 ## Resources and References
