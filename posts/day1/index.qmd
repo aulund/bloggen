@@ -3,14 +3,14 @@ title: "Day 1"
 date: 2025-10-06
 categories: [blog]
 author: "August Lundholm"
-description: "Reflections and notes from day 1."
+description: "notes from day 1."
 image: "Data_life_cycle.png"
 draft: false
 ---
 
 # Day 1 of medbioinfo
 
-This is my first blog post! Here are my reflections and notes from day 1.
+This is my first blog post from the applied bioinformatics course! 
 
 ## What I Learned Today
 - We talked about good practice in storing and processing data

@@ -11,14 +11,14 @@ draft: false
 
 Today we moved from basic Nextflow to more advanced pipeline usage with real biological data.
 
-## Today's Focus
+## Today's focus
 
 Today we worked with:
 - nf-core pipeline introduction and evaluation
 - Testing pipelines with built-in test data  
 - Running the nf-core/rnaseq pipeline on real data
 
-## Morning Session - nf-core Introduction
+## Morning session - nf-core Introduction
 
 ### What makes nf-core special?
 
@@ -29,15 +29,11 @@ The nf-core community provides:
 - Consistent structure across all pipelines
 - Open source development by volunteer community
 
-### Finding and Evaluating Pipelines
+### Finding pipelines
 
-We explored the [nf-core homepage](https://nf-co.re/) and learned to evaluate pipelines by checking:
-- Usage documentation - understanding input requirements
-- Parameters - available customization options  
-- Output - expected results and file formats
-- Pipeline suitability for our specific data types
+We explored the [nf-core homepage](https://nf-co.re/) to find pipelines to use for our own projects
 
-## Afternoon Session - Hands-on Pipeline Testing
+## Afternoon Session - testing a pipeline 
 
 ### Setting Up the Environment
 
@@ -90,21 +86,9 @@ We tested the Sarek variant calling pipeline with built-in test data:
 pixi run nextflow run nf-core/sarek -profile test --outdir sarek_test -c hpc2n.config
 ```
 
-Command breakdown:
-- `pixi run` - Use our pixi environment
-- `nextflow run` - Execute with Nextflow
-- `nf-core/sarek` - Pipeline name/location
-- `-profile test` - Use built-in test data
-- `--outdir sarek_test` - Output directory
-- `-c hpc2n.config` - Server configuration file
-
-The test run completed in ~3.5 minutes, demonstrating successful setup.
-
-## Advanced Topic - RNAseq Pipeline
-
 ### Data Preparation
 
-For real analysis, we worked with RNAseq data located at:
+we worked with RNAseq data located at:
 ```
 medbioinfo2025/common_data/RNAseq
 ```
@@ -130,15 +114,6 @@ Project structure:
 └── pixi.toml
 ```
 
-### nf-core Launch Configuration
-
-We used the nf-core launcher to configure the RNAseq pipeline:
-
-1. **Working and results directories** - Set absolute paths
-2. **Input CSV file** - Created samplesheet according to pipeline requirements  
-3. **Reference genome** - used human genome references
-4. **Resume option** - Enabled for fault tolerance
-
 ### Running the Full Pipeline
 
 Two execution methods:
@@ -159,7 +134,7 @@ pixi run nextflow run nf-core/rnaseq -r 3.19.0 -resume -params-file nf-params.js
 ```
 
 
-## Resources and References
+## Resources:
 
 - [nf-core homepage](https://nf-co.re/)
 - [nf-core/rnaseq pipeline](https://nf-co.re/rnaseq/3.19.0/)

@@ -3,7 +3,7 @@ title: "Day 3 of MedBioInfo"
 date: 2025-10-08
 categories: [medbioinfo, learning, data-science]
 author: "August Lundholm"
-description: "Day 3 reflections and learnings from medical bioinformatics course"
+description: "Day 3 of applied bioinformatics course"
 draft: false
 ---
 
@@ -80,12 +80,6 @@ HELLO
 WORLD!
 ```
 
-This workflow demonstrates several key Nextflow concepts:
-- **Channels**: `greeting_ch` carries data between processes
-- **SPLITLETTERS process**: Uses `split` command to break text into 6-byte chunks
-- **CONVERTTOUPPER process**: Converts text to uppercase using `tr` command
-- **Workflow**: Connects processes with `.flatten()` to handle multiple outputs
-- **Output**: Uses `.view{ it }` to display results
 
 ### Customizing Parameters
 
@@ -109,9 +103,6 @@ We also worked with building our own nextflow pipelines for quality control of r
 - [FastQC Report - Sample 2](gut_2_fastqc.html) - Individual quality control report for gut sample 2  
 - [MultiQC Report](multiqc_report.html) - Comprehensive report combining all QC metrics
 
-These reports demonstrate:
-- **FastQC analysis**: Per-base quality scores, sequence composition, adapter contamination
-- **MultiQC aggregation**: Combined visualization of multiple samples
 
 ---
 

@@ -9,27 +9,27 @@ draft: false
 
 # Day 5 of MedBioInfo
 
-Day 5  we had an important discussion about AI in bioinformatics (actually the discussion were onday 4 because of us maxing out our allocated processing power on hp2nc and things were moved around) and a lecture + excerzises in data visualization with ggplot! 
+Day 5  we had an important discussion about AI in bioinformatics (actually the discussion were onday 4 because of us maxing out our allocated processing power on hp2nc and things were moved around) and a lecture + excerzises in data visualization with ggplot
 
 ## Today's Focus
 
 Today we covered two topics:
-- **Critical evaluation of AI in bioinformatics** - We talked about the benefits, risks, and responsible usage
-- **Data visualization with ggplot** - Learning plottign in R
+- AI in bioinformatics -  about the benefits, risks, and responsible usage
+- Data visualization with ggplot
 
 ## Morning Session - AI in Bioinformatics
 <!-- Replace "image.png" with the actual filename in the same folder -->
 ![](genai_marketshare.png){fig-alt="Marketshare of the different generative AI chatbots." width="80%"}
 ### The AI Revolution
 
-In just 3 years, Large Language Models (LLMs) have become mainstream. ChatGPT gained **100 million users in 2 months** after its 2022 release, making it the fastest-growing consumer application in history.
+In the last 3 years, large language models have exploded in popularity and the first one, ChatGPT gained **100 million users in 2 months** after its release. That makes llms the fastest-growing consumer application in history.
 
 ### Machine Learning in Bioinformatics - Historical Context
 
-ML has been used in bioinformatics for decades:
-- **Supervised learning** - Classification and regression on annotated data
-- **Unsupervised learning** - Pattern discovery without human input
-- **Applications** - Clustering, association, dimensionality reduction
+Machine learning has been used in bioinformatics for decades:
+- Classification and regression on annotated data
+-  Pattern discovery without human input
+- Clustering, association, dimensionality reduction
 
 GenAI represents the next evolutionary step in applying machine learning into our lives.
 
@@ -38,9 +38,8 @@ GenAI represents the next evolutionary step in applying machine learning into ou
 ### 1. Training Data Bias
 
 AI models inherit biases from their training data:
-- **Historical bias** - "History written by the winners"
-- **Internet bias** - Unequal access and participation
-- **Quality issues** - Not everyone contributes equally online
+- Historical bias
+- Internet bias
 
 > AI is not trained to be wrong and will "happily hallucinate an answer" rather than admit uncertainty
 
@@ -213,4 +212,4 @@ ggplot(me3, aes(x = year, y = reorder(state, desc(state)), fill = total)) +
 
 ---
 
-*Day 5 complete and the course done! Thank you amrei for a really good and interesting course! 
+**Day 5 complete and the course done! Thank you amrei for a really good and interesting course!**

@@ -3,16 +3,12 @@ title: "Day 2 of applied bioinformatics"
 date: 2025-10-07
 categories: [medbioinfo, learning, data-science]
 author: "August Lundholm"
-description: "Continuing my journey through applied bioinformatics - Day 2"
+description: "Continuing applied bioinformatics"
 draft: false
 ---
 
 # Day 2 of MedBioInfo
-title: "Day 2 of MedBioInfo"
-date: 2025-10-07
-categories: [medbioinfo, learning, data-science]
 
-Welcome back to my learning journey! Here are my reflections and key takeaways from day 2.
 
 ## Today's Focus
 
@@ -23,23 +19,29 @@ Today we covered four main topics:
 - Quality control with containers
 
 ## Introduction to Environments
-Since I work with variant visualisations, large datasets, and a mix of custom scripts and publication-ready figures it’s crucial that my toolchain is consistent and reproducible across systems and collaborators. Using Pixi (or another environment manager) keeps everything isolated and version-controlled, so I don’t end up with “it works on my computer” issues.
-Having a dedicated environment for each project makes it easier to share my setup — others can just clone the repository and get the exact same tools and versions. It also prevents older pipelines or scripts from breaking when dependencies update.
-When I prepare figures or analyses for papers, Pixi can help me keep track of software versions, channels, and dependencies — which makes the “Methods” section reproducible.
-Pixi supports multiple platforms and I can test everything locally and then run it on the cluster with minimal risk of environment mismatch.
+-Since I work with variant visualisations, large datasets, and a mix of custom scripts and publication-ready figures it’s important that my toolchain is reproducible.  
+-Pixi keeps everything isolated and version-controlled, so I don’t end up with “it works on my computer” issues.
+ -A dedicated environment for each project makes it easier to share with others to get the same exact tools and versions as when i made the analysis. 
+-When I prepare figures or analyses for papers, Pixi can help me keep track of software versions, channels, and dependencies.
+-Pixi supports multiple platforms and I can test everything locally and then run it on the cluster.
 
 
 
 ## Quality Control with Pixi and Slurm
 
-Quality control isn’t the most exciting part of bioinformatics, but it’s one of the most important. If the sequencing data is bad, everything that comes after will be unreliable. Running FastQC and MultiQC early on saves time later, even if the results themselves are pretty basic.
-It also makes me think more about how I organize things. Having a clear directory structure and running everything inside a controlled environment like Pixi helps keep track of what was actually done. It’s easy to lose that overview once the project grows.
-Working with SLURM and screen is a bit clunky at first, but it’s useful to understand how jobs run on the cluster. Being able to rerun things reproducibly — same data, same tools, same parameters — is really the main point.
+- Quality control is one of the most important parts of bioinformatics.
+- If the sequencing data is bad, everything that comes after will be unreliable.
+- Running FastQC and MultiQC early on saves time later.
+- Having a clear directory structure and running everything inside a controlled environment like Pixi keeps track of what was actually done.
+- Working with SLURM and screen was a bit difficult at first, but it's useful to understand how jobs run on the cluster
+
 
 ##  Introduction to Containers
 
-Reproducibility is a constant problem in bioinformatics, and containers make it more manageable. They keep analyses stable even when systems or dependencies change. It’s also a practical way to share workflows without needing to explain every installation step.
-Building containers from scratch feels a bit advanced, but understanding how they work makes the overall workflow more reliable.
+-Lack of reproducibility is a common problem in bioinformatics. 
+-Containers make it more manageable. They keep analyses stable even when systems or dependencies change. 
+-It’s also a practical way to share workflows without needing to explain every installation step.
+
 
 ---
 
