@@ -83,7 +83,7 @@ WORLD!
 
 ### Customizing Parameters
 
-One of the features of Nextflow is the ability to override parameters from the command line. We can change the greeting message without modifying the script:
+Nextflow has the ability to override parameters from the command line. We can for example change the greeting message with:
 
 ```bash
 pixi run nextflow run hello.nf -resume --greeting 'Bonjour le monde!'

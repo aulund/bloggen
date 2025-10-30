@@ -23,19 +23,19 @@
 
 <section id="day-5-of-medbioinfo" class="level1">
 <h1>Day 5 of MedBioInfo</h1>
-<p>Day 5 we had an important discussion about AI in bioinformatics (actually the discussion were onday 4 because of us maxing out our allocated processing power on hp2nc and things were moved around) and a lecture + excerzises in data visualization with ggplot!</p>
+<p>Day 5 we had an important discussion about AI in bioinformatics (actually the discussion were onday 4 because of us maxing out our allocated processing power on hp2nc and things were moved around) and a lecture + excerzises in data visualization with ggplot</p>
 <section id="todays-focus" class="level2">
 <h2 class="anchored" data-anchor-id="todays-focus">Today’s Focus</h2>
-<p>Today we covered two topics: - <strong>Critical evaluation of AI in bioinformatics</strong> - We talked about the benefits, risks, and responsible usage - <strong>Data visualization with ggplot</strong> - Learning plottign in R</p>
+<p>Today we covered two topics: - AI in bioinformatics - about the benefits, risks, and responsible usage - Data visualization with ggplot</p>
 </section>
 <section id="morning-session---ai-in-bioinformatics" class="level2">
 <h2 class="anchored" data-anchor-id="morning-session---ai-in-bioinformatics">Morning Session - AI in Bioinformatics</h2>
 <!-- Replace "image.png" with the actual filename in the same folder -->
 <p><img src="https://aulund.github.io/bloggen/posts/day5/genai_marketshare.png" class="img-fluid" style="width:80.0%" alt="Marketshare of the different generative AI chatbots."> ### The AI Revolution</p>
-<p>In just 3 years, Large Language Models (LLMs) have become mainstream. ChatGPT gained <strong>100 million users in 2 months</strong> after its 2022 release, making it the fastest-growing consumer application in history.</p>
+<p>In the last 3 years, large language models have exploded in popularity and the first one, ChatGPT gained <strong>100 million users in 2 months</strong> after its release. That makes llms the fastest-growing consumer application in history.</p>
 <section id="machine-learning-in-bioinformatics---historical-context" class="level3">
 <h3 class="anchored" data-anchor-id="machine-learning-in-bioinformatics---historical-context">Machine Learning in Bioinformatics - Historical Context</h3>
-<p>ML has been used in bioinformatics for decades: - <strong>Supervised learning</strong> - Classification and regression on annotated data - <strong>Unsupervised learning</strong> - Pattern discovery without human input - <strong>Applications</strong> - Clustering, association, dimensionality reduction</p>
+<p>Machine learning has been used in bioinformatics for decades: - Classification and regression on annotated data - Pattern discovery without human input - Clustering, association, dimensionality reduction</p>
 <p>GenAI represents the next evolutionary step in applying machine learning into our lives.</p>
 </section>
 </section>
@@ -43,7 +43,7 @@
 <h2 class="anchored" data-anchor-id="critical-issues-with-ai">Critical Issues with AI</h2>
 <section id="training-data-bias" class="level3">
 <h3 class="anchored" data-anchor-id="training-data-bias">1. Training Data Bias</h3>
-<p>AI models inherit biases from their training data: - <strong>Historical bias</strong> - “History written by the winners” - <strong>Internet bias</strong> - Unequal access and participation - <strong>Quality issues</strong> - Not everyone contributes equally online</p>
+<p>AI models inherit biases from their training data: - Historical bias - Internet bias</p>
 <blockquote class="blockquote">
 <p>AI is not trained to be wrong and will “happily hallucinate an answer” rather than admit uncertainty</p>
 </blockquote>
@@ -695,7 +695,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div></div>
 <li><a href="https://nbisweden.github.io/raukr-2023/labs/ggplot/">NBIS ggplot Tutorial</a></li>
 </ul>
 <hr>
-<p>*Day 5 complete and the course done! Thank you amrei for a really good and interesting course!</p>
+<p><strong>Day 5 complete and the course done! Thank you amrei for a really good and interesting course!</strong></p>
 
 
 <!-- -->
@@ -726,24 +726,23 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div></div>
 <h1>Day 4 of MedBioInfo</h1>
 <p>Today we moved from basic Nextflow to more advanced pipeline usage with real biological data.</p>
 <section id="todays-focus" class="level2">
-<h2 class="anchored" data-anchor-id="todays-focus">Today’s Focus</h2>
+<h2 class="anchored" data-anchor-id="todays-focus">Today’s focus</h2>
 <p>Today we worked with: - nf-core pipeline introduction and evaluation - Testing pipelines with built-in test data<br>
 - Running the nf-core/rnaseq pipeline on real data</p>
 </section>
 <section id="morning-session---nf-core-introduction" class="level2">
-<h2 class="anchored" data-anchor-id="morning-session---nf-core-introduction">Morning Session - nf-core Introduction</h2>
+<h2 class="anchored" data-anchor-id="morning-session---nf-core-introduction">Morning session - nf-core Introduction</h2>
 <section id="what-makes-nf-core-special" class="level3">
 <h3 class="anchored" data-anchor-id="what-makes-nf-core-special">What makes nf-core special?</h3>
 <p>The nf-core community provides: - Standardized pipelines for many bioinformatics workflows - Extensive documentation following consistent guidelines - Automatic input validation through the nf-core launcher - Consistent structure across all pipelines - Open source development by volunteer community</p>
 </section>
-<section id="finding-and-evaluating-pipelines" class="level3">
-<h3 class="anchored" data-anchor-id="finding-and-evaluating-pipelines">Finding and Evaluating Pipelines</h3>
-<p>We explored the <a href="https://nf-co.re/">nf-core homepage</a> and learned to evaluate pipelines by checking: - Usage documentation - understanding input requirements - Parameters - available customization options<br>
-- Output - expected results and file formats - Pipeline suitability for our specific data types</p>
+<section id="finding-pipelines" class="level3">
+<h3 class="anchored" data-anchor-id="finding-pipelines">Finding pipelines</h3>
+<p>We explored the <a href="https://nf-co.re/">nf-core homepage</a> to find pipelines to use for our own projects</p>
 </section>
 </section>
-<section id="afternoon-session---hands-on-pipeline-testing" class="level2">
-<h2 class="anchored" data-anchor-id="afternoon-session---hands-on-pipeline-testing">Afternoon Session - Hands-on Pipeline Testing</h2>
+<section id="afternoon-session---testing-a-pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="afternoon-session---testing-a-pipeline">Afternoon Session - testing a pipeline</h2>
 <section id="setting-up-the-environment" class="level3">
 <h3 class="anchored" data-anchor-id="setting-up-the-environment">Setting Up the Environment</h3>
 <p>First, we created a dedicated pixi environment for nf-core work:</p>
@@ -804,15 +803,10 @@ background-color: null;
 font-style: inherit;">--outdir</span> sarek_test <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-c</span> hpc2n.config</span></code></pre></div></div>
-<p>Command breakdown: - <code>pixi run</code> - Use our pixi environment - <code>nextflow run</code> - Execute with Nextflow - <code>nf-core/sarek</code> - Pipeline name/location - <code>-profile test</code> - Use built-in test data - <code>--outdir sarek_test</code> - Output directory - <code>-c hpc2n.config</code> - Server configuration file</p>
-<p>The test run completed in ~3.5 minutes, demonstrating successful setup.</p>
 </section>
-</section>
-<section id="advanced-topic---rnaseq-pipeline" class="level2">
-<h2 class="anchored" data-anchor-id="advanced-topic---rnaseq-pipeline">Advanced Topic - RNAseq Pipeline</h2>
 <section id="data-preparation" class="level3">
 <h3 class="anchored" data-anchor-id="data-preparation">Data Preparation</h3>
-<p>For real analysis, we worked with RNAseq data located at:</p>
+<p>we worked with RNAseq data located at:</p>
 <pre><code>medbioinfo2025/common_data/RNAseq</code></pre>
 <p>We created symbolic links to organize our data:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="fu" style="color: #4758AB;
@@ -840,17 +834,6 @@ font-style: inherit;">cd</span> ..</span></code></pre></div></div>
 │   └── ... (additional samples)
 ├── pixi.lock
 └── pixi.toml</code></pre>
-</section>
-<section id="nf-core-launch-configuration" class="level3">
-<h3 class="anchored" data-anchor-id="nf-core-launch-configuration">nf-core Launch Configuration</h3>
-<p>We used the nf-core launcher to configure the RNAseq pipeline:</p>
-<ol type="1">
-<li><strong>Working and results directories</strong> - Set absolute paths</li>
-<li><strong>Input CSV file</strong> - Created samplesheet according to pipeline requirements<br>
-</li>
-<li><strong>Reference genome</strong> - used human genome references</li>
-<li><strong>Resume option</strong> - Enabled for fault tolerance</li>
-</ol>
 </section>
 <section id="running-the-full-pipeline" class="level3">
 <h3 class="anchored" data-anchor-id="running-the-full-pipeline">Running the Full Pipeline</h3>
@@ -896,8 +879,8 @@ font-style: inherit;">-c</span> server.config</span></code></pre></div></div>
 </section>
 </section>
 </section>
-<section id="resources-and-references" class="level2">
-<h2 class="anchored" data-anchor-id="resources-and-references">Resources and References</h2>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources:</h2>
 <ul>
 <li><a href="https://nf-co.re/">nf-core homepage</a></li>
 <li><a href="https://nf-co.re/rnaseq/3.19.0/">nf-core/rnaseq pipeline</a></li>
@@ -995,7 +978,6 @@ executor &gt;  local (3)
 [7e/dad424] CONVERTTOUPPER (2) [100%] 2 of 2 ✔
 HELLO 
 WORLD!</code></pre>
-<p>This workflow demonstrates several key Nextflow concepts: - <strong>Channels</strong>: <code>greeting_ch</code> carries data between processes - <strong>SPLITLETTERS process</strong>: Uses <code>split</code> command to break text into 6-byte chunks - <strong>CONVERTTOUPPER process</strong>: Converts text to uppercase using <code>tr</code> command - <strong>Workflow</strong>: Connects processes with <code>.flatten()</code> to handle multiple outputs - <strong>Output</strong>: Uses <code>.view{ it }</code> to display results</p>
 </section>
 <section id="customizing-parameters" class="level3">
 <h3 class="anchored" data-anchor-id="customizing-parameters">Customizing Parameters</h3>
@@ -1028,7 +1010,6 @@ font-style: inherit;">'Bonjour le monde!'</span></span></code></pre></div></div>
 </li>
 <li><a href="multiqc_report.html">MultiQC Report</a> - Comprehensive report combining all QC metrics</li>
 </ul>
-<p>These reports demonstrate: - <strong>FastQC analysis</strong>: Per-base quality scores, sequence composition, adapter contamination - <strong>MultiQC aggregation</strong>: Combined visualization of multiple samples</p>
 <hr>
 <p>End of Day 3!</p>
 
@@ -1059,8 +1040,6 @@ font-style: inherit;">'Bonjour le monde!'</span></span></code></pre></div></div>
 
 <section id="day-2-of-medbioinfo" class="level1">
 <h1>Day 2 of MedBioInfo</h1>
-<p>title: “Day 2 of MedBioInfo” date: 2025-10-07 categories: [medbioinfo, learning, data-science]</p>
-<p>Welcome back to my learning journey! Here are my reflections and key takeaways from day 2.</p>
 <section id="todays-focus" class="level2">
 <h2 class="anchored" data-anchor-id="todays-focus">Today’s Focus</h2>
 <p>Today we covered four main topics: - Introduction to environments - Quality control with Pixi and Slurm - Introduction to containers<br>
@@ -1068,15 +1047,22 @@ font-style: inherit;">'Bonjour le monde!'</span></span></code></pre></div></div>
 </section>
 <section id="introduction-to-environments" class="level2">
 <h2 class="anchored" data-anchor-id="introduction-to-environments">Introduction to Environments</h2>
-<p>Since I work with variant visualisations, large datasets, and a mix of custom scripts and publication-ready figures it’s crucial that my toolchain is consistent and reproducible across systems and collaborators. Using Pixi (or another environment manager) keeps everything isolated and version-controlled, so I don’t end up with “it works on my computer” issues. Having a dedicated environment for each project makes it easier to share my setup — others can just clone the repository and get the exact same tools and versions. It also prevents older pipelines or scripts from breaking when dependencies update. When I prepare figures or analyses for papers, Pixi can help me keep track of software versions, channels, and dependencies — which makes the “Methods” section reproducible. Pixi supports multiple platforms and I can test everything locally and then run it on the cluster with minimal risk of environment mismatch.</p>
+<p>-Since I work with variant visualisations, large datasets, and a mix of custom scripts and publication-ready figures it’s important that my toolchain is reproducible.<br>
+-Pixi keeps everything isolated and version-controlled, so I don’t end up with “it works on my computer” issues. -A dedicated environment for each project makes it easier to share with others to get the same exact tools and versions as when i made the analysis. -When I prepare figures or analyses for papers, Pixi can help me keep track of software versions, channels, and dependencies. -Pixi supports multiple platforms and I can test everything locally and then run it on the cluster.</p>
 </section>
 <section id="quality-control-with-pixi-and-slurm" class="level2">
 <h2 class="anchored" data-anchor-id="quality-control-with-pixi-and-slurm">Quality Control with Pixi and Slurm</h2>
-<p>Quality control isn’t the most exciting part of bioinformatics, but it’s one of the most important. If the sequencing data is bad, everything that comes after will be unreliable. Running FastQC and MultiQC early on saves time later, even if the results themselves are pretty basic. It also makes me think more about how I organize things. Having a clear directory structure and running everything inside a controlled environment like Pixi helps keep track of what was actually done. It’s easy to lose that overview once the project grows. Working with SLURM and screen is a bit clunky at first, but it’s useful to understand how jobs run on the cluster. Being able to rerun things reproducibly — same data, same tools, same parameters — is really the main point.</p>
+<ul>
+<li>Quality control is one of the most important parts of bioinformatics.</li>
+<li>If the sequencing data is bad, everything that comes after will be unreliable.</li>
+<li>Running FastQC and MultiQC early on saves time later.</li>
+<li>Having a clear directory structure and running everything inside a controlled environment like Pixi keeps track of what was actually done.</li>
+<li>Working with SLURM and screen was a bit difficult at first, but it’s useful to understand how jobs run on the cluster</li>
+</ul>
 </section>
 <section id="introduction-to-containers" class="level2">
 <h2 class="anchored" data-anchor-id="introduction-to-containers">Introduction to Containers</h2>
-<p>Reproducibility is a constant problem in bioinformatics, and containers make it more manageable. They keep analyses stable even when systems or dependencies change. It’s also a practical way to share workflows without needing to explain every installation step. Building containers from scratch feels a bit advanced, but understanding how they work makes the overall workflow more reliable.</p>
+<p>-Lack of reproducibility is a common problem in bioinformatics. -Containers make it more manageable. They keep analyses stable even when systems or dependencies change. -It’s also a practical way to share workflows without needing to explain every installation step.</p>
 <hr>
 <p>*That’s all for today</p>
 
